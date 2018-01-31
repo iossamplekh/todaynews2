@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import SCLAlertView
-import NVActivityIndicatorView
 
 protocol NewsServiceDelegate {
     func didResivedNews(with news: [News]?,pagination: Pagination?,error: Error?)
@@ -109,10 +108,13 @@ class NewsService{
            method: .post,
            headers: DataManager.HEADER,
            encodingCompletion: { (encodingResult) in
+            print("DataManager.URL.FILE\(DataManager.URL.FILE)")
+            SCLAlertView().showInfo("Encoding", subTitle: "encodingResult\(encodingResult)")
+            print("encodingResult\(encodingResult)")
             switch encodingResult {
-                
             case .success(let upload, _, _):
                 upload.responseJSON { response in
+                     SCLAlertView().showInfo("No value", subTitle: "response.result.value\(response.result.value)")
                     if let value = response.result.value {
                         let json = JSON(value)
                         
@@ -130,11 +132,10 @@ class NewsService{
                             let dict =  [NSLocalizedDescriptionKey : json["message"].string ?? "unknown"]
                             let error = NSError(domain: response.request?.url?.host ?? "unknown", code: 9999, userInfo: dict)
                             completion(nil, error)
-//                            SCLAlertView().showInfo("Image problem object", subTitl                                                                                                                                                                                    e: "Imageprobelm object")
-                            
+                          SCLAlertView().showInfo("Image problem object", subTitle: "Imageprobelm object")
                             return
                         }
-                        
+                         SCLAlertView().showInfo("Have data", subTitle: "Have Image Data")
                         completion(url, nil)
                     }
                 }

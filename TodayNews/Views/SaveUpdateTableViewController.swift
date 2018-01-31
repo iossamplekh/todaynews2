@@ -28,11 +28,12 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         setUpView()
     }
     func setUpView(){
+        newsService.delegate = self
+        imagePicker.delegate = self
+        
         setupNavigationBar()
         setupViewCornerRadius(view: newsImageView)
         setupViewCornerRadius(view: newsDescriptionTextView)
-        
-        imagePicker.delegate = self
     }
     
     func setupViewCornerRadius(view: UIView) {	
@@ -59,7 +60,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         print(#function)
         imagePicker.allowsEditing = false // or true
         imagePicker.sourceType = .photoLibrary // or .camera
-        // imagePicker.mediaTypes = [kUTTypeImage as String] or [kUTTypeMovie as String] or [kUTTypeImage as String, kUTTypeMovie as String]
+//        imagePicker.mediaTypes = [kUTTypeImage as String] or [kUTTypeMovie as String] or [kUTTypeImage as String, kUTTypeMovie as String]
         present(imagePicker, animated: true, completion: nil)
     }
     // view image in news view
@@ -88,6 +89,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         print("Start Function Save \(#function)")
         // Read Image
         let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
+        print("imageData: \(imageData!)")
         newsService.uploadFile(file: imageData!) { (imageUrl, error) in
             // Check error
             if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
@@ -98,7 +100,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 "dec": self.newsShortDescription.text!,
                 "desEn": self.newsDescriptionTextView.text!,
                 "objectStatus": true,
-                "image": imageUrl ?? ""
+//                "image": imageUrl ?? ""
                 ] as [String : Any]
 //{
 //            "dec": "newstesting",
@@ -107,26 +109,11 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
 //            "name": "newstesting",
 //            "objectStatus": true
 //}
+            print("imageUrl: \(imageUrl)")
             self.newsService.saveNews(paramaters: paramaters)
           
         }
-        let paramaters = [
-            "name": self.newsTitleTextField.text!,
-            "dec": self.newsShortDescription.text!,
-            "desEn": self.newsDescriptionTextView.text!,
-            "objectStatus": true,
-//            "image": "https://newiosapi.herokuapp.com/rest/news/img/NaviImage.jpg"
-            ] as [String : Any]
-        //{
-        //            "dec": "newstesting",
-        //            "desEn": "newstesting",
-        //            "image": "newstesting_url",
-        //            "name": "newstesting",
-        //            "objectStatus": true
-        //}
-        print("NewsTitle: \(self.newsTitleTextField.text!)")
-        self.newsService.saveNews(paramaters: paramaters)
-        print("End Function Save \(#function)")
+       print("End Function Save \(#function)")
     }
     
     func saveNews(error: Error?) {
