@@ -72,7 +72,8 @@ class NewsService{
         Alamofire.request(DataManager.URL.NEWS_SAVE_DEAUL,
                           method: .post,
                           parameters:  paramaters,
-                          encoding: URLEncoding.default,
+                          //encoding: URLEncoding.default,
+                          encoding: JSONEncoding.default,
                           headers: DataManager.HEADER)
             .responseJSON { (response) in
                 switch response.result{
