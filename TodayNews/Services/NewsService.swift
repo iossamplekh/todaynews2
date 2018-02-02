@@ -102,7 +102,7 @@ class NewsService{
         
         Alamofire.upload(multipartFormData: { multipartFormData in
             
-           multipartFormData.append(file, withName: "file", fileName: ".jpg", mimeType: "image/jpg") // append image
+           multipartFormData.append(file, withName: "file", fileName: "fileName.jpg", mimeType: "image/jpeg") // append image
             
         }, to: DataManager.URL.FILE,
            method: .post,
@@ -113,9 +113,12 @@ class NewsService{
             print("encodingResult\(encodingResult)")
             switch encodingResult {
             case .success(let upload, _, _):
+                print("upload.request: \(upload.request!)")
+                print("upload.response: \(upload.response)")
+ //               print("upload.responseJSON: \(upload.responseJSO)")
+//                print("upload.responseString: \(upload.responseString)")
                 upload.responseJSON { response in
                      SCLAlertView().showInfo("No value", subTitle: "response.result.value = \(response)")
-                    print("Response: \(response)")
                     if let value = response.result.value {
                         let json = JSON(value)
                         

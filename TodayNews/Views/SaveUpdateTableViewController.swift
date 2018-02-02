@@ -70,6 +70,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             newsImageView.contentMode = .scaleAspectFit
             newsImageView.image = pickedImage
+            //test upload method
+            testUpload()
         }
         
         dismiss(animated: true, completion: nil)
@@ -81,6 +83,16 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     @IBAction func backToMain(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    func testUpload(){
+        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
+        print("imageData: \(imageData!)")
+        newsService.uploadFile(file: imageData!) { (imageUrl, error) in
+            // Check error
+            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+            print("imageUrl: \(imageUrl!)")
+        }
+        
     }
     
     @IBAction func SaveNewsData(_ sender: Any) {
@@ -95,13 +107,13 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
             
             // Request paramaters
-            let paramaters = [
-                "name": self.newsTitleTextField.text!,
-                "dec": self.newsShortDescription.text!,
-                "desEn": self.newsDescriptionTextView.text!,
-                "objectStatus": true,
-                "ealImageUrl": imageUrl ?? ""
-                ] as [String : Any]
+//            let paramaters = [
+//                "name": self.newsTitleTextField.text!,
+//                "dec": self.newsShortDescription.text!,
+//                "desEn": self.newsDescriptionTextView.text!,
+//                "objectStatus": true,
+//                "realImageUrl": imageUrl ?? ""
+//                ] as [String : Any]
 //{
 //            "dec": "newstesting",
 //            "desEn": "newstesting",
@@ -110,7 +122,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
 //            "objectStatus": true
 //}
             print("imageUrl: \(imageUrl)")
-            self.newsService.saveNews(paramaters: paramaters)
+//            self.newsService.saveNews(paramaters: paramaters)
           
         }
        print("End Function Save \(#function)")
@@ -118,8 +130,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     
     func saveNews(error: Error?) {
         print("Add article response")
-        stopAnimating() // Stop NV Loading
-        
+        stopAnimating()
         // Check error
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
         
