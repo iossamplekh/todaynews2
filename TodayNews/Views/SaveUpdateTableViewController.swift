@@ -100,7 +100,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 "dec": self.newsShortDescription.text!,
                 "desEn": self.newsDescriptionTextView.text!,
                 "objectStatus": true,
-//                "image": imageUrl ?? ""
+                "ealImageUrl": imageUrl ?? ""
                 ] as [String : Any]
 //{
 //            "dec": "newstesting",
