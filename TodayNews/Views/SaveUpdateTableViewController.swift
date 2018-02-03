@@ -56,6 +56,17 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     }
     
+    func testUpload(){
+        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
+        print("imageData: \(imageData!)")
+        newsService.uploadFile(file: imageData!) { (imageUrl, error) in
+            // Check error
+            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+            print("imageUrl: \(imageUrl!)")
+        }
+        
+    }
+    
     @IBAction func browsNewsImage(_ sender: Any) {
         print(#function)
         imagePicker.allowsEditing = false // or true
@@ -83,16 +94,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     @IBAction func backToMain(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-    func testUpload(){
-        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
-        print("imageData: \(imageData!)")
-        newsService.uploadFile(file: imageData!) { (imageUrl, error) in
-            // Check error
-            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-            print("imageUrl: \(imageUrl!)")
-        }
-        
     }
     
     @IBAction func SaveNewsData(_ sender: Any) {

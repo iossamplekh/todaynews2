@@ -118,6 +118,7 @@ class NewsService{
  //               print("upload.responseJSON: \(upload.responseJSO)")
 //                print("upload.responseString: \(upload.responseString)")
                 upload.responseJSON { response in
+                    print("Respons: \(response)")
                      SCLAlertView().showInfo("No value", subTitle: "response.result.value = \(response)")
                     if let value = response.result.value {
                         let json = JSON(value)
@@ -149,6 +150,7 @@ class NewsService{
                 }
             case .failure(let error):
                 completion(nil, error)
+                print("Error failure: \(error)")
             }
         })
     }
