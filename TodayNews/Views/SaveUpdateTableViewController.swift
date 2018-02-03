@@ -57,16 +57,28 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     
     func testUpload(){
-        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
-        print("imageData: \(imageData!)")
-        newsService.uploadFile(file: imageData!) { (imageUrl, error) in
-            // Check error
-            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-            print("imageUrl: \(imageUrl!)")
+        if let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1){
+            print("imageData: \(imageData)")
+            newsService.uploadFile(file: imageData) { (imageUrl, error) in
+                // Check error
+                if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+                print("imageUrl: \(imageUrl!)")
+            }
         }
-        
     }
     
+    func testUploadDev(){
+        if let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 0.1){
+            print("imageData: \(imageData)")	
+            newsService.uploadFile(file: imageData) { (imageUrl, error) in
+                // Check error
+                if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+                print("imageUrl: \(imageUrl!)")
+            }
+        }
+    }
+    
+
     @IBAction func browsNewsImage(_ sender: Any) {
         print(#function)
         imagePicker.allowsEditing = false // or true
