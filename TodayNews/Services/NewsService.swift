@@ -108,18 +108,13 @@ class NewsService{
            method: .post,
            headers: DataManager.HEADER,
            encodingCompletion: { (encodingResult) in
-            print("DataManager.URL.FILE\(DataManager.URL.FILE)")
-            SCLAlertView().showInfo("Encoding", subTitle: "encodingResult\(encodingResult)")
             print("encodingResult\(encodingResult)")
             switch encodingResult {
             case .success(let upload, _, _):
                 print("upload.request: \(upload.request!)")
                 print("upload.response: \(upload.response)")
- //               print("upload.responseJSON: \(upload.responseJSO)")
-//                print("upload.responseString: \(upload.responseString)")
                 upload.responseJSON { response in
                     print("Respons: \(response)")
-                     SCLAlertView().showInfo("No value", subTitle: "response.result.value = \(response)")
                     if let value = response.result.value {
                         let json = JSON(value)
                         
@@ -140,13 +135,9 @@ class NewsService{
                           SCLAlertView().showInfo("Image problem object", subTitle: "Imageprobelm object")
                             return
                         }
-                         SCLAlertView().showInfo("Have data", subTitle: "Have Image Data")
+                         SCLAlertView().showInfo("Save", subTitle: "Data have been save")
                         completion(url, nil)
                     }
-                    
-//                    let url = "Hello url"
-//                    SCLAlertView().showInfo("Have data", subTitle: "Have Image Data")
-//                    completion(url, nil)
                 }
             case .failure(let error):
                 completion(nil, error)

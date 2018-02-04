@@ -56,15 +56,17 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     }
     
-    func testUpload(){
+    func testUpload()-> String {
         let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
+        
         print("imageData: \(imageData!)")
+//        print("imageData: \(UIImageJPEGRepresentation(self.newsImageView.image!, 1))")
         newsService.uploadFile(file: imageData!) { (imageUrl, error) in
             // Check error
             if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
             print("imageUrl: \(imageUrl!)")
         }
-        
+        return ""
     }
     
     @IBAction func browsNewsImage(_ sender: Any) {
@@ -77,13 +79,17 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     // view image in news view
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print(#function)
-        
+                                                                                                
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             newsImageView.contentMode = .scaleAspectFit
             newsImageView.image = pickedImage
             //test upload method
-            testUpload()
+            //testUpload()
         }
+        let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
+        let fileName = imageURL.absoluteString
+        
+        print("File Name: \(fileName!)")
         
         dismiss(animated: true, completion: nil)
     }
@@ -108,22 +114,14 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
             
             // Request paramaters
-//            let paramaters = [
-//                "name": self.newsTitleTextField.text!,
-//                "dec": self.newsShortDescription.text!,
-//                "desEn": self.newsDescriptionTextView.text!,
-//                "objectStatus": true,
-//                "realImageUrl": imageUrl ?? ""
-//                ] as [String : Any]
-//{
-//            "dec": "newstesting",
-//            "desEn": "newstesting",
-//            "image": "newstesting_url",
-//            "name": "newstesting",
-//            "objectStatus": true
-//}
-            print("imageUrl: \(imageUrl)")
-//            self.newsService.saveNews(paramaters: paramaters)
+            let paramaters = [
+                "name": self.newsTitleTextField.text!,
+                "dec": self.newsShortDescription.text!,
+                "desEn": self.newsDescriptionTextView.text!,
+                "objectStatus": true,
+                "realImageUrl": imageUrl ?? ""
+                ] as [String : Any]
+            self.newsService.saveNews(paramaters: paramaters)
           
         }
        print("End Function Save \(#function)")
