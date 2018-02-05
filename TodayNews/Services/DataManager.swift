@@ -17,4 +17,5 @@ struct DataManager{
         static let NEWS_SAVE_DEAUL = "https://newiosapi.herokuapp.com/rest/news/save/Sport/rithronlkh%40gmail.com/author1%40gmail.com"
     }
     static let HEADER = ["Authorization":"Basic cml0aHJvbmxraEBnbWFpbC5jb206MTIzNDU2"]
+    //https://newiosapi.herokuapp.com/rest/news/14
 }

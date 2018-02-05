@@ -106,6 +106,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let dest = segue.destination as! NewsDetailViewController
             dest.news2 = sender as! News
         }
+        if segue.identifier == "showEdit" {
+            let destView = segue.destination as! SaveUpdateTableViewController
+            destView.newHolder = sender as? News
+        }
     }
     
     // Refresh Control event
@@ -135,5 +139,45 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //delete news
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, index in
+            
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertWarning = SCLAlertView(appearance: appearance)
+            
+            alertWarning.addButton("OK", action: {
+                
+                self.startAnimating()
+                let news = self.news[indexPath.section]
+                self.newsService.deleteNews(with: "\(news.id)", completion: { (error) in
+                    // Stop animate
+                    self.stopAnimating()
+                    // Check error
+                    if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+                    
+                    tableView.beginUpdates()
+                    self.news.remove(at: indexPath.section)
+                    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+                    tableView.endUpdates()
+                })
+            })
+            alertWarning.showWait("Delete News", subTitle: "Do you want to delete this news?")
+        }
+        // Edit News Button
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { action, index in
+            let news = self.news[indexPath.section]
+            self.performSegue(withIdentifier: "showEdit", sender: news)
+        }
+        
+        edit.backgroundColor = UIColor.brown
+        return [delete, edit]
+    }
 }

@@ -15,12 +15,14 @@ protocol NewsServiceDelegate {
     func didResivedNews(with news: [News]?,pagination: Pagination?,error: Error?)
     
     func SaveNews(error: Error?)
+    func didUpdateNews(error: Error?)
 }
 
 extension NewsServiceDelegate{
     func didResivedNews(with news: [News]?,pagination: Pagination?,error: Error?){}
     
     func SaveNews(error: Error?){}
+    func didUpdateNews(error: Error?){}
 }
 
 class NewsService{
@@ -135,7 +137,7 @@ class NewsService{
                           SCLAlertView().showInfo("Image problem object", subTitle: "Imageprobelm object")
                             return
                         }
-                         SCLAlertView().showInfo("Save", subTitle: "Data have been save")
+            
                         completion(url, nil)
                     }
                 }
@@ -144,5 +146,54 @@ class NewsService{
                 print("Error failure: \(error)")
             }
         })
+    }
+    func updateNews(with id: String, parameters: [String : Any]){
+        Alamofire.request("\(DataManager.URL.NEWS)/\(id)",
+                          method: .put,
+                          parameters: parameters,
+                          encoding: JSONEncoding.default,
+                          headers: DataManager.HEADER)
+            .responseJSON { (response) in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    guard let code = json["code"].int, code == 2222 else {
+                        let dict =  [NSLocalizedDescriptionKey : json["message"].string ?? "unknown"]
+                        let error = NSError(domain: response.request?.url?.host ?? "unknown", code: 9999, userInfo: dict)
+                        
+                       self.delegate?.didUpdateNews(error: error)
+                        return
+                    }
+               
+                    self.delegate?.didUpdateNews(error: nil)
+                case .failure(let error):
+                    self.delegate?.didUpdateNews(error: error)
+                }
+            }
+    }
+    func deleteNews(with id: String, completion: @escaping (Error?) -> ()) {
+        Alamofire.request("\(DataManager.URL.NEWS)/\(id)",
+            method: .delete,
+            headers: DataManager.HEADER)
+            .responseJSON { (response) in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    guard let code = json["code"].int, code == 2222 else {
+                        let dict =  [NSLocalizedDescriptionKey : json["message"].string ?? "unknown"]
+                        let error = NSError(domain: response.request?.url?.host ?? "unknown", code: 9999, userInfo: dict)
+
+                        completion(error)
+                        return
+                    }
+        
+                    completion(nil)
+                    
+                case .failure(let error):
+                    completion(error)
+                }
+        }
     }
 }

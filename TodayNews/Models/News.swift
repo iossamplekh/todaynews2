@@ -14,6 +14,8 @@ class News{
     var name: String
     var desEn: String
     var image: String
+    var dec: String
+    var realImageUrl: String
     var newsType: NewsType
     var secUser: SecUser
     //var author: Author
@@ -23,6 +25,8 @@ class News{
         name = data["name"].string ?? ""
         image = data["image"].string ?? ""
         desEn = data["desEn"].string ?? ""
+        dec = data["dec"].string ?? ""
+        realImageUrl = data["realImageUrl"].string ?? ""
         newsType = NewsType(data["newsType"])
         secUser = SecUser(data["secUser"])
         //author = Author(data["author"])
@@ -32,6 +36,8 @@ class News{
         name = ""
         desEn = ""
         image = ""
+        dec = ""
+        realImageUrl = ""
         newsType = NewsType()
         secUser = SecUser()
         //author = Author()

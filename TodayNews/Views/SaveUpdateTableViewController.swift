@@ -22,9 +22,16 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet var saveUpdateNewNavigationBar: UINavigationItem!
     
     var newsService = NewsService()
+    var newHolder : News?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let newsData = newHolder{
+            newsTitleTextField.text = newsData.name
+            newsShortDescription.text = newsData.dec
+            newsDescriptionTextView.text = newsData.desEn
+            newsImageView.kf.setImage(with: URL(string: newsData.realImageUrl), placeholder: #imageLiteral(resourceName: "noimage_thumbnail"))
+        }
         setUpView()
     }
     func setUpView(){
@@ -54,19 +61,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         }
         
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-    }
-    
-    func testUpload()-> String {
-        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
-        
-        print("imageData: \(imageData!)")
-//        print("imageData: \(UIImageJPEGRepresentation(self.newsImageView.image!, 1))")
-        newsService.uploadFile(file: imageData!) { (imageUrl, error) in
-            // Check error
-            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-            print("imageUrl: \(imageUrl!)")
-        }
-        return ""
     }
     
     @IBAction func browsNewsImage(_ sender: Any) {
@@ -121,8 +115,18 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 "objectStatus": true,
                 "realImageUrl": imageUrl ?? ""
                 ] as [String : Any]
-            self.newsService.saveNews(paramaters: paramaters)
-          
+            
+            // if have news data > update
+            if let news = self.newHolder {
+                // Update code
+                print("news: update\(news)")
+                self.newsService.updateNews(with: "\(news.id)", parameters: paramaters)
+            }else {
+                 print("news: save")
+                // Add news
+                 self.newsService.saveNews(paramaters: paramaters)
+            }
+           
         }
        print("End Function Save \(#function)")
     }
