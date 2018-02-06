@@ -148,7 +148,7 @@ class NewsService{
         })
     }
     func updateNews(with id: String, parameters: [String : Any]){
-        Alamofire.request("\(DataManager.URL.NEWS)/\(id)",
+        Alamofire.request("\(DataManager.URL.NEWS)/\(id)/%20Health/rithronlkh%40gmail.com/author1%40gmail.com",
                           method: .put,
                           parameters: parameters,
                           encoding: JSONEncoding.default,
@@ -165,7 +165,7 @@ class NewsService{
                        self.delegate?.didUpdateNews(error: error)
                         return
                     }
-               
+                  SCLAlertView().showInfo("Update News", subTitle: "Data has been update")
                     self.delegate?.didUpdateNews(error: nil)
                 case .failure(let error):
                     self.delegate?.didUpdateNews(error: error)
@@ -188,7 +188,7 @@ class NewsService{
                         completion(error)
                         return
                     }
-        
+                    SCLAlertView().showInfo("Delete News", subTitle: "Data has been delete")
                     completion(nil)
                     
                 case .failure(let error):

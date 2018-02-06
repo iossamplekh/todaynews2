@@ -30,7 +30,13 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             newsTitleTextField.text = newsData.name
             newsShortDescription.text = newsData.dec
             newsDescriptionTextView.text = newsData.desEn
-            newsImageView.kf.setImage(with: URL(string: newsData.realImageUrl), placeholder: #imageLiteral(resourceName: "noimage_thumbnail"))
+            print("NEWS ID: \(newsData.id)")
+            //newsImageView.kf.setImage(with: URL(string: newsData.realImageUrl), placeholder: #imageLiteral(resourceName: "noimage_thumbnail"))
+            let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
+            newsImageView.downloadImageWith(urlString: url, completion: {
+               self.newsImageView.image
+            })
+            newsImageView.clipsToBounds = true
         }
         setUpView()
     }
@@ -120,6 +126,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             if let news = self.newHolder {
                 // Update code
                 print("news: update\(news)")
+                print("news id:\(news.id)")
                 self.newsService.updateNews(with: "\(news.id)", parameters: paramaters)
             }else {
                  print("news: save")
@@ -134,6 +141,22 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     func saveNews(error: Error?) {
         print("Add article response")
         stopAnimating()
+        // Check error
+        if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    func didUpdateNews(error: Error?) {
+        stopAnimating() // Stop NV Loading
+        
+        // Check error
+        if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    func SaveNews(error: Error?) {
+        stopAnimating() // Stop NV Loading
+        
         // Check error
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
         
