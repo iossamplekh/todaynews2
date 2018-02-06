@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         self.newsService.delegate = self
-        
+        setUpRefresh()
         setUpView()
         getData(pageNumber: 1)
     }
@@ -41,14 +41,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.todayNewsTableView.delegate = self
         self.todayNewsTableView.dataSource = self
         
-        //register
         let nib = UINib.init(nibName: "TodayNewsTableViewCell", bundle: nil)
         todayNewsTableView.register(nib, forCellReuseIdentifier: "TodayNewsTableViewCell")
 
         todayNewsTableView.estimatedRowHeight = 120
         todayNewsTableView.rowHeight = UITableViewAutomaticDimension
         
-        setUpRefresh()
+        //setUpRefresh()
         setUpNavigationBar()
     }
     func setUpRefresh(){
@@ -68,9 +67,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.stopAnimating()
         // Check error
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-        setUpViewNewsData(news: news!)
-        //self.pagination = JSON("page")
-        self.pagination = pagination!
+         self.pagination = pagination!
+        // if current == 1 means first request, else append data
+        if self.pagination.page == 1 {
+            self.news.removeAll()
+            self.news = news!
+        } else {
+            self.news.append(contentsOf: news!)
+        }
         
         todayNewsTableView.reloadData()
     }
@@ -133,9 +137,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
@@ -179,4 +180,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         edit.backgroundColor = UIColor.brown
         return [delete, edit]
     }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerCell = self.todayNewsTableView.dequeueReusableHeaderFooterView(withIdentifier: "TableViewSectionHeader") as! TableViewSectionHeader
+//        let news = self.news[section]
+//        headerCell.configureCellWithTitle(news.secUser.email, dateTime: "", imageUrl: "")
+//        return headerCell
+//    }
 }
