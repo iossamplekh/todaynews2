@@ -156,16 +156,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             alertWarning.addButton("OK", action: {
                 
                 self.startAnimating()
-                let news = self.news[indexPath.section]
+                let news = self.news[indexPath.row]
                 self.newsService.deleteNews(with: "\(news.id)", completion: { (error) in
-                    // Stop animate
+                  
                     self.stopAnimating()
-                    // Check error
                     if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
                     
                     tableView.beginUpdates()
-                    self.news.remove(at: indexPath.section)
-                    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .fade)
+                    self.news.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
                     tableView.endUpdates()
                 })
             })
@@ -173,7 +172,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         // Edit News Button
         let edit = UITableViewRowAction(style: .default, title: "Edit") { action, index in
-            let news = self.news[indexPath.section]
+            let news = self.news[indexPath.row]
             self.performSegue(withIdentifier: "showEdit", sender: news)
         }
         
