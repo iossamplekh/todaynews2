@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TableViewSectionHeader: UITableViewHeaderFooterView {
 
@@ -30,7 +31,7 @@ class TableViewSectionHeader: UITableViewHeaderFooterView {
         /// Title Label
         titleLabel.text = title
         /// Profile Image View
-        profileImageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "noimage_thumbnail"))
+        //profileImageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "noimage_thumbnail"))
         
         /// Date Label
         // Create DateFormatter
@@ -46,7 +47,7 @@ class TableViewSectionHeader: UITableViewHeaderFooterView {
         
         // Convert Date object to stringDate
         let stringFromDate = dateFormatter.string(from: dateFromString!)
-        postDateLabel.text = stringFromDate
+        postDateLabel.text = ""
     }
     
 }

@@ -44,8 +44,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let nib = UINib.init(nibName: "TodayNewsTableViewCell", bundle: nil)
         todayNewsTableView.register(nib, forCellReuseIdentifier: "TodayNewsTableViewCell")
 
+        // TableViewSectionHeader
+//        let nib2 = UINib(nibName: "TableViewSectionHeader", bundle: nil)
+//        todayNewsTableView.register(nib2, forHeaderFooterViewReuseIdentifier: "TableViewSectionHeaderIdentifier") // register and set identifier
+        //todayNewsTableView.estimatedSectionHeaderHeight = UITableViewAutomaticDimension
+        //todayNewsTableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        
         todayNewsTableView.estimatedRowHeight = 120
         todayNewsTableView.rowHeight = UITableViewAutomaticDimension
+        
+        
         
         //setUpRefresh()
         setUpNavigationBar()
@@ -182,7 +190,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerCell = self.todayNewsTableView.dequeueReusableHeaderFooterView(withIdentifier: "TableViewSectionHeader") as! TableViewSectionHeader
+//        let headerCell = self.todayNewsTableView.dequeueReusableHeaderFooterView(withIdentifier: "TableViewSectionHeaderIdentifier") as! TableViewSectionHeader
 //        let news = self.news[section]
 //        headerCell.configureCellWithTitle(news.secUser.email, dateTime: "", imageUrl: "")
 //        return headerCell

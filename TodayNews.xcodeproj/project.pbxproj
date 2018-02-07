@@ -133,12 +133,10 @@
 		0B2A6CE22014BD1200C09BC9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B9A4A80202B3FAD009F1EAA /* Main */,
+				0B9978C02029FD280053A89C /* Custom XIB */,
 				0B7D0CC8200B978500CE1C9B /* AppDelegate.swift */,
-				0B7D0CCA200B978500CE1C9B /* ViewController.swift */,
-				0B49C834200F87AF0059EAEE /* NewsDetailViewController.swift */,
 				0B49C832200F7AAE0059EAEE /* NewsCustomImageView.swift */,
-				0B7D0CCC200B978500CE1C9B /* Main.storyboard */,
-				0BEC027A201DBF2B005E0616 /* SaveUpdateTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,7 +178,7 @@
 		0B7D0CC7200B978500CE1C9B /* TodayNews */ = {
 			isa = PBXGroup;
 			children = (
-				0B9978C02029FD280053A89C /* Custom XIB */,
+				0B9A4A81202B3FCB009F1EAA /* Controllers */,
 				0B7D0CD4200B978500CE1C9B /* Info.plist */,
 				0BBC96C12014C05F0073AB4F /* Noted */,
 				0BBC96C02014C00D0073AB4F /* LaunchScreen */,
@@ -219,6 +217,25 @@
 				0B9978C42029FF100053A89C /* TableViewSectionHeader.xib */,
 			);
 			path = "Custom XIB";
+			sourceTree = "<group>";
+		};
+		0B9A4A80202B3FAD009F1EAA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0B7D0CCC200B978500CE1C9B /* Main.storyboard */,
+			);
+			name = Main;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		0B9A4A81202B3FCB009F1EAA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B7D0CCA200B978500CE1C9B /* ViewController.swift */,
+				0BEC027A201DBF2B005E0616 /* SaveUpdateTableViewController.swift */,
+				0B49C834200F87AF0059EAEE /* NewsDetailViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		0BBC96C02014C00D0073AB4F /* LaunchScreen */ = {
