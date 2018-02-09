@@ -29,11 +29,16 @@ class SignInTableViewController: UITableViewController{
                   
                     if let code = json["code"].int, code == 2222 {
                         print("Login Success")
-                        SCLAlertView().showInfo("Welcome", subTitle: "Login Success!");
+                        SCLAlertView().showInfo("Welcome", subTitle: "Login Success!")
+                        
+                        let storybaord = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storybaord.instantiateInitialViewController()
+                        self.present(vc!, animated: true, completion: nil)
+                        
                     }else { // error
                         SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
                     }
-                }else { 
+                }else {
                     SCLAlertView().showError("Error", subTitle: "Server error"); return
                 }
             }
