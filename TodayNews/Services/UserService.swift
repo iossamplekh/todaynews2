@@ -17,10 +17,10 @@ class UserService{
     func singup(paramaters: [String: String], files: [String:Data], completion: @escaping (DataResponse<Any>?, Error?)->()) {
         
     }
-    func signin(completion: @escaping (DataResponse<Any>?, Error?)->()) {
+    func signin(with secEmail: String,with secPassword: String,completion: @escaping (DataResponse<Any>?, Error?)->()) {
         
         // Request to server
-        Alamofire.request("\(DataManager.URL.USER_LOGIN)/rithronlkh%40gmail.com/123456",
+        Alamofire.request("\(DataManager.URL.USER_LOGIN)/\(secEmail)/\(secPassword)",
                           method: .get,
                           encoding: JSONEncoding.default,
                           headers: DataManager.HEADER)
