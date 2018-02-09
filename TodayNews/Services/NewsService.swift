@@ -110,6 +110,11 @@ class NewsService{
            method: .post,
            headers: DataManager.HEADER,
            encodingCompletion: { (encodingResult) in
+<<<<<<< HEAD
+=======
+            print("DataManager.URL.FILE\(DataManager.URL.FILE)")
+//            SCLAlertView().showInfo("Encoding", subTitle: "encodingResult\(encodingResult)")
+>>>>>>> 088f370b34796ef2a84b4218ca16780c5daf8aa2
             print("encodingResult\(encodingResult)")
             switch encodingResult {
             case .success(let upload, _, _):

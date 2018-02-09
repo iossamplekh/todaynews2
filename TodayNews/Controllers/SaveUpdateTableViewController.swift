@@ -69,6 +69,32 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     }
     
+<<<<<<< HEAD:TodayNews/Controllers/SaveUpdateTableViewController.swift
+=======
+    func testUpload(){
+        if let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1){
+            print("imageData: \(imageData)")
+            newsService.uploadFile(file: imageData) { (imageUrl, error) in
+                // Check error
+                if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+                print("imageUrl: \(imageUrl!)")
+            }
+        }
+    }
+    
+    func testUploadDev(){
+        if let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 0.1){
+            print("imageData: \(imageData)")	
+            newsService.uploadFile(file: imageData) { (imageUrl, error) in
+                // Check error
+                if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+                print("imageUrl: \(imageUrl!)")
+            }
+        }
+    }
+    
+
+>>>>>>> 088f370b34796ef2a84b4218ca16780c5daf8aa2:TodayNews/Views/SaveUpdateTableViewController.swift
     @IBAction func browsNewsImage(_ sender: Any) {
         print(#function)
         imagePicker.allowsEditing = false // or true
