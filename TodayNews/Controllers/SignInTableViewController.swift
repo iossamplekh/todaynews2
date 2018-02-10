@@ -36,6 +36,11 @@ class SignInTableViewController: UITableViewController{
                         print("Login Success")
                         UserDefaults.standard.set("\(id)", forKey: "UserID")
                         SCLAlertView().showInfo("Welcome", subTitle: "Login Success!")
+                        
+                        let storybaord = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storybaord.instantiateInitialViewController()
+                        self.present(vc!, animated: true, completion: nil)
+                        
                     }else { // error
                         SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
                     }
