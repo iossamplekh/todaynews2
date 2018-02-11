@@ -180,7 +180,7 @@
         <!--SIGN UP-->
         <scene sceneID="Rzl-Zp-RvQ">
             <objects>
-                <tableViewController id="tH9-OY-ew8" customClass="SignInTableViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="tH9-OY-ew8" customClass="SignUpTableViewController" customModule="TodayNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0tx-Kx-VhF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,6 +322,9 @@
                                                     <state key="normal" title="SAVE">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="signUp:" destination="tH9-OY-ew8" eventType="touchUpInside" id="cYG-Df-8u7"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -332,8 +335,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="SIGN UP" id="Onp-uw-2hr"/>
                     <connections>
-                        <outlet property="userEmailTextField" destination="7e7-09-I63" id="3Oh-bH-ZeM"/>
-                        <outlet property="userPasswordTextField" destination="Sv7-PQ-HfN" id="r25-M1-UTG"/>
+                        <outlet property="emailTextField" destination="7e7-09-I63" id="8ic-5d-dBx"/>
+                        <outlet property="lastNameTextField" destination="0Fe-iB-HOc" id="T2t-Dp-OM3"/>
+                        <outlet property="nameTextField" destination="I41-gT-KjC" id="tYn-n4-ywa"/>
+                        <outlet property="passwordTextField" destination="Sv7-PQ-HfN" id="H2P-a6-Ul5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jeg-9l-oqC" userLabel="First Responder" sceneMemberID="firstResponder"/>

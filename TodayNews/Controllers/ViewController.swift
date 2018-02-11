@@ -189,10 +189,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return [delete, edit]
     }
     
+    @IBAction func logout(_ sender: Any) {
+        let storybaord = UIStoryboard(name: "SingInAndSignUp", bundle: nil)
+        let vc = storybaord.instantiateInitialViewController()
+        self.present(vc!, animated: true, completion: nil)
+    }
+    
+    
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let headerCell = self.todayNewsTableView.dequeueReusableHeaderFooterView(withIdentifier: "TableViewSectionHeaderIdentifier") as! TableViewSectionHeader
 //        let news = self.news[section]
 //        headerCell.configureCellWithTitle(news.secUser.email, dateTime: "", imageUrl: "")
 //        return headerCell
 //    }
+    
 }

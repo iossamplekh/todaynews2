@@ -33,6 +33,7 @@
 		0B9A4A84202B490A009F1EAA /* SingInAndSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A4A83202B490A009F1EAA /* SingInAndSignUp.storyboard */; };
 		0B9A4A86202B4AFB009F1EAA /* SignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A4A85202B4AFB009F1EAA /* SignInTableViewController.swift */; };
 		0BEC027B201DBF2B005E0616 /* SaveUpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC027A201DBF2B005E0616 /* SaveUpdateTableViewController.swift */; };
+		0BFAC6EE203070C600A06FF8 /* SignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFAC6ED203070C600A06FF8 /* SignUpTableViewController.swift */; };
 		2728616DF300BCF2C22C0A29 /* Pods_TodayNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDEBAE5A3ED8997CF714AEA /* Pods_TodayNewsTests.framework */; };
 		A1BEA29C5D9948F7560A3633 /* Pods_TodayNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0627555B6401084BDB3518 /* Pods_TodayNews.framework */; };
 		FC5294545EDE11BA2BCBAAEE /* Pods_TodayNewsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E85E809BE91852ED862FDA /* Pods_TodayNewsUITests.framework */; };
@@ -89,6 +90,7 @@
 		0B9A4A83202B490A009F1EAA /* SingInAndSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingInAndSignUp.storyboard; sourceTree = "<group>"; };
 		0B9A4A85202B4AFB009F1EAA /* SignInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTableViewController.swift; sourceTree = "<group>"; };
 		0BEC027A201DBF2B005E0616 /* SaveUpdateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUpdateTableViewController.swift; sourceTree = "<group>"; };
+		0BFAC6ED203070C600A06FF8 /* SignUpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTableViewController.swift; sourceTree = "<group>"; };
 		30EB263FB29E27570BDDBE74 /* Pods-TodayNewsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNewsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNewsUITests/Pods-TodayNewsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4AB0C89C4BBE783C42BC661E /* Pods-TodayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNews/Pods-TodayNews.release.xcconfig"; sourceTree = "<group>"; };
 		58E85E809BE91852ED862FDA /* Pods_TodayNewsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayNewsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,14 +187,14 @@
 		0B7D0CC7200B978500CE1C9B /* TodayNews */ = {
 			isa = PBXGroup;
 			children = (
-				0B9A4A81202B3FCB009F1EAA /* Controllers */,
 				0B7D0CD4200B978500CE1C9B /* Info.plist */,
-				0BBC96C12014C05F0073AB4F /* Noted */,
+				0B9A4A81202B3FCB009F1EAA /* Controllers */,
 				0BBC96C02014C00D0073AB4F /* LaunchScreen */,
 				0B2A6CE22014BD1200C09BC9 /* Views */,
 				0B2A6CDB20121E1400C09BC9 /* Services */,
 				0B49C83F2010E84C0059EAEE /* Models */,
 				0B7D0CCF200B978500CE1C9B /* Assets.xcassets */,
+				0BBC96C12014C05F0073AB4F /* Noted */,
 			);
 			path = TodayNews;
 			sourceTree = "<group>";
@@ -243,6 +245,7 @@
 				0BEC027A201DBF2B005E0616 /* SaveUpdateTableViewController.swift */,
 				0B49C834200F87AF0059EAEE /* NewsDetailViewController.swift */,
 				0B9A4A85202B4AFB009F1EAA /* SignInTableViewController.swift */,
+				0BFAC6ED203070C600A06FF8 /* SignUpTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				0B2A6CD42010EB5A00C09BC9 /* SecUser.swift in Sources */,
 				0B2A6CD62010EC2E00C09BC9 /* Author.swift in Sources */,
 				0B7D0CC9200B978500CE1C9B /* AppDelegate.swift in Sources */,
+				0BFAC6EE203070C600A06FF8 /* SignUpTableViewController.swift in Sources */,
 				0BEC027B201DBF2B005E0616 /* SaveUpdateTableViewController.swift in Sources */,
 				0B9A4A86202B4AFB009F1EAA /* SignInTableViewController.swift in Sources */,
 			);
