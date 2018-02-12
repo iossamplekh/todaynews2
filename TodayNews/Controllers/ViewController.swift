@@ -127,7 +127,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         cell.configureCell(news: self.news[indexPath.row])
 
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -205,13 +204,4 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //        UserDefaults.standard.removeObject(forKey: "UserID")
 //        self.dismiss(animated: true, completion: nil)
     }
-    
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerCell = self.todayNewsTableView.dequeueReusableHeaderFooterView(withIdentifier: "TableViewSectionHeaderIdentifier") as! TableViewSectionHeader
-//        let news = self.news[section]
-//        headerCell.configureCellWithTitle(news.secUser.email, dateTime: "", imageUrl: "")
-//        return headerCell
-//    }
-    
 }

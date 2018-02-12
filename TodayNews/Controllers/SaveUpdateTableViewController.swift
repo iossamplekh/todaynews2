@@ -160,6 +160,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         stopAnimating()
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
         
-        _ = self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
