@@ -26,6 +26,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         self.newsService.delegate = self
+        self.todayNewsTableView.delegate = self
+        self.todayNewsTableView.dataSource = self
+        
         setUpRefresh()
         setUpView()
         getData(pageNumber: 1)
@@ -38,9 +41,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         newsService.getData(pageNumber: pageNumber)
     }
     func setUpView(){
-        self.todayNewsTableView.delegate = self
-        self.todayNewsTableView.dataSource = self
-        
         let nib = UINib.init(nibName: "TodayNewsTableViewCell", bundle: nil)
         todayNewsTableView.register(nib, forCellReuseIdentifier: "TodayNewsTableViewCell")
 
@@ -73,6 +73,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func didResivedNews(with news: [News]?, pagination: Pagination?, error: Error?) {
         self.stopAnimating()
+        self.todayNewsTableView.refreshControl?.endRefreshing()
         // Check error
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
          self.pagination = pagination!
@@ -83,8 +84,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         } else {
             self.news.append(contentsOf: news!)
         }
-        
-        todayNewsTableView.reloadData()
+        self.todayNewsTableView.reloadData()
     }
     func setUpViewNewsData(news: [News]?){
         // if current == 1 means first request, else append data
@@ -94,6 +94,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         } else {
             self.news.append(contentsOf: news!)
         }
+        todayNewsTableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.news.count
@@ -113,12 +114,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             // Current < total pages
             if self.pagination.page <= self.pagination.totalPages {
                 let numpage = self.pagination.page + 1
-                print(" self.pagination.page + 1: \(numpage)")
-                //numpage = 1 request again and again ???
                 getData(pageNumber: numpage)
-                //newsService.getData(pageNumber: 1)
             }
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        getData(pageNumber: 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
