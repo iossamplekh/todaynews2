@@ -29,6 +29,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         setUpRefresh()
         setUpView()
         getData(pageNumber: 1)
+    
+        print(".......................")
+        print("self.pagination.page: \(self.pagination.page)")
+        print("self.pagination.totalPages: \(self.pagination.totalPages)")
+        if self.pagination.page < self.pagination.totalPages {
+            getData(pageNumber: (self.pagination.page + 1))
+        }
     }
     func getData(pageNumber: Int){
         if pageNumber == 1 {
@@ -99,6 +106,27 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return news.count
     }
     
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("==========================================")
+        print(" indexPath.row + 1 =\(indexPath.row + 1)")
+        print(" Pagination.page =\(self.pagination.page)")
+        print(" Pagination.totalPage =\(self.pagination.totalPages)")
+        print(" Total Element = \(self.pagination.totalElements)")
+        print(" self.news.count = \(self.news.count)")
+        print(" self.pagination.totalPages = \(self.pagination.totalPages)")
+        
+        if indexPath.row + 1 >= self.news.count {
+            // Current < total pages
+            if self.pagination.page <= self.pagination.totalPages {
+                let numpage = self.pagination.page + 1
+                print(" self.pagination.page + 1: \(numpage)")
+                //getData(pageNumber: 1)
+                newsService.getData(pageNumber: 1)
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayNewsTableViewCell") as! TodayNewsTableViewCell
         cell.configureCell(news: self.news[indexPath.row])
@@ -130,20 +158,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         getData(pageNumber: 1)
     }
    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(" indexPath.row + 1 =\(indexPath.row + 1)")
-        print(" Pagination.page =\(self.pagination.page)")
-        print(" Pagination.totalPage =\(self.pagination.totalPages)")
-        print(" Total Element = \(self.pagination.totalElements)")
-        print(" self.news.count = \(self.news.count)")
-        
-        if indexPath.row + 1 >= self.news.count {
-            // Current < total pages
-            if self.pagination.page < self.pagination.totalPages {
-                getData(pageNumber: (self.pagination.page + 1))
-            }
-        }
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120

@@ -27,11 +27,12 @@ extension NewsServiceDelegate{
 
 class NewsService{
     var delegate: NewsServiceDelegate?
+    var pagination = Pagination()
     
     func getData(pageNumber: Int){
         Alamofire.request(DataManager.URL.NEWS,
                           method: .get,
-                          parameters:  ["page":pageNumber, "pageSize":10],
+                          parameters:  ["page":pageNumber, "pageSize":3],
                           encoding: URLEncoding.default,
                           headers: DataManager.HEADER)
             .responseJSON { (response) in
@@ -39,7 +40,7 @@ class NewsService{
             case .success(let value):
                 //print(value)
                 let json = JSON(value)
-                guard let id = json["totalElements"].int else {
+                guard let totalElement = json["totalElements"].int else {
                     // Report any error
                     let dictionary = [NSLocalizedDescriptionKey: json["name"].string ?? "unknown"]
                     let host = response.request?.url?.host ?? "unknown"
@@ -47,21 +48,18 @@ class NewsService{
                     self.delegate?.didResivedNews(with: nil, pagination: nil,error: error)
                     return
                 }
-                var page: Int = json["number"].int ?? 0
-                var pageSize: Int = json["size"].int ?? 0
-                var totalElements: Int = json["totalElements"].int ?? 0
-                var totalPages: Int = json["totalPages"].int ?? 0
-
-                let pagination = Pagination()
+                let page: Int = json["number"].int  ?? 0
+                let pageSize: Int = json["size"].int ?? 0
+                let totalElements: Int = json["totalElements"].int ?? 0
+                let totalPages: Int = json["totalPages"].int ?? 0
                 
-                pagination.page = page
-                pagination.pageSize = pageSize
-                pagination.totalElements = totalElements
-                pagination.totalPages = totalPages
+                self.pagination.page = page
+                self.pagination.pageSize = pageSize
+                self.pagination.totalElements = totalElements
+                self.pagination.totalPages = totalPages
                 
                 let news =  json["content"].arrayValue.map{ News($0) }
-                self.delegate?.didResivedNews(with: news, pagination: pagination, error: nil)
-//                SCLAlertView().showInfo("Done", subTitle: "Done")
+                self.delegate?.didResivedNews(with: news, pagination: self.pagination, error: nil)
             case .failure(let error):
                 self.delegate?.didResivedNews(with: nil, pagination: nil,error: error)
             }
