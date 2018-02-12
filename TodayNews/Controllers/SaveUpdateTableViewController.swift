@@ -26,6 +26,9 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newsService.delegate = self
+        imagePicker.delegate = self
+        
         if let newsData = newHolder{
             newsTitleTextField.text = newsData.name
             newsShortDescription.text = newsData.dec
@@ -41,9 +44,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         setUpView()
     }
     func setUpView(){
-        newsService.delegate = self
-        imagePicker.delegate = self
-        
         setupNavigationBar()
         setupViewCornerRadius(view: newsImageView)
         setupViewCornerRadius(view: newsDescriptionTextView)
@@ -105,8 +105,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             newsImageView.contentMode = .scaleAspectFit
             newsImageView.image = pickedImage
-            //test upload method
-            //testUpload()
         }
         let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
         let fileName = imageURL.absoluteString
@@ -125,8 +123,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     
     @IBAction func SaveNewsData(_ sender: Any) {
-        // Create NAActivityIndicator
-//        self.startAnimating(message: "Loading...")
         print("Start Function Save \(#function)")
         // Read Image
         let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
@@ -134,8 +130,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         newsService.uploadFile(file: imageData!) { (imageUrl, error) in
             // Check error
             if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-            
-            // Request paramaters
             let paramaters = [
                 "name": self.newsTitleTextField.text!,
                 "dec": self.newsShortDescription.text!,
@@ -144,42 +138,26 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 "realImageUrl": imageUrl ?? ""
                 ] as [String : Any]
             
-            // if have news data > update
             if let news = self.newHolder {
-                // Update code
                 print("news: update\(news)")
                 print("news id:\(news.id)")
                 self.newsService.updateNews(with: "\(news.id)", parameters: paramaters)
             }else {
                  print("news: save")
-                // Add news
                  self.newsService.saveNews(paramaters: paramaters)
             }
-           
         }
        print("End Function Save \(#function)")
     }
     
-    func saveNews(error: Error?) {
-        print("Add article response")
-        stopAnimating()
-        // Check error
-        if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-        
-        self.navigationController?.popViewController(animated: true)
-    }
     func didUpdateNews(error: Error?) {
-        stopAnimating() // Stop NV Loading
-        
-        // Check error
+        stopAnimating()
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
         
         self.navigationController?.popViewController(animated: true)
     }
     func SaveNews(error: Error?) {
-        stopAnimating() // Stop NV Loading
-        
-        // Check error
+        stopAnimating()
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
         
         self.navigationController?.popViewController(animated: true)

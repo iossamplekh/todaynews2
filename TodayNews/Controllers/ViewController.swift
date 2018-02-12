@@ -29,13 +29,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         setUpRefresh()
         setUpView()
         getData(pageNumber: 1)
-    
-        print(".......................")
-        print("self.pagination.page: \(self.pagination.page)")
-        print("self.pagination.totalPages: \(self.pagination.totalPages)")
-        if self.pagination.page < self.pagination.totalPages {
-            getData(pageNumber: (self.pagination.page + 1))
-        }
     }
     func getData(pageNumber: Int){
         if pageNumber == 1 {
@@ -103,7 +96,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return news.count
+        return self.news.count
     }
     
     
@@ -208,6 +201,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let storybaord = UIStoryboard(name: "SingInAndSignUp", bundle: nil)
         let vc = storybaord.instantiateInitialViewController()
         self.present(vc!, animated: true, completion: nil)
+//        UserDefaults.standard.removeObject(forKey: "UserID")
+//        self.dismiss(animated: true, completion: nil)
     }
     
     
