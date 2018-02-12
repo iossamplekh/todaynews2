@@ -121,8 +121,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             if self.pagination.page <= self.pagination.totalPages {
                 let numpage = self.pagination.page + 1
                 print(" self.pagination.page + 1: \(numpage)")
-                //getData(pageNumber: 1)
-                newsService.getData(pageNumber: 1)
+                //numpage = 1 request again and again ???
+                getData(pageNumber: numpage)
+                //newsService.getData(pageNumber: 1)
             }
         }
     }
