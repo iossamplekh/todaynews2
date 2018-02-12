@@ -53,7 +53,7 @@ class NewsService{
                 let totalElements: Int = json["totalElements"].int ?? 0
                 let totalPages: Int = json["totalPages"].int ?? 0
                 
-                self.pagination.page = page
+                self.pagination.page = page + 1
                 self.pagination.pageSize = pageSize
                 self.pagination.totalElements = totalElements
                 self.pagination.totalPages = totalPages
