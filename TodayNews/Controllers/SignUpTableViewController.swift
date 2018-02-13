@@ -14,7 +14,9 @@ class SignUpTableViewController: UITableViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
+    @IBOutlet var genderSegmentedControl: UISegmentedControl!
     
+    @IBOutlet var userImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -118,10 +118,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             }
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
-        getData(pageNumber: 1)
+//    override func viewDidAppear(_ animated: Bool) {
+//        getData(pageNumber: 1)
+//    }
+    override func viewWillAppear(_ animated: Bool) {
+        //self.todayNewsTableView.reloadData()
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayNewsTableViewCell") as! TodayNewsTableViewCell
         cell.configureCell(news: self.news[indexPath.row])
@@ -204,4 +206,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //        UserDefaults.standard.removeObject(forKey: "UserID")
 //        self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func toRefresh(_ sender: Any) {
+        getData(pageNumber: 1)
+    }
+    
 }
