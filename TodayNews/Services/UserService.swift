@@ -16,7 +16,7 @@ class UserService{
     
     static let shared: UserService = UserService()
     
-    func singup(paramaters: [String: String], completion: @escaping (DataResponse<Any>?, Error?)->()) {
+    func singup(paramaters: [String: String],files: [String:Data], completion: @escaping (DataResponse<Any>?, Error?)->()) {
         // Request to server
         Alamofire.request(DataManager.URL.USER_SIGNUP,
                           method: .post,
