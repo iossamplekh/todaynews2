@@ -336,6 +336,9 @@
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="I04-nm-kyx">
                                                     <rect key="frame" x="125" y="11" width="139" height="130"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Y1o-ei-Os5" appends="YES" id="vT7-7z-Qhg"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -377,9 +380,13 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jeg-9l-oqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Y1o-ei-Os5"/>
+                <tapGestureRecognizer id="Y1o-ei-Os5">
+                    <connections>
+                        <action selector="browserPhotoTapGesture:" destination="tH9-OY-ew8" id="Gsp-wC-yXv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1536.8" y="-263.11844077961024"/>
+            <point key="canvasLocation" x="1625" y="-263"/>
         </scene>
     </scenes>
     <resources>
