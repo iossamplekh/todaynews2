@@ -211,9 +211,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adr-OR-0Yh">
-                                                    <rect key="frame" x="16" y="7" width="84" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adr-OR-0Yh">
+                                                    <rect key="frame" x="16" y="3" width="84" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="84" id="19D-Va-kqy"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -223,13 +225,22 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7e7-09-I63">
-                                                    <rect key="frame" x="148" y="7" width="205" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7e7-09-I63">
+                                                    <rect key="frame" x="162" y="8" width="205" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="X71-ed-2cv"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="adr-OR-0Yh" firstAttribute="leading" secondItem="Toj-w1-GPO" secondAttribute="leading" constant="8" id="MWT-iz-IIy"/>
+                                                <constraint firstAttribute="trailing" secondItem="7e7-09-I63" secondAttribute="trailing" constant="8" id="Rp6-4o-jXM"/>
+                                                <constraint firstItem="7e7-09-I63" firstAttribute="leading" secondItem="Toj-w1-GPO" secondAttribute="leading" constant="162" id="gpa-R4-RkH"/>
+                                                <constraint firstItem="adr-OR-0Yh" firstAttribute="top" secondItem="Toj-w1-GPO" secondAttribute="top" constant="8" id="nWM-b4-1eh"/>
+                                                <constraint firstItem="7e7-09-I63" firstAttribute="top" secondItem="Toj-w1-GPO" secondAttribute="top" constant="8" id="wMu-9B-w3g"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="nT1-eD-yds">
@@ -239,9 +250,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sv7-PQ-HfN">
-                                                    <rect key="frame" x="148" y="7" width="205" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sv7-PQ-HfN">
+                                                    <rect key="frame" x="162" y="8" width="205" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="a2O-hi-pRR"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -250,14 +263,23 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.35931140179999999" green="0.36546128989999999" blue="0.74231833219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z15-h5-LwC">
-                                                    <rect key="frame" x="16" y="7" width="90" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z15-h5-LwC">
+                                                    <rect key="frame" x="8" y="8" width="90" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="NGL-ss-Nzb"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Sv7-PQ-HfN" firstAttribute="leading" secondItem="58I-Ef-BRb" secondAttribute="leading" constant="162" id="38S-Od-HAX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sv7-PQ-HfN" secondAttribute="trailing" constant="8" id="F1g-oQ-gKN"/>
+                                                <constraint firstItem="Sv7-PQ-HfN" firstAttribute="top" secondItem="58I-Ef-BRb" secondAttribute="top" constant="8" id="MWG-U4-xfL"/>
+                                                <constraint firstItem="z15-h5-LwC" firstAttribute="top" secondItem="58I-Ef-BRb" secondAttribute="top" constant="8" id="mkk-qx-suJ"/>
+                                                <constraint firstItem="z15-h5-LwC" firstAttribute="leading" secondItem="58I-Ef-BRb" secondAttribute="leading" constant="8" id="pto-Xw-DCA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="o4L-qu-T4I">
@@ -394,7 +416,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1625" y="-263"/>
+            <point key="canvasLocation" x="1624.8" y="-263.11844077961024"/>
         </scene>
     </scenes>
     <resources>
