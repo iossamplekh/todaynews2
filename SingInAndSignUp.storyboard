@@ -40,14 +40,14 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U7f-Pg-vaO">
                                                     <rect key="frame" x="44" y="7" width="315" height="30"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="315" id="Zuj-26-h3T"/>
                                                         <constraint firstAttribute="height" constant="30" id="nU8-hg-hi8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohd-Ra-gEe">
-                                                    <rect key="frame" x="16" y="42" width="343" height="1"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohd-Ra-gEe">
+                                                    <rect key="frame" x="8" y="42" width="359" height="1"/>
                                                     <color key="backgroundColor" red="0.35931140179999999" green="0.36546128989999999" blue="0.74231833219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="Wk0-CV-Vbt">
@@ -59,7 +59,11 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ohd-Ra-gEe" firstAttribute="leading" secondItem="Ny5-13-0rk" secondAttribute="leading" constant="8" id="JRr-Ja-0gK"/>
+                                                <constraint firstItem="ohd-Ra-gEe" firstAttribute="top" secondItem="U7f-Pg-vaO" secondAttribute="bottom" constant="5" id="N6T-AT-ecu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ohd-Ra-gEe" secondAttribute="bottom" constant="-10" id="XnO-17-y3A"/>
                                                 <constraint firstItem="U7f-Pg-vaO" firstAttribute="leading" secondItem="Wk0-CV-Vbt" secondAttribute="trailing" constant="8" id="Zxe-jS-QUs"/>
+                                                <constraint firstAttribute="trailing" secondItem="ohd-Ra-gEe" secondAttribute="trailing" constant="8" id="blQ-6v-eqe"/>
                                                 <constraint firstItem="Wk0-CV-Vbt" firstAttribute="leading" secondItem="Ny5-13-0rk" secondAttribute="leadingMargin" id="nbv-kY-wDr"/>
                                                 <constraint firstItem="U7f-Pg-vaO" firstAttribute="centerY" secondItem="Ny5-13-0rk" secondAttribute="centerY" id="ryD-nj-w22"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="U7f-Pg-vaO" secondAttribute="trailing" id="uZo-Fp-v9v"/>
@@ -84,23 +88,27 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUm-rE-Zx6">
                                                     <rect key="frame" x="40" y="7" width="319" height="30"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="319" id="KK5-c0-fVU"/>
                                                         <constraint firstAttribute="height" constant="30" id="U1N-Pm-sHD"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XL-Vs-g76">
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XL-Vs-g76">
                                                     <rect key="frame" x="16" y="42" width="343" height="1"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.35931140179999999" green="0.36546128989999999" blue="0.74231833219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="6XL-Vs-g76" firstAttribute="top" secondItem="gBv-GZ-rpL" secondAttribute="bottom" constant="8" symbolic="YES" id="1Qe-cX-8OB"/>
+                                                <constraint firstItem="6XL-Vs-g76" firstAttribute="leading" secondItem="jP2-1N-uyy" secondAttribute="leading" constant="8" id="Bn1-lQ-qM0"/>
+                                                <constraint firstAttribute="trailing" secondItem="6XL-Vs-g76" secondAttribute="trailing" constant="8" id="M6V-Te-c71"/>
                                                 <constraint firstItem="UUm-rE-Zx6" firstAttribute="leading" secondItem="gBv-GZ-rpL" secondAttribute="trailing" constant="8" id="TCv-4j-m1n"/>
                                                 <constraint firstItem="UUm-rE-Zx6" firstAttribute="centerY" secondItem="jP2-1N-uyy" secondAttribute="centerY" id="Zig-Wm-ZbN"/>
                                                 <constraint firstItem="gBv-GZ-rpL" firstAttribute="leading" secondItem="jP2-1N-uyy" secondAttribute="leadingMargin" id="c3P-7z-PYu"/>
                                                 <constraint firstItem="gBv-GZ-rpL" firstAttribute="centerY" secondItem="jP2-1N-uyy" secondAttribute="centerY" id="jxg-H3-PFP"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="UUm-rE-Zx6" secondAttribute="trailing" id="luP-gb-jih"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6XL-Vs-g76" secondAttribute="bottom" constant="-10" id="o7l-OH-fb3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
