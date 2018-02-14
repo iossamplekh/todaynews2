@@ -22,25 +22,37 @@ class SignUpTableViewController: UITableViewController,UIImagePickerControllerDe
     let imagePicker = UIImagePickerController()
     
     @IBOutlet var userImageView: UIImageView!
+    
+    var newsService = NewsService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
     }
     @IBAction func signUp(_ sender: Any) {
-        let parameters =
-        [
-            "password": passwordTextField.text ?? "",
-            "email": emailTextField.text ?? "",
-            "name": nameTextField.text ?? "",
-            "lastName": lastNameTextField.text ?? ""
-        ]
-        
-        // image
-        let photo = ["file": UIImageJPEGRepresentation(self.userImageView.image!, 1)!]
-        
-        UserService.shared.singup(paramaters: parameters) { (response, error) in
+        if let imageData = UIImageJPEGRepresentation(self.userImageView.image!, 1){
+            print("imageData: \(imageData)")
+            newsService.uploadFile(file: imageData) { (imageUrl, error) in
+                // Check error
+                if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+                print("imageUrl: \(imageUrl!)")
             
+                let parameters =
+                    [
+                        "password": self.passwordTextField.text ?? "",
+                        "email": self.emailTextField.text ?? "",
+                        "name": self.nameTextField.text ?? "",
+                        "lastName": self.lastNameTextField.text ?? "",
+                        "realImageUrl": imageUrl ?? "",
+                        "gender": self.genderSegmentedControl.selectedSegmentIndex == 0 ? "Male" : "Female"
+                ]
+                
+                UserService.shared.singup(paramaters: parameters) { (response, error) in
+                    
+                }
+            }
         }
+        
     }
     
     @IBAction func browserPhotoTapGesture(_ sender: Any) {
