@@ -378,6 +378,7 @@
                                                 <constraint firstItem="0Fe-iB-HOc" firstAttribute="top" secondItem="BrY-x5-rvt" secondAttribute="top" constant="8" id="F6q-TK-GiW"/>
                                                 <constraint firstItem="TTf-a9-zmr" firstAttribute="top" secondItem="HBx-dy-329" secondAttribute="bottom" constant="13" id="WH6-1j-azC"/>
                                                 <constraint firstItem="TTf-a9-zmr" firstAttribute="leading" secondItem="BrY-x5-rvt" secondAttribute="leading" constant="8" id="fA1-jZ-6yh"/>
+                                                <constraint firstItem="0Fe-iB-HOc" firstAttribute="leading" secondItem="BrY-x5-rvt" secondAttribute="leading" constant="162" id="fVL-EG-wYv"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="TTf-a9-zmr" secondAttribute="bottom" constant="-10" id="jfT-BI-RGd"/>
                                                 <constraint firstItem="HBx-dy-329" firstAttribute="top" secondItem="BrY-x5-rvt" secondAttribute="top" constant="8" id="vxE-jM-23q"/>
                                                 <constraint firstItem="HBx-dy-329" firstAttribute="leading" secondItem="BrY-x5-rvt" secondAttribute="leading" constant="8" id="yIX-u9-yRG"/>
@@ -434,7 +435,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gw-jx-4Sg">
-                                                    <rect key="frame" x="117" y="11" width="100" height="44"/>
+                                                    <rect key="frame" x="137" y="11" width="100" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
