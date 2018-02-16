@@ -96,10 +96,13 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 if let code = json["code"].int, code == 2222 {
                     print("Get news type Success")
                     let newst =  json["content"].arrayValue.map{ NewsType($0) }
+                    self.newsType = newst
                     for nt in newst {
                         self.data.append([nt.desEn])
                         n = "n"
                     }
+                    print("share data in: \(self.data)")
+                    print("share self.newsType : \(self.newsType)")
                     SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
                 }else { // error
                     SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
@@ -110,6 +113,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         }
         switch char{
         case "n":
+            print("case n data: \(self.data)")
+            print("case n self.newsType : \(self.newsType)")
             return ["Health","Sport","Nature"]
         case "a":
             return ["Author1","Author2","Author3"]
