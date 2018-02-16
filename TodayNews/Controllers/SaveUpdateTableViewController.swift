@@ -9,8 +9,9 @@
 import UIKit
 import NVActivityIndicatorView
 import SCLAlertView
+import SwiftyJSON
 
-class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable,NewsTypeServiceDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable,UIPickerViewDelegate,UIPickerViewDataSource{
     
     // Property
     let imagePicker = UIImagePickerController()
@@ -25,7 +26,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet var newsTypeAuthorPickerView: UIPickerView!
     
     var newsService = NewsService()
-    var newsTypeService = NewsTypeService()
     
     var newHolder : News?
     var newsType: [NewsType] = []
@@ -52,7 +52,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     override func viewDidLoad() {
         super.viewDidLoad()
         newsService.delegate = self
-        newsTypeService.delegate = self
         newsTypeAuthorPickerView.delegate = self
         newsTypeAuthorPickerView.dataSource = self
         imagePicker.delegate = self
@@ -72,7 +71,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             newsImageView.clipsToBounds = true
         }
         setUpView()
-        data = numberPickerComponents(from: "na")
+        data = numberPickerComponents(from: "n")
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
@@ -87,6 +86,28 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     
     func numberPickerComponentCustom(from char:Character) -> [String]{
+        var n = ""
+        var a = ""
+        NewsTypeService.shared.getAllNewsType { (response, error) in
+            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+            if let value = response?.result.value {
+                let json = JSON(value)
+                
+                if let code = json["code"].int, code == 2222 {
+                    print("Get news type Success")
+                    let newst =  json["content"].arrayValue.map{ NewsType($0) }
+                    for nt in newst {
+                        self.data.append([nt.desEn])
+                        n = "n"
+                    }
+                    SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
+                }else { // error
+                    SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
+                }
+            }else {
+                SCLAlertView().showError("Error", subTitle: "Server error"); return
+            }
+        }
         switch char{
         case "n":
             return ["Health","Sport","Nature"]
@@ -229,6 +250,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     
     func getNewsTypeData(){
-        self.newsTypeService.getNewsTypeData()
+        //self.newsTypeService.getNewsTypeData()
     }
 }
