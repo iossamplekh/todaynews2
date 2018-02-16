@@ -30,8 +30,9 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     var newHolder : News?
     var newsType: [NewsType] = []
     
-    var data: [[Any]] = [[Any]]()
+    var data: [[String]] = [[String]]()
     var pickerString = NSArray() as AnyObject as! [String]
+    var resultString = ""
     
     func didResivedNewsType(with newsType: [NewsType]?, error: Error?) {
         self.newsType = newsType!
@@ -71,29 +72,37 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             newsImageView.clipsToBounds = true
         }
         setUpView()
-        print("VIEW DID LOAD ")
-        print("data: \(data)")
-//        data = [
-//            ["January", "February", "March"],
-//            [1990, 1991, 1992]
-//        ]
+        data = numberPickerComponents(from: "na")
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
-        return 2
+        return self.data.count
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
+        return self.data[component].count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "Hello"
+         return self.data[component][row]
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("---viewWillAppearviewWillAppearviewWillAppearviewWillAppearv----")
-        print("SHOW ARRAY OF NEWS TYPE: \(self.newsType)")
-        print("data: \(data)")
+    func numberPickerComponentCustom(from char:Character) -> [String]{
+        switch char{
+        case "n":
+            return ["Health","Sport","Nature"]
+        case "a":
+            return ["Author1","Author2","Author3"]
+        default:
+            return [String(char)]
+        }
+    }
+    
+    func numberPickerComponents(from string:String)->[[String]]{
+        var data = [[String]]()
+        for char in string.characters{
+            data += [numberPickerComponentCustom(from:char)]
+        }
+        return data
     }
     
     func getAllNewsType(){
