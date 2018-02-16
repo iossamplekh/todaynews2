@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B01B67F2035DF47004CCBFF /* NewsTypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01B67E2035DF47004CCBFF /* NewsTypeService.swift */; };
 		0B2A6CD42010EB5A00C09BC9 /* SecUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A6CD32010EB5A00C09BC9 /* SecUser.swift */; };
 		0B2A6CD62010EC2E00C09BC9 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A6CD52010EC2E00C09BC9 /* Author.swift */; };
 		0B2A6CD82010ED6C00C09BC9 /* NewsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A6CD72010ED6C00C09BC9 /* NewsType.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		02E79EFFFFE39C38CC413891 /* Pods-TodayNewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNewsTests/Pods-TodayNewsTests.release.xcconfig"; sourceTree = "<group>"; };
+		0B01B67E2035DF47004CCBFF /* NewsTypeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTypeService.swift; sourceTree = "<group>"; };
 		0B2A6CD32010EB5A00C09BC9 /* SecUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecUser.swift; sourceTree = "<group>"; };
 		0B2A6CD52010EC2E00C09BC9 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		0B2A6CD72010ED6C00C09BC9 /* NewsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsType.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				0B2A6CDC20121F1700C09BC9 /* DataManager.swift */,
 				0B2A6CDE2012201900C09BC9 /* NewsService.swift */,
 				0B543ED2202DDAE300B7B03B /* UserService.swift */,
+				0B01B67E2035DF47004CCBFF /* NewsTypeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B01B67F2035DF47004CCBFF /* NewsTypeService.swift in Sources */,
 				0B6EE468200BB7EE002CBCBA /* TodayNewsTableViewCell.swift in Sources */,
 				0B4E09672018BC2200C70F6E /* NewsAddUpdateTableViewController.swift in Sources */,
 				0B543ED3202DDAE300B7B03B /* UserService.swift in Sources */,

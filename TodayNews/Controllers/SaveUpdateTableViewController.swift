@@ -10,7 +10,8 @@ import UIKit
 import NVActivityIndicatorView
 import SCLAlertView
 
-class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable{
+class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable,NewsTypeServiceDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+    
     // Property
     let imagePicker = UIImagePickerController()
     
@@ -21,13 +22,41 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet var newsImageView: UIImageView!
     @IBOutlet var saveUpdateNewNavigationBar: UINavigationItem!
     
-    var newsService = NewsService()
-    var newHolder : News?
+    @IBOutlet var newsTypeAuthorPickerView: UIPickerView!
     
+    var newsService = NewsService()
+    var newsTypeService = NewsTypeService()
+    
+    var newHolder : News?
+    var newsType: [NewsType] = []
+    
+    var data: [[Any]] = [[Any]]()
+    var pickerString = NSArray() as AnyObject as! [String]
+    
+    func didResivedNewsType(with newsType: [NewsType]?, error: Error?) {
+        self.newsType = newsType!
+        var count = 0
+        if newsType != nil {
+            for ns in self.newsType {
+                data.append([ns.desEn])
+                count = count + 1
+                print("====ns.desEn==== \(ns.desEn)")
+            }
+        }
+        print("---newsTypenewsTypenewsTypenewsTypenewsTypenewsType---")
+        print("SHOW ARRAY OF NEWS TYPE: \(self.newsType)")
+        print("data: \(data)")
+    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         newsService.delegate = self
+        newsTypeService.delegate = self
+        newsTypeAuthorPickerView.delegate = self
+        newsTypeAuthorPickerView.dataSource = self
         imagePicker.delegate = self
+        
+        getAllNewsType()
         
         if let newsData = newHolder{
             newsTitleTextField.text = newsData.name
@@ -42,6 +71,33 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             newsImageView.clipsToBounds = true
         }
         setUpView()
+        print("VIEW DID LOAD ")
+        print("data: \(data)")
+//        data = [
+//            ["January", "February", "March"],
+//            [1990, 1991, 1992]
+//        ]
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 2
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "Hello"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("---viewWillAppearviewWillAppearviewWillAppearviewWillAppearv----")
+        print("SHOW ARRAY OF NEWS TYPE: \(self.newsType)")
+        print("data: \(data)")
+    }
+    
+    func getAllNewsType(){
+        getNewsTypeData()
     }
     func setUpView(){
         setupNavigationBar()
@@ -161,5 +217,9 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
         
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func getNewsTypeData(){
+        self.newsTypeService.getNewsTypeData()
     }
 }
