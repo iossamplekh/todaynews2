@@ -12,7 +12,8 @@ import Kingfisher
 import NVActivityIndicatorView
 
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsServiceDelegate,NVActivityIndicatorViewable {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,
+NewsServiceDelegate,NVActivityIndicatorViewable {
     @IBOutlet var footerView: UIView!
     @IBOutlet var footerNavigationBar: UIActivityIndicatorView!
     

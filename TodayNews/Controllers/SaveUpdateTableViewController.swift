@@ -33,21 +33,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     var data: [[String]] = [[String]]()
     var pickerString = NSArray() as AnyObject as! [String]
     var resultString = ""
-    
-    func didResivedNewsType(with newsType: [NewsType]?, error: Error?) {
-        self.newsType = newsType!
-        var count = 0
-        if newsType != nil {
-            for ns in self.newsType {
-                data.append([ns.desEn])
-                count = count + 1
-                print("====ns.desEn==== \(ns.desEn)")
-            }
-        }
-        print("---newsTypenewsTypenewsTypenewsTypenewsTypenewsType---")
-        print("SHOW ARRAY OF NEWS TYPE: \(self.newsType)")
-        print("data: \(data)")
-    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +93,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                     SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
                 }
             }else {
-                SCLAlertView().showError("Error", subTitle: "Server error"); return
+                SCLAlertView().showError("Error", subTitle: "Server error");
+                return
             }
         }
         switch char{
