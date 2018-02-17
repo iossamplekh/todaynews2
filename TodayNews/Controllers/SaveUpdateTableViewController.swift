@@ -29,6 +29,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     
     var newHolder : News?
     var newsType: [NewsType] = []
+    var authors: [Author] = []
     
     var data: [[String]] = [[String]]()
     var pickerString = NSArray() as AnyObject as! [String]
@@ -95,6 +96,30 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 return
             }
         }
+        
+        AuthorService.shared.getAllAuthors { (response, error) in
+            
+            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+            if let value = response?.result.value {
+                let json = JSON(value)
+                
+                if let code = json["code"].int, code == 2222 {
+                    print("Get author Success")
+                    let author =  json["objects"].arrayValue.map{ Author($0) }
+                    self.authors = author
+                    
+                    print("share authors : \(author)")
+                    print("share self.authors : \(self.authors)")
+                    SCLAlertView().showInfo("Welcome", subTitle: "Get auther Success!")
+                }else { // error
+                    SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
+                }
+            }else {
+                SCLAlertView().showError("Error", subTitle: "Server error")
+                return
+            }
+        }
+        
         switch char{
         case "n":
             print("case n data: \(self.data)")
@@ -238,8 +263,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         self.navigationController?.popViewController(animated: true)
     }
     override func viewDidAppear(_ animated: Bool) {
-        print("-----------------")
-        print("viewdidappear news type: \(self.newsType)")
-        print("-----------------")
+        print("viewdidappear*****")
+        //        print("viewdidappear news type: \(self.newsType)")
+        print("viewdidappear authors: \(self.authors)")
     }
 }

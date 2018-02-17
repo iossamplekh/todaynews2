@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B01B67F2035DF47004CCBFF /* NewsTypeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B01B67E2035DF47004CCBFF /* NewsTypeService.swift */; };
+		0B038FB32038E0CD00B714A2 /* NewsTypeAndAuthorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B038FB22038E0CD00B714A2 /* NewsTypeAndAuthorService.swift */; };
 		0B2A6CD42010EB5A00C09BC9 /* SecUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A6CD32010EB5A00C09BC9 /* SecUser.swift */; };
 		0B2A6CD62010EC2E00C09BC9 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A6CD52010EC2E00C09BC9 /* Author.swift */; };
 		0B2A6CD82010ED6C00C09BC9 /* NewsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2A6CD72010ED6C00C09BC9 /* NewsType.swift */; };
@@ -33,6 +34,7 @@
 		0B9978C62029FF100053A89C /* TableViewSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9978C42029FF100053A89C /* TableViewSectionHeader.xib */; };
 		0B9A4A84202B490A009F1EAA /* SingInAndSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A4A83202B490A009F1EAA /* SingInAndSignUp.storyboard */; };
 		0B9A4A86202B4AFB009F1EAA /* SignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A4A85202B4AFB009F1EAA /* SignInTableViewController.swift */; };
+		0BBD93DA203854EE00DB0649 /* AuthorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBD93D9203854EE00DB0649 /* AuthorService.swift */; };
 		0BEC027B201DBF2B005E0616 /* SaveUpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC027A201DBF2B005E0616 /* SaveUpdateTableViewController.swift */; };
 		0BFAC6EE203070C600A06FF8 /* SignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFAC6ED203070C600A06FF8 /* SignUpTableViewController.swift */; };
 		2728616DF300BCF2C22C0A29 /* Pods_TodayNewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDEBAE5A3ED8997CF714AEA /* Pods_TodayNewsTests.framework */; };
@@ -60,6 +62,7 @@
 /* Begin PBXFileReference section */
 		02E79EFFFFE39C38CC413891 /* Pods-TodayNewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNewsTests/Pods-TodayNewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		0B01B67E2035DF47004CCBFF /* NewsTypeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTypeService.swift; sourceTree = "<group>"; };
+		0B038FB22038E0CD00B714A2 /* NewsTypeAndAuthorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTypeAndAuthorService.swift; sourceTree = "<group>"; };
 		0B2A6CD32010EB5A00C09BC9 /* SecUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecUser.swift; sourceTree = "<group>"; };
 		0B2A6CD52010EC2E00C09BC9 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		0B2A6CD72010ED6C00C09BC9 /* NewsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsType.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 		0B9978C42029FF100053A89C /* TableViewSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewSectionHeader.xib; sourceTree = "<group>"; };
 		0B9A4A83202B490A009F1EAA /* SingInAndSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingInAndSignUp.storyboard; sourceTree = "<group>"; };
 		0B9A4A85202B4AFB009F1EAA /* SignInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTableViewController.swift; sourceTree = "<group>"; };
+		0BBD93D9203854EE00DB0649 /* AuthorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorService.swift; sourceTree = "<group>"; };
 		0BEC027A201DBF2B005E0616 /* SaveUpdateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUpdateTableViewController.swift; sourceTree = "<group>"; };
 		0BFAC6ED203070C600A06FF8 /* SignUpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTableViewController.swift; sourceTree = "<group>"; };
 		30EB263FB29E27570BDDBE74 /* Pods-TodayNewsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNewsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayNewsUITests/Pods-TodayNewsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				0B2A6CDE2012201900C09BC9 /* NewsService.swift */,
 				0B543ED2202DDAE300B7B03B /* UserService.swift */,
 				0B01B67E2035DF47004CCBFF /* NewsTypeService.swift */,
+				0BBD93D9203854EE00DB0649 /* AuthorService.swift */,
+				0B038FB22038E0CD00B714A2 /* NewsTypeAndAuthorService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -600,9 +606,11 @@
 				0B01B67F2035DF47004CCBFF /* NewsTypeService.swift in Sources */,
 				0B6EE468200BB7EE002CBCBA /* TodayNewsTableViewCell.swift in Sources */,
 				0B4E09672018BC2200C70F6E /* NewsAddUpdateTableViewController.swift in Sources */,
+				0BBD93DA203854EE00DB0649 /* AuthorService.swift in Sources */,
 				0B543ED3202DDAE300B7B03B /* UserService.swift in Sources */,
 				0B2A6CDD20121F1700C09BC9 /* DataManager.swift in Sources */,
 				0B6EE46B200BBB0E002CBCBA /* noted.swift in Sources */,
+				0B038FB32038E0CD00B714A2 /* NewsTypeAndAuthorService.swift in Sources */,
 				0B2A6CE12013776500C09BC9 /* Pagination.swift in Sources */,
 				0B2A6CD82010ED6C00C09BC9 /* NewsType.swift in Sources */,
 				0B49C833200F7AAE0059EAEE /* NewsCustomImageView.swift in Sources */,

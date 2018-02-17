@@ -21,14 +21,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var news: [News] = []
     var newsService = NewsService()
+    
     var newsType: [NewsType] = []
-//    var pagination = Pagination()
+    var authors: [Author] = []
+    
     var pagination: Pagination = Pagination()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAllNewsType()
+        getAllDataCrossSreen()
         
         self.newsService.delegate = self
         self.todayNewsTableView.delegate = self
@@ -214,20 +216,27 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBAction func toRefresh(_ sender: Any) {
         getData(pageNumber: 1)
     }
-    func getAllNewsType(){
-        NewsTypeService.shared.getAllNewsType { (response, error) in
+    func getAllDataCrossSreen(){
+        NewsTypeAndAuthorService.shared.getAllNewsTypeAndAuthor { (response, error) in
             if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
             if let value = response?.result.value {
                 let json = JSON(value)
                 
                 if let code = json["code"].int, code == 2222 {
                     print("Get news type Success")
-                    let newst =  json["objects"].arrayValue.map{ NewsType($0) }
+                    let newst =  json["object"]["newstypes"].arrayValue.map{ NewsType($0) }
                     self.newsType = newst
+                    
+                    let author =  json["object"]["authors"].arrayValue.map{ Author($0) }
+                    self.authors = author
             
                     print("share newst : \(newst)")
                     print("share self.newsType : \(self.newsType)")
+                    print("share author : \(author)")
+                    print("share self.authors : \(self.authors)")
+                    
                     SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
+                    
                 }else { // error
                     SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
                 }
@@ -237,18 +246,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             }
         }
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        getAllNewsType()
-//        print("-----------------")
-//        print("viewdidappear news type: \(self.newsType)")
-//        print("-----------------")
-//    }
-    override func viewWillDisappear(_ animated: Bool) {
-         print("viewWillDisappear*****")
-    }
+    
     override func viewDidAppear(_ animated: Bool) {
         print("viewdidappear*****")
         print("viewdidappear news type: \(self.newsType)")
+        print("viewdidappear authors: \(self.authors)")
     }
     
 }

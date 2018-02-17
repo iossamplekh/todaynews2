@@ -25,6 +25,10 @@ struct DataManager{
         static let USER_SIGNUP = "https://newiosapi.herokuapp.com/rest/users"
         //newstype
         static let NEWSTYPE = "https://newiosapi.herokuapp.com/rest/newstype"
+        //author
+        static let AUTHOR = "https://newiosapi.herokuapp.com/rest/authors"
+        //newstype and author
+        static let NEWSTYPE_AUTHOR = "https://newiosapi.herokuapp.com/rest/newstypeandauthors"
         
     }
     static let HEADER = ["Authorization":"Basic cml0aHJvbmxraEBnbWFpbC5jb206MTIzNDU2"]
