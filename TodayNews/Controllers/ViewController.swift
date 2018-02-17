@@ -10,10 +10,10 @@ import UIKit
 import SCLAlertView
 import Kingfisher
 import NVActivityIndicatorView
+import SwiftyJSON
 
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,
-NewsServiceDelegate,NVActivityIndicatorViewable {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsServiceDelegate,NVActivityIndicatorViewable {
     @IBOutlet var footerView: UIView!
     @IBOutlet var footerNavigationBar: UIActivityIndicatorView!
     
@@ -21,11 +21,15 @@ NewsServiceDelegate,NVActivityIndicatorViewable {
     
     var news: [News] = []
     var newsService = NewsService()
+    var newsType: [NewsType] = []
 //    var pagination = Pagination()
     var pagination: Pagination = Pagination()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getAllNewsType()
+        
         self.newsService.delegate = self
         self.todayNewsTableView.delegate = self
         self.todayNewsTableView.dataSource = self
@@ -209,6 +213,42 @@ NewsServiceDelegate,NVActivityIndicatorViewable {
     }
     @IBAction func toRefresh(_ sender: Any) {
         getData(pageNumber: 1)
+    }
+    func getAllNewsType(){
+        NewsTypeService.shared.getAllNewsType { (response, error) in
+            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+            if let value = response?.result.value {
+                let json = JSON(value)
+                
+                if let code = json["code"].int, code == 2222 {
+                    print("Get news type Success")
+                    let newst =  json["objects"].arrayValue.map{ NewsType($0) }
+                    self.newsType = newst
+            
+                    print("share newst : \(newst)")
+                    print("share self.newsType : \(self.newsType)")
+                    SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
+                }else { // error
+                    SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
+                }
+            }else {
+                SCLAlertView().showError("Error", subTitle: "Server error");
+                return
+            }
+        }
+    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        getAllNewsType()
+//        print("-----------------")
+//        print("viewdidappear news type: \(self.newsType)")
+//        print("-----------------")
+//    }
+    override func viewWillDisappear(_ animated: Bool) {
+         print("viewWillDisappear*****")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewdidappear*****")
+        print("viewdidappear news type: \(self.newsType)")
     }
     
 }

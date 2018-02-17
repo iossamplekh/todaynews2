@@ -41,8 +41,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         newsTypeAuthorPickerView.dataSource = self
         imagePicker.delegate = self
         
-        getAllNewsType()
-        
         if let newsData = newHolder{
             newsTitleTextField.text = newsData.name
             newsShortDescription.text = newsData.dec
@@ -80,7 +78,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 
                 if let code = json["code"].int, code == 2222 {
                     print("Get news type Success")
-                    let newst =  json["content"].arrayValue.map{ NewsType($0) }
+                    let newst =  json["objects"].arrayValue.map{ NewsType($0) }
                     self.newsType = newst
                     for nt in newst {
                         self.data.append([nt.desEn])
@@ -117,9 +115,9 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         return data
     }
     
-    func getAllNewsType(){
-        getNewsTypeData()
-    }
+//    func getAllNewsType(){
+//        getNewsTypeData()
+//    }
     func setUpView(){
         setupNavigationBar()
         setupViewCornerRadius(view: newsImageView)
@@ -239,8 +237,9 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         
         self.navigationController?.popViewController(animated: true)
     }
-    
-    func getNewsTypeData(){
-        //self.newsTypeService.getNewsTypeData()
+    override func viewDidAppear(_ animated: Bool) {
+        print("-----------------")
+        print("viewdidappear news type: \(self.newsType)")
+        print("-----------------")
     }
 }
