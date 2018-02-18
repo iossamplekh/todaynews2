@@ -402,7 +402,11 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4">
+                            <connections>
+                                <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="7Tf-GY-uNy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newsDescriptionTextView" destination="blG-Cj-iU6" id="cV0-NX-v87"/>

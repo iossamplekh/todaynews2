@@ -150,8 +150,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             dest.news2 = sender as! News
         }
         if segue.identifier == "showEdit" {
+            print("************************************")
+            print("prepare news type: \(self.newsType)")
+            print("prepare authors: \(self.authors)")
+            print("************************************")
             let destView = segue.destination as! SaveUpdateTableViewController
-            destView.newHolder = sender as? News
+                let jsonDict = [
+                    "newsObj" : sender as! News,
+                    "newsTypes" : self.newsType,
+                    "authors" : self.authors
+                    ] as [String : Any]
+                print("jsonDict: \(jsonDict)")
+                destView.jsonDictHolder = jsonDict as! [String : Any]
         }
     }
     
@@ -235,7 +245,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     print("share author : \(author)")
                     print("share self.authors : \(self.authors)")
                     
-                    SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
+                    //SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
                     
                 }else { // error
                     SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
