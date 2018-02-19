@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 import SCLAlertView
 import SwiftyJSON
 
-class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable,UIPickerViewDelegate,UIPickerViewDataSource{
+class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable{
     
     // Property
     let imagePicker = UIImagePickerController()
@@ -38,8 +38,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     override func viewDidLoad() {
         super.viewDidLoad()
         newsService.delegate = self
-        newsTypeAuthorPickerView.delegate = self
-        newsTypeAuthorPickerView.dataSource = self
+//        newsTypeAuthorPickerView.delegate = self
+//        newsTypeAuthorPickerView.dataSource = self
         imagePicker.delegate = self
         
         if let newsData = jsonDictHolder {
@@ -63,17 +63,17 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         setUpView()
         data = numberPickerComponents(from: "n")
     }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
-        return self.data.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.data[component].count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-         return self.data[component][row]
-    }
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
+//        return self.data.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return self.data[component].count
+//    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//         return self.data[component][row]
+//    }
     
     func numberPickerComponentCustom(from char:Character) -> [String]{
         var n = ""
