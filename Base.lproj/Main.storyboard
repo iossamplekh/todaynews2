@@ -36,21 +36,21 @@
                     </view>
                     <navigationItem key="navigationItem" title="Newstoday" id="CWV-ag-1Fy">
                         <leftBarButtonItems>
-                            <barButtonItem title="Logout" style="plain" id="gBZ-29-guO">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pyV-Km-3lO">
-                                    <rect key="frame" x="20" y="7" width="48" height="30"/>
+                            <barButtonItem style="plain" id="gBZ-29-guO">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pyV-Km-3lO">
+                                    <rect key="frame" x="20" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Logout"/>
+                                    <state key="normal" image="exit"/>
                                     <connections>
                                         <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ODF-vi-bw3"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
                             <barButtonItem style="plain" id="dxl-Zb-got">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WhO-t2-JbZ">
-                                    <rect key="frame" x="76" y="7" width="53" height="30"/>
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WhO-t2-JbZ">
+                                    <rect key="frame" x="52" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Refresh"/>
+                                    <state key="normal" title="Refresh" image="refresh"/>
                                     <connections>
                                         <action selector="toRefresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sxc-GF-Ort"/>
                                     </connections>
@@ -425,6 +425,8 @@
     </scenes>
     <resources>
         <image name="back" width="15" height="25"/>
+        <image name="exit" width="24" height="24"/>
         <image name="no-image-icon" width="200" height="200"/>
+        <image name="refresh" width="24" height="24"/>
     </resources>
 </document>
