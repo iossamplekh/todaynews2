@@ -436,12 +436,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gw-jx-4Sg">
-                                                    <rect key="frame" x="137" y="11" width="100" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gw-jx-4Sg">
+                                                    <rect key="frame" x="107" y="28" width="160" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="Save">
+                                                    <size key="titleShadowOffset" width="0.0" height="44"/>
+                                                    <state key="normal" title="Save" image="save">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -479,6 +479,7 @@
         <image name="email" width="32" height="24"/>
         <image name="login" width="24" height="24"/>
         <image name="password" width="20" height="32"/>
+        <image name="save" width="24" height="24"/>
         <image name="signup" width="24" height="24"/>
         <image name="user" width="128" height="128"/>
     </resources>
