@@ -26,16 +26,16 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet var newsTypeAuthorPickerView: UIPickerView!
     
     var newsService = NewsService()
+    var newsTypeValue: String = "Sport"
+    var authorEmailValue: String = "author1@gmail.com"
     
     var jsonDictHolder: [String: Any]?
     var newsType: [NewsType] = []
     var authors: [Author] = []
     
     var data: [[String]] = [[String]]()
-    var dataNewsTypeAndAuhors: [[NewsType]] = [[NewsType]]()
-    
-    var pickerString = NSArray() as AnyObject as! [String]
-    var resultString = ""
+    var arrn: [String] = [String]()
+    var arra: [String] = [String]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +70,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 print("self.authors: \(self.authors)")
             }
         }
-        var arrn: [String] = [String]()
-        var arra: [String] = [String]()
         
         for nwi in self.newsType {
             arrn.append(nwi.desEn)
@@ -88,10 +86,9 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
        }
        
         setUpView()
-        //data = numberPickerComponents(from: "na")
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print("(numberOfComponents) self.dataNewsTypeAndAuhors.count = \(self.dataNewsTypeAndAuhors.count)")
+        print("(numberOfComponents) self.data.count.count = \(self.data.count)")
         return self.data.count
     }
     
@@ -102,34 +99,16 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         return "\(data[component][row])"
     }
     
-    func numberPickerComponentCustom(from char:Character) -> [String]{
-        var n = ""
-        var a = ""
-        
-        switch char{
-        case "n":
-            print("case n data: \(self.data)")
-            print("case n self.newsType : \(self.newsType)")
-            var st = ""
-            for newst in newsType {
-                st = newst.desEn
-                //return [st]
-            }
-            return [st,"Sport","Nature"]
-        case "a":
-            return ["Author1","Author2","Author3"]
-        default:
-            return [String(char)]
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Selected Row: \(row) Component: \(component)")
+        print("\(data[component][row])")
+        if component == 0 {
+            self.newsTypeValue = data[component][row]
+        }else if component == 1{
+            self.authorEmailValue = data[component][row]
         }
     }
-    
-    func numberPickerComponents(from string:String)->[[String]]{
-        var data = [[String]]()
-        for char in string.characters{
-            data += [numberPickerComponentCustom(from:char)]
-        }
-        return data
-    }
+
     
 //    func getAllNewsType(){
 //        getNewsTypeData()
@@ -236,7 +215,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                         var nob: News?
                         nob = value as! News
                         let nob_id = nob?.id as! Int
-                        self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
+                        self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
                     }else if(key == "newsTypes"){
                         self.newsType = value as! [NewsType]
                     } else if(key == "authors"){
@@ -245,7 +224,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 }
             }else {
                 print("news: save")
-                self.newsService.saveNews(paramaters: paramaters)
+                self.newsService.saveNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue, paramaters: paramaters)
             }
         }
        print("End Function Save \(#function)")

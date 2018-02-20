@@ -39,6 +39,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         setUpRefresh()
         setUpView()
         getData(pageNumber: 1)
+
+        //print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
     }
     func getData(pageNumber: Int){
         if pageNumber == 1 {
@@ -165,6 +167,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             destView.jsonDictHolder = jsonDict as! [String : Any]
            
         }
+        if segue.identifier == "toSave" {
+            print("************************************")
+            print("prepare news type: \(self.newsType)")
+            print("prepare authors: \(self.authors)")
+            print("************************************")
+            let destView = segue.destination as! SaveUpdateTableViewController
+            
+            let jsonDict = [
+                "newsObj" : sender as! News,
+                "newsTypes" : self.newsType,
+                "authors" : self.authors
+                ] as [String : Any]
+            print("jsonDict: \(jsonDict)")
+            destView.jsonDictHolder = jsonDict as! [String : Any]
+            
+        }
     }
     
     // Refresh Control event
@@ -222,8 +240,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let storybaord = UIStoryboard(name: "SingInAndSignUp", bundle: nil)
         let vc = storybaord.instantiateInitialViewController()
         self.present(vc!, animated: true, completion: nil)
-//        UserDefaults.standard.removeObject(forKey: "UserID")
-//        self.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.removeObject(forKey: "UserID")
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func toRefresh(_ sender: Any) {
         getData(pageNumber: 1)
@@ -263,6 +281,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         print("viewdidappear*****")
         print("viewdidappear news type: \(self.newsType)")
         print("viewdidappear authors: \(self.authors)")
+    }
+    
+    @IBAction func toSave(_ sender: Any) {
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//
+//        let secondViewController = storyBoard.instantiateInitialViewController() as! UINavigationController
+//        self.present(secondViewController, animated:true, completion:nil)
+        // Check if value from myTextField is not empty
+    
+        // Instantiate SecondViewController
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "showEdit") as! SaveUpdateTableViewController
+     
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
 }

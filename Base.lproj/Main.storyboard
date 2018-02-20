@@ -63,7 +63,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="qVC-iq-LnR" kind="show" id="wR5-2b-eQ8"/>
+                                    <segue destination="qVC-iq-LnR" kind="show" id="NGD-RU-4v5"/>
                                 </connections>
                             </button>
                         </barButtonItem>

@@ -16,11 +16,11 @@ class SignInTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (UserDefaults.standard.string(forKey: "userID") != nil) {
-            let storybaord = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storybaord.instantiateInitialViewController()
-            self.present(vc!, animated: true, completion: nil)
-        }
+//        if (UserDefaults.standard.string(forKey: "userID") != nil) {
+//            let storybaord = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storybaord.instantiateInitialViewController()
+//            self.present(vc!, animated: true, completion: nil)
+//        }
     }
     
     @IBAction func toLogin(_ sender: Any) {
@@ -34,7 +34,7 @@ class SignInTableViewController: UITableViewController{
                   
                     if let code = json["code"].int, code == 2222 ,let id = json["object"]["id"].int {
                         print("Login Success")
-                        UserDefaults.standard.set("\(id)", forKey: "UserID")
+                        //UserDefaults.standard.set("\(id)", forKey: "UserID")
                         SCLAlertView().showInfo("Welcome", subTitle: "Login Success!")
                         
                         let storybaord = UIStoryboard(name: "Main", bundle: nil)

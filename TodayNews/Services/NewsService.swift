@@ -66,9 +66,9 @@ class NewsService{
         }
     }
     
-    func saveNews(paramaters: [String: Any]) {
+    func saveNews(with newsTypeValue: String, with userEmail: String,with authorEmailValue: String,paramaters: [String: Any]) {
         
-        Alamofire.request(DataManager.URL.NEWS_SAVE_DEAUL,
+        Alamofire.request("\(DataManager.URL.NEWS_SAVE_DEFAUL)/\(newsTypeValue)/\(userEmail)/\(authorEmailValue)",
                           method: .post,
                           parameters:  paramaters,
                           //encoding: URLEncoding.default,
@@ -147,8 +147,8 @@ class NewsService{
             }
         })
     }
-    func updateNews(with id: String, parameters: [String : Any]){
-        Alamofire.request("\(DataManager.URL.NEWS)/\(id)/%20Health/rithronlkh%40gmail.com/author1%40gmail.com",
+    func updateNews(with newsTypeValue: String,with userEmail: String,with authorEmailValue: String,with id: String, parameters: [String : Any]){
+        Alamofire.request("\(DataManager.URL.NEWS)/\(id)/\(newsTypeValue)/\(userEmail)/\(authorEmailValue)",
                           method: .put,
                           parameters: parameters,
                           encoding: JSONEncoding.default,
