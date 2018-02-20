@@ -223,6 +223,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //        UserDefaults.standard.removeObject(forKey: "UserID")
 //        self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func toAdd(_ sender: Any) {
+//        let newViewController = SaveUpdateTableViewController()
+//        self.navigationController?.pushViewController(newViewController, animated: true)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "showEdit") as! SaveUpdateTableViewController
+        self.present(newViewController, animated: true, completion: nil)
+    }
     @IBAction func toRefresh(_ sender: Any) {
         getData(pageNumber: 1)
     }
