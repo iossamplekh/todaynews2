@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 import SCLAlertView
 import SwiftyJSON
 
-class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable,UIPickerViewDelegate,UIPickerViewDataSource{
+class SaveUpdateTableViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate ,NewsServiceDelegate,NVActivityIndicatorViewable{
     
     // Property
     let imagePicker = UIImagePickerController()
@@ -27,7 +27,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     
     var newsService = NewsService()
     
-    var newHolder : News?
+    var jsonDictHolder: [String: Any]?
     var newsType: [NewsType] = []
     var authors: [Author] = []
     
@@ -38,36 +38,42 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     override func viewDidLoad() {
         super.viewDidLoad()
         newsService.delegate = self
-        newsTypeAuthorPickerView.delegate = self
-        newsTypeAuthorPickerView.dataSource = self
+//        newsTypeAuthorPickerView.delegate = self
+//        newsTypeAuthorPickerView.dataSource = self
         imagePicker.delegate = self
         
-        if let newsData = newHolder{
-            newsTitleTextField.text = newsData.name
-            newsShortDescription.text = newsData.dec
-            newsDescriptionTextView.text = newsData.desEn
-            print("NEWS ID: \(newsData.id)")
-            //newsImageView.kf.setImage(with: URL(string: newsData.realImageUrl), placeholder: #imageLiteral(resourceName: "noimage_thumbnail"))
-            let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
-            newsImageView.downloadImageWith(urlString: url, completion: {
-               self.newsImageView.image
-            })
-            newsImageView.clipsToBounds = true
+        if let newsData = jsonDictHolder {
+            print("NEWSDATA: \(newsData)")
+            for (key,value) in newsData{
+                print("KEY: \(key); VALUE: \(value)")
+                if(key == "newsObj"){
+                    var nob: News?
+                    nob = value as! News
+                    newsTitleTextField.text = nob?.name ?? ""
+                    newsShortDescription.text = nob?.dec ?? ""
+                    newsDescriptionTextView.text = nob?.desEn ?? ""
+                    let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
+                    newsImageView.downloadImageWith(urlString: url, completion: {
+                    self.newsImageView.image
+                    })
+                    newsImageView.clipsToBounds = true
+                }
+            }
         }
         setUpView()
         data = numberPickerComponents(from: "n")
     }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
-        return self.data.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.data[component].count
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-         return self.data[component][row]
-    }
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
+//        return self.data.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return self.data[component].count
+//    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//         return self.data[component][row]
+//    }
     
     func numberPickerComponentCustom(from char:Character) -> [String]{
         var n = ""
@@ -238,10 +244,17 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 "realImageUrl": imageUrl ?? ""
                 ] as [String : Any]
             
-            if let news = self.newHolder {
-                print("news: update\(news)")
-                print("news id:\(news.id)")
-                self.newsService.updateNews(with: "\(news.id)", parameters: paramaters)
+            if let newsData = self.jsonDictHolder {
+                print("NEWSDATA: \(newsData)")
+                for (key,value) in newsData{
+                    print("KEY: \(key); VALUE: \(value)")
+                    if(key == "newsObj"){
+                        var nob: News?
+                        nob = value as! News
+                        let nob_id = nob?.id as! Int
+                    self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
+                    }
+                }
             }else {
                  print("news: save")
                  self.newsService.saveNews(paramaters: paramaters)

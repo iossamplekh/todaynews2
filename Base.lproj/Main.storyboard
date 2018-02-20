@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J6S-zY-0kh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J6S-zY-0kh">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -63,7 +63,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="rMc-lq-YEc"/>
+<<<<<<< HEAD
+                                    <segue destination="qVC-iq-LnR" kind="show" id="owM-4o-s8r"/>
+=======
+                                    <action selector="toAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Le-r0-zdP"/>
+>>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -71,11 +75,16 @@
                     <connections>
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
                         <segue destination="YF4-b6-twC" kind="show" identifier="NewsDetailViewController" id="A8j-Nd-r3w"/>
+<<<<<<< HEAD
+                        <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="wJ2-bt-SgK"/>
+=======
+                        <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="3ML-5J-DLJ"/>
+>>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971.01449275362324" y="76.630434782608702"/>
+            <point key="canvasLocation" x="1203" y="54"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="WmJ-oi-Zfh">
@@ -173,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYO-JD-Xec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947.826086956522" y="76.630434782608702"/>
+            <point key="canvasLocation" x="1959" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VUf-Ny-nUh">
@@ -402,7 +411,11 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4">
+                            <connections>
+                                <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="7Tf-GY-uNy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newsDescriptionTextView" destination="blG-Cj-iU6" id="cV0-NX-v87"/>
@@ -420,7 +433,11 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="971" y="812"/>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="1203" y="813"/>
+=======
+            <point key="canvasLocation" x="971" y="827"/>
+>>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
         </scene>
     </scenes>
     <resources>
@@ -429,4 +446,7 @@
         <image name="no-image-icon" width="200" height="200"/>
         <image name="refresh" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wJ2-bt-SgK"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -150,8 +150,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             dest.news2 = sender as! News
         }
         if segue.identifier == "showEdit" {
+            print("************************************")
+            print("prepare news type: \(self.newsType)")
+            print("prepare authors: \(self.authors)")
+            print("************************************")
             let destView = segue.destination as! SaveUpdateTableViewController
-            destView.newHolder = sender as? News
+                let jsonDict = [
+                    "newsObj" : sender as! News,
+                    "newsTypes" : self.newsType,
+                    "authors" : self.authors
+                    ] as [String : Any]
+                print("jsonDict: \(jsonDict)")
+                destView.jsonDictHolder = jsonDict as! [String : Any]
         }
     }
     
@@ -213,6 +223,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //        UserDefaults.standard.removeObject(forKey: "UserID")
 //        self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func toAdd(_ sender: Any) {
+//        let newViewController = SaveUpdateTableViewController()
+//        self.navigationController?.pushViewController(newViewController, animated: true)
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "showEdit") as! SaveUpdateTableViewController
+        self.present(newViewController, animated: true, completion: nil)
+    }
     @IBAction func toRefresh(_ sender: Any) {
         getData(pageNumber: 1)
     }
@@ -235,7 +252,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     print("share author : \(author)")
                     print("share self.authors : \(self.authors)")
                     
-                    SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
+                    //SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
                     
                 }else { // error
                     SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
