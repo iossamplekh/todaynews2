@@ -63,7 +63,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="rMc-lq-YEc"/>
+                                    <segue destination="qVC-iq-LnR" kind="show" id="wR5-2b-eQ8"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -71,6 +71,7 @@
                     <connections>
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
                         <segue destination="YF4-b6-twC" kind="show" identifier="NewsDetailViewController" id="A8j-Nd-r3w"/>
+                        <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="nji-cD-ju8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -424,11 +425,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="971" y="812"/>
+            <point key="canvasLocation" x="971" y="827"/>
         </scene>
     </scenes>
     <resources>
         <image name="back" width="15" height="25"/>
         <image name="no-image-icon" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nji-cD-ju8"/>
+    </inferredMetricsTieBreakers>
 </document>
