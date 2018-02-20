@@ -155,19 +155,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             print("prepare authors: \(self.authors)")
             print("************************************")
             let destView = segue.destination as! SaveUpdateTableViewController
-            do {
-            if try (sender as! News) == nil{
-                var newsnil: News?
-                newsnil?.dec = "nil"
-                let jsonDict = [
-                    "newsObj" : newsnil,
-                    "newsTypes" : self.newsType,
-                    "authors" : self.authors
-                    ] as [String : Any]
-                print("jsonDict: \(jsonDict)")
-                destView.jsonDictHolder = jsonDict as! [String : Any]
-                
-            }
+        
             let jsonDict = [
                 "newsObj" : sender as! News,
                 "newsTypes" : self.newsType,
@@ -175,9 +163,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 ] as [String : Any]
             print("jsonDict: \(jsonDict)")
             destView.jsonDictHolder = jsonDict as! [String : Any]
-            }catch{
-             
-            }
+           
         }
     }
     

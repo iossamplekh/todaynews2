@@ -49,16 +49,16 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             if(key == "newsObj"){
                 var nob: News?
                 nob = value as! News
-                if nob?.dec != "nil"{
-                    newsTitleTextField.text = nob?.name ?? ""
-                    newsShortDescription.text = nob?.dec ?? ""
-                    newsDescriptionTextView.text = nob?.desEn ?? ""
-                    let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
-                    newsImageView.downloadImageWith(urlString: url, completion: {
+
+                newsTitleTextField.text = nob?.name ?? ""
+                newsShortDescription.text = nob?.dec ?? ""
+                newsDescriptionTextView.text = nob?.desEn ?? ""
+                let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
+                newsImageView.downloadImageWith(urlString: url, completion: {
                         self.newsImageView.image
-                    })
-                    newsImageView.clipsToBounds = true
-                }
+                })
+                newsImageView.clipsToBounds = true
+         
             }
         }
        }
@@ -252,17 +252,14 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                     print("KEY: \(key); VALUE: \(value)")
                     if(key == "newsObj"){
                         var nob: News?
-                        if nob?.dec != "nil"{
-                            nob = value as! News
-                            let nob_id = nob?.id as! Int
-                            self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
-                        }
-                        print("news: save")
-                        self.newsService.saveNews(paramaters: paramaters)
+                        nob = value as! News
+                        let nob_id = nob?.id as! Int
+                        self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
                     }
                 }
             }else {
-                 print("news: save")
+                print("news: save")
+                self.newsService.saveNews(paramaters: paramaters)
             }
         }
        print("End Function Save \(#function)")

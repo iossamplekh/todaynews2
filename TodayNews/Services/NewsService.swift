@@ -90,7 +90,7 @@ class NewsService{
                         return
                     }
                     // Success
-                    SCLAlertView().showInfo("Have", subTitle: "OK")
+                    SCLAlertView().showInfo("News has been save", subTitle: "OK")
                     self.delegate?.SaveNews(error: nil)
                 case .failure(let error):
                     self.delegate?.SaveNews(error: error)
@@ -134,7 +134,7 @@ class NewsService{
                             let dict =  [NSLocalizedDescriptionKey : json["message"].string ?? "unknown"]
                             let error = NSError(domain: response.request?.url?.host ?? "unknown", code: 9999, userInfo: dict)
                             completion(nil, error)
-                          SCLAlertView().showInfo("Image problem object", subTitle: "Imageprobelm object")
+                          //SCLAlertView().showInfo("Image problem object", subTitle: "Imageprobelm object")
                             return
                         }
             
