@@ -32,6 +32,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     var authors: [Author] = []
     
     var data: [[String]] = [[String]]()
+    var dataNewsTypeAndAuhors: [[NewsType]] = [[NewsType]]()
+    
     var pickerString = NSArray() as AnyObject as! [String]
     var resultString = ""
    
@@ -43,6 +45,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         imagePicker.delegate = self
         
        if let newsData = jsonDictHolder {
+        print("********view did load*********")
         print("NEWSDATA: \(newsData)")
         for (key,value) in newsData{
             print("KEY: \(key); VALUE: \(value)")
@@ -61,17 +64,34 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
          
             }else if(key == "newsTypes"){
                 self.newsType = value as! [NewsType]
+                print("self.newsType: \(self.newsType)")
             } else if(key == "authors"){
                 self.authors = value as! [Author]
+                print("self.authors: \(self.authors)")
             }
         }
+        var arrn: [String] = [String]()
+        var arra: [String] = [String]()
+        
+        for nwi in self.newsType {
+            arrn.append(nwi.desEn)
+        }
+        for ath in self.authors{
+            arra.append(ath.email)
+        }
+        
+        self.data = [
+            arrn,
+            arra
+        ]
+        
        }
        
         setUpView()
-        //data = numberPickerComponents(from: "n")
+        //data = numberPickerComponents(from: "na")
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
+        print("(numberOfComponents) self.dataNewsTypeAndAuhors.count = \(self.dataNewsTypeAndAuhors.count)")
         return self.data.count
     }
     
@@ -79,7 +99,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         return self.data[component].count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-         return self.data[component][row]
+        return "\(data[component][row])"
     }
     
     func numberPickerComponentCustom(from char:Character) -> [String]{
@@ -90,7 +110,12 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         case "n":
             print("case n data: \(self.data)")
             print("case n self.newsType : \(self.newsType)")
-            return ["Health","Sport","Nature"]
+            var st = ""
+            for newst in newsType {
+                st = newst.desEn
+                //return [st]
+            }
+            return [st,"Sport","Nature"]
         case "a":
             return ["Author1","Author2","Author3"]
         default:
