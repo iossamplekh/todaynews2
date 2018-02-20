@@ -61,7 +61,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                         self.newsImageView.image
                 })
                 newsImageView.clipsToBounds = true
-         
+                
+                self.title = "EDIT: \(nob?.name ?? "")"
             }else if(key == "newsTypes"){
                 self.newsType = value as! [NewsType]
                 print("self.newsType: \(self.newsType)")
@@ -84,7 +85,9 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         ]
         
        }
-       
+       else {
+        self.title = "ADD NEWS"
+       }
         setUpView()
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
