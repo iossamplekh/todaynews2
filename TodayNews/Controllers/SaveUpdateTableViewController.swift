@@ -59,12 +59,16 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 })
                 newsImageView.clipsToBounds = true
          
+            }else if(key == "newsTypes"){
+                self.newsType = value as! [NewsType]
+            } else if(key == "authors"){
+                self.authors = value as! [Author]
             }
         }
        }
        
         setUpView()
-        data = numberPickerComponents(from: "n")
+        //data = numberPickerComponents(from: "n")
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
@@ -81,53 +85,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     func numberPickerComponentCustom(from char:Character) -> [String]{
         var n = ""
         var a = ""
-        NewsTypeService.shared.getAllNewsType { (response, error) in
-            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-            if let value = response?.result.value {
-                let json = JSON(value)
-                
-                if let code = json["code"].int, code == 2222 {
-                    print("Get news type Success")
-                    let newst =  json["objects"].arrayValue.map{ NewsType($0) }
-                    self.newsType = newst
-                    for nt in newst {
-                        self.data.append([nt.desEn])
-                        n = "n"
-                    }
-                    print("share data in: \(self.data)")
-                    print("share self.newsType : \(self.newsType)")
-                    SCLAlertView().showInfo("Welcome", subTitle: "Get newstype Success!")
-                }else { // error
-                    SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
-                }
-            }else {
-                SCLAlertView().showError("Error", subTitle: "Server error");
-                return
-            }
-        }
-        
-        AuthorService.shared.getAllAuthors { (response, error) in
-            
-            if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
-            if let value = response?.result.value {
-                let json = JSON(value)
-                
-                if let code = json["code"].int, code == 2222 {
-                    print("Get author Success")
-                    let author =  json["objects"].arrayValue.map{ Author($0) }
-                    self.authors = author
-                    
-                    print("share authors : \(author)")
-                    print("share self.authors : \(self.authors)")
-                    SCLAlertView().showInfo("Welcome", subTitle: "Get auther Success!")
-                }else { // error
-                    SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
-                }
-            }else {
-                SCLAlertView().showError("Error", subTitle: "Server error")
-                return
-            }
-        }
         
         switch char{
         case "n":
@@ -255,6 +212,10 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                         nob = value as! News
                         let nob_id = nob?.id as! Int
                         self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
+                    }else if(key == "newsTypes"){
+                        self.newsType = value as! [NewsType]
+                    } else if(key == "authors"){
+                        self.authors = value as! [Author]
                     }
                 }
             }else {
@@ -279,7 +240,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     override func viewDidAppear(_ animated: Bool) {
         print("viewdidappear*****")
-        //        print("viewdidappear news type: \(self.newsType)")
+        print("viewdidappear news type: \(self.newsType)")
         print("viewdidappear authors: \(self.authors)")
     }
 }
