@@ -27,10 +27,9 @@ class TodayNewsTableViewCell: UITableViewCell {
         // Set data to control
         newsNameLabel.text = news.name ?? "Unknown"
         newsTypeLable.text = "Category: \(news.newsType.desEn)" ?? "unknown"
-        newsImageView.loadImageUsingUrlString(urlString: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg")
+        newsImageView.loadImageUsingUrlString(urlString: news.realImageUrl)
         print("Here is image url \(news.image)")
-//           newsImageView.kf.setImage(with: URL(string: "https://newiosapi.herokuapp.com/rest/news/img/lcc0001.jpg"), placeholder: #imageLiteral(resourceName: "noimage_thumbnail"))
-        
+           //newsImageView.kf.setImage(with: URL(string: news.realImageUrl))
     }
     
 
