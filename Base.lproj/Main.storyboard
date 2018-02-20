@@ -36,7 +36,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Newstoday" id="CWV-ag-1Fy">
                         <leftBarButtonItems>
+<<<<<<< HEAD
                             <barButtonItem style="plain" id="gBZ-29-guO">
+=======
+                            <barButtonItem title="Logout" style="plain" id="gBZ-29-guO">
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pyV-Km-3lO">
                                     <rect key="frame" x="20" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -46,11 +50,19 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
+<<<<<<< HEAD
                             <barButtonItem style="plain" id="dxl-Zb-got">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WhO-t2-JbZ">
                                     <rect key="frame" x="52" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Refresh" image="refresh"/>
+=======
+                            <barButtonItem title="Item" style="plain" id="dxl-Zb-got">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WhO-t2-JbZ">
+                                    <rect key="frame" x="52" y="10" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="refresh"/>
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                                     <connections>
                                         <action selector="toRefresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sxc-GF-Ort"/>
                                     </connections>
@@ -64,10 +76,14 @@
                                 <state key="normal" title="Add"/>
                                 <connections>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <segue destination="qVC-iq-LnR" kind="show" id="owM-4o-s8r"/>
 =======
                                     <action selector="toAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Le-r0-zdP"/>
 >>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
+=======
+                                    <segue destination="qVC-iq-LnR" kind="show" id="NGD-RU-4v5"/>
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -76,10 +92,14 @@
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
                         <segue destination="YF4-b6-twC" kind="show" identifier="NewsDetailViewController" id="A8j-Nd-r3w"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="wJ2-bt-SgK"/>
 =======
                         <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="3ML-5J-DLJ"/>
 >>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
+=======
+                        <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="nji-cD-ju8"/>
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -413,7 +433,11 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4">
                             <connections>
+<<<<<<< HEAD
                                 <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="7Tf-GY-uNy"/>
+=======
+                                <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="KMT-MD-1he"/>
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -434,10 +458,14 @@
                 </tapGestureRecognizer>
             </objects>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <point key="canvasLocation" x="1203" y="813"/>
 =======
             <point key="canvasLocation" x="971" y="827"/>
 >>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
+=======
+            <point key="canvasLocation" x="971" y="827"/>
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
         </scene>
     </scenes>
     <resources>
@@ -447,6 +475,10 @@
         <image name="refresh" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="wJ2-bt-SgK"/>
+=======
+        <segue reference="nji-cD-ju8"/>
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
     </inferredMetricsTieBreakers>
 </document>

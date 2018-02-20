@@ -26,14 +26,16 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet var newsTypeAuthorPickerView: UIPickerView!
     
     var newsService = NewsService()
+    var newsTypeValue: String = "Sport"
+    var authorEmailValue: String = "author1@gmail.com"
     
     var jsonDictHolder: [String: Any]?
     var newsType: [NewsType] = []
     var authors: [Author] = []
     
     var data: [[String]] = [[String]]()
-    var pickerString = NSArray() as AnyObject as! [String]
-    var resultString = ""
+    var arrn: [String] = [String]()
+    var arra: [String] = [String]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
 //        newsTypeAuthorPickerView.dataSource = self
         imagePicker.delegate = self
         
+<<<<<<< HEAD
         if let newsData = jsonDictHolder {
             print("NEWSDATA: \(newsData)")
             for (key,value) in newsData{
@@ -59,21 +62,63 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                     newsImageView.clipsToBounds = true
                 }
             }
+       if let newsData = jsonDictHolder {
+        print("********view did load*********")
+        print("NEWSDATA: \(newsData)")
+        for (key,value) in newsData{
+            print("KEY: \(key); VALUE: \(value)")
+            if(key == "newsObj"){
+                var nob: News?
+                nob = value as! News
+
+                newsTitleTextField.text = nob?.name ?? ""
+                newsShortDescription.text = nob?.dec ?? ""
+                newsDescriptionTextView.text = nob?.desEn ?? ""
+                let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
+                newsImageView.downloadImageWith(urlString: url, completion: {
+                        self.newsImageView.image
+                })
+                newsImageView.clipsToBounds = true
+                
+                self.title = "EDIT: \(nob?.name ?? "")"
+            }else if(key == "newsTypes"){
+                self.newsType = value as! [NewsType]
+                print("self.newsType: \(self.newsType)")
+            } else if(key == "authors"){
+                self.authors = value as! [Author]
+                print("self.authors: \(self.authors)")
+            }
         }
+        
+        for nwi in self.newsType {
+            arrn.append(nwi.desEn)
+        }
+        for ath in self.authors{
+            arra.append(ath.email)
+        }
+        
+        self.data = [
+            arrn,
+            arra
+        ]
+        
+       }
+       else {
+        self.title = "ADD NEWS"
+       }
         setUpView()
-        data = numberPickerComponents(from: "n")
     }
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
-//        return self.data.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return self.data[component].count
-//    }
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//         return self.data[component][row]
-//    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        print("(numberOfComponents) self.newsType.count = \(self.newsType.count)")
+        return self.data.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.data[component].count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+         return self.data[component][row]
+    }
     
     func numberPickerComponentCustom(from char:Character) -> [String]{
         var n = ""
@@ -136,15 +181,30 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         default:
             return [String(char)]
         }
+=======
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        print("(numberOfComponents) self.data.count.count = \(self.data.count)")
+        return self.data.count
     }
     
-    func numberPickerComponents(from string:String)->[[String]]{
-        var data = [[String]]()
-        for char in string.characters{
-            data += [numberPickerComponentCustom(from:char)]
-        }
-        return data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.data[component].count
     }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(data[component][row])"
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Selected Row: \(row) Component: \(component)")
+        print("\(data[component][row])")
+        if component == 0 {
+            self.newsTypeValue = data[component][row]
+        }else if component == 1{
+            self.authorEmailValue = data[component][row]
+        }
+    }
+
     
 //    func getAllNewsType(){
 //        getNewsTypeData()
@@ -244,20 +304,33 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 "realImageUrl": imageUrl ?? ""
                 ] as [String : Any]
             
+<<<<<<< HEAD
             if let newsData = self.jsonDictHolder {
                 print("NEWSDATA: \(newsData)")
                 for (key,value) in newsData{
+=======
+            if let news = self.jsonDictHolder {
+                for (key,value) in news{
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                     print("KEY: \(key); VALUE: \(value)")
                     if(key == "newsObj"){
                         var nob: News?
                         nob = value as! News
                         let nob_id = nob?.id as! Int
+<<<<<<< HEAD
                     self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
+=======
+                        self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                    }else if(key == "newsTypes"){
+                        self.newsType = value as! [NewsType]
+                    } else if(key == "authors"){
+                        self.authors = value as! [Author]
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                     }
                 }
             }else {
-                 print("news: save")
-                 self.newsService.saveNews(paramaters: paramaters)
+                print("news: save")
+                self.newsService.saveNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue, paramaters: paramaters)
             }
         }
        print("End Function Save \(#function)")
@@ -277,7 +350,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     }
     override func viewDidAppear(_ animated: Bool) {
         print("viewdidappear*****")
-        //        print("viewdidappear news type: \(self.newsType)")
+        print("viewdidappear news type: \(self.newsType)")
         print("viewdidappear authors: \(self.authors)")
     }
 }

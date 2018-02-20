@@ -66,9 +66,9 @@ class NewsService{
         }
     }
     
-    func saveNews(paramaters: [String: Any]) {
+    func saveNews(with newsTypeValue: String, with userEmail: String,with authorEmailValue: String,paramaters: [String: Any]) {
         
-        Alamofire.request(DataManager.URL.NEWS_SAVE_DEAUL,
+        Alamofire.request("\(DataManager.URL.NEWS_SAVE_DEFAUL)/\(newsTypeValue)/\(userEmail)/\(authorEmailValue)",
                           method: .post,
                           parameters:  paramaters,
                           //encoding: URLEncoding.default,
@@ -90,7 +90,7 @@ class NewsService{
                         return
                     }
                     // Success
-                    SCLAlertView().showInfo("Have", subTitle: "OK")
+                    SCLAlertView().showInfo("News has been save", subTitle: "OK")
                     self.delegate?.SaveNews(error: nil)
                 case .failure(let error):
                     self.delegate?.SaveNews(error: error)
@@ -134,7 +134,7 @@ class NewsService{
                             let dict =  [NSLocalizedDescriptionKey : json["message"].string ?? "unknown"]
                             let error = NSError(domain: response.request?.url?.host ?? "unknown", code: 9999, userInfo: dict)
                             completion(nil, error)
-                          SCLAlertView().showInfo("Image problem object", subTitle: "Imageprobelm object")
+                          //SCLAlertView().showInfo("Image problem object", subTitle: "Imageprobelm object")
                             return
                         }
             
@@ -147,8 +147,8 @@ class NewsService{
             }
         })
     }
-    func updateNews(with id: String, parameters: [String : Any]){
-        Alamofire.request("\(DataManager.URL.NEWS)/\(id)/%20Health/rithronlkh%40gmail.com/author1%40gmail.com",
+    func updateNews(with newsTypeValue: String,with userEmail: String,with authorEmailValue: String,with id: String, parameters: [String : Any]){
+        Alamofire.request("\(DataManager.URL.NEWS)/\(id)/\(newsTypeValue)/\(userEmail)/\(authorEmailValue)",
                           method: .put,
                           parameters: parameters,
                           encoding: JSONEncoding.default,

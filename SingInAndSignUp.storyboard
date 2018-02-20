@@ -123,7 +123,10 @@
                                                     <rect key="frame" x="8" y="28" width="160" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.3288167119" green="0.3577485681" blue="0.75512874129999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+<<<<<<< HEAD
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
+=======
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                                                     <state key="normal" title="SIGN IN" image="login">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -138,7 +141,10 @@
                                                         <constraint firstAttribute="width" constant="160" id="esC-a1-9lu"/>
                                                         <constraint firstAttribute="height" constant="44" id="tFe-c9-LAv"/>
                                                     </constraints>
+<<<<<<< HEAD
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
+=======
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                                                     <state key="normal" title="SIGN UP" image="signup">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -149,6 +155,10 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+<<<<<<< HEAD
+=======
+                                                <constraint firstAttribute="trailing" secondItem="jy4-Zz-gcc" secondAttribute="trailing" constant="8" id="MLS-fO-shF"/>
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                                                 <constraint firstItem="jy4-Zz-gcc" firstAttribute="top" secondItem="Vdn-X6-IVe" secondAttribute="top" constant="28" id="XJ5-Rl-yob"/>
                                                 <constraint firstAttribute="trailing" secondItem="jy4-Zz-gcc" secondAttribute="trailing" constant="8" id="sra-8P-9KN"/>
                                             </constraints>
@@ -440,7 +450,10 @@
                                                     <rect key="frame" x="107" y="28" width="160" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<<<<<<< HEAD
                                                     <size key="titleShadowOffset" width="0.0" height="44"/>
+=======
+>>>>>>> 345d1c92d09c4772890f6d19e9213e7f4ba76da2
                                                     <state key="normal" title="Save" image="save">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
