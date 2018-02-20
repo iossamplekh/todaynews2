@@ -32,6 +32,4 @@ class TodayNewsTableViewCell: UITableViewCell {
            //newsImageView.kf.setImage(with: URL(string: news.realImageUrl))
     }
     
-
-    
 }

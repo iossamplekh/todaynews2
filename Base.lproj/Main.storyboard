@@ -58,10 +58,10 @@
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ohN-YS-6ZS">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S8Y-la-Bx5">
-                                <rect key="frame" x="364" y="7" width="30" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S8Y-la-Bx5">
+                                <rect key="frame" x="370" y="10" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" image="add_b"/>
                                 <connections>
                                     <segue destination="qVC-iq-LnR" kind="show" id="NGD-RU-4v5"/>
                                 </connections>
@@ -403,7 +403,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4">
+                        <barButtonItem key="rightBarButtonItem" image="save_a" style="plain" id="PzQ-GY-WO4">
                             <connections>
                                 <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="KMT-MD-1he"/>
                             </connections>
@@ -429,10 +429,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add_b" width="24" height="24"/>
         <image name="back" width="15" height="25"/>
         <image name="exit" width="24" height="24"/>
         <image name="no-image-icon" width="200" height="200"/>
         <image name="refresh" width="24" height="24"/>
+        <image name="save_a" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nji-cD-ju8"/>
