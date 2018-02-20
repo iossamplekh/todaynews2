@@ -413,7 +413,11 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4">
                             <connections>
+<<<<<<< HEAD
                                 <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="7Tf-GY-uNy"/>
+=======
+                                <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="KMT-MD-1he"/>
+>>>>>>> a27549b21fcb750baef1aae109a5b7da58b1ecc9
                             </connections>
                         </barButtonItem>
                     </navigationItem>

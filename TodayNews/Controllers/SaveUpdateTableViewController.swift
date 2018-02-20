@@ -42,6 +42,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
 //        newsTypeAuthorPickerView.dataSource = self
         imagePicker.delegate = self
         
+<<<<<<< HEAD
         if let newsData = jsonDictHolder {
             print("NEWSDATA: \(newsData)")
             for (key,value) in newsData{
@@ -49,17 +50,33 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 if(key == "newsObj"){
                     var nob: News?
                     nob = value as! News
+=======
+       if let newsData = jsonDictHolder {
+        print("NEWSDATA: \(newsData)")
+        for (key,value) in newsData{
+            print("KEY: \(key); VALUE: \(value)")
+            if(key == "newsObj"){
+                var nob: News?
+                nob = value as! News
+                if nob?.dec != "nil"{
+>>>>>>> a27549b21fcb750baef1aae109a5b7da58b1ecc9
                     newsTitleTextField.text = nob?.name ?? ""
                     newsShortDescription.text = nob?.dec ?? ""
                     newsDescriptionTextView.text = nob?.desEn ?? ""
                     let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
                     newsImageView.downloadImageWith(urlString: url, completion: {
+<<<<<<< HEAD
                     self.newsImageView.image
+=======
+                        self.newsImageView.image
+>>>>>>> a27549b21fcb750baef1aae109a5b7da58b1ecc9
                     })
                     newsImageView.clipsToBounds = true
                 }
             }
         }
+       }
+       
         setUpView()
         data = numberPickerComponents(from: "n")
     }
@@ -244,6 +261,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 "realImageUrl": imageUrl ?? ""
                 ] as [String : Any]
             
+<<<<<<< HEAD
             if let newsData = self.jsonDictHolder {
                 print("NEWSDATA: \(newsData)")
                 for (key,value) in newsData{
@@ -253,11 +271,24 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                         nob = value as! News
                         let nob_id = nob?.id as! Int
                     self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
+=======
+            if let news = self.jsonDictHolder {
+                for (key,value) in news{
+                    print("KEY: \(key); VALUE: \(value)")
+                    if(key == "newsObj"){
+                        var nob: News?
+                        if nob?.dec != "nil"{
+                            nob = value as! News
+                            let nob_id = nob?.id as! Int
+                            self.newsService.updateNews(with: "\(nob_id)", parameters: paramaters)
+                        }
+                        print("news: save")
+                        self.newsService.saveNews(paramaters: paramaters)
+>>>>>>> a27549b21fcb750baef1aae109a5b7da58b1ecc9
                     }
                 }
             }else {
                  print("news: save")
-                 self.newsService.saveNews(paramaters: paramaters)
             }
         }
        print("End Function Save \(#function)")
