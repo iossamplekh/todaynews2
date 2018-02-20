@@ -63,7 +63,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
-                                    <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="rMc-lq-YEc"/>
+                                    <segue destination="qVC-iq-LnR" kind="show" id="owM-4o-s8r"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -71,11 +71,12 @@
                     <connections>
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
                         <segue destination="YF4-b6-twC" kind="show" identifier="NewsDetailViewController" id="A8j-Nd-r3w"/>
+                        <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="wJ2-bt-SgK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971.01449275362324" y="76.630434782608702"/>
+            <point key="canvasLocation" x="1203" y="54"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="WmJ-oi-Zfh">
@@ -173,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYO-JD-Xec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947.826086956522" y="76.630434782608702"/>
+            <point key="canvasLocation" x="1959" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VUf-Ny-nUh">
@@ -424,11 +425,14 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="971" y="812"/>
+            <point key="canvasLocation" x="1203" y="813"/>
         </scene>
     </scenes>
     <resources>
         <image name="back" width="15" height="25"/>
         <image name="no-image-icon" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wJ2-bt-SgK"/>
+    </inferredMetricsTieBreakers>
 </document>
