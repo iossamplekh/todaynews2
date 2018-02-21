@@ -56,7 +56,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 newsTitleTextField.text = nob?.name ?? ""
                 newsShortDescription.text = nob?.dec ?? ""
                 newsDescriptionTextView.text = nob?.desEn ?? ""
-                let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
+                let url = nob?.realImageUrl ?? ""
                 newsImageView.downloadImageWith(urlString: url, completion: {
                         self.newsImageView.image
                 })

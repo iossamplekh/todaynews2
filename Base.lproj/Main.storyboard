@@ -61,7 +61,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="add_b"/>
                                     <connections>
-                                        <segue destination="qVC-iq-LnR" kind="show" id="NGD-RU-4v5"/>
+                                        <segue destination="qVC-iq-LnR" kind="show" identifier="" id="3RA-65-MoC"/>
                                     </connections>
                                 </button>
                             </barButtonItem>
@@ -478,6 +478,6 @@
         <image name="user" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nji-cD-ju8"/>
+        <segue reference="3RA-65-MoC"/>
     </inferredMetricsTieBreakers>
 </document>

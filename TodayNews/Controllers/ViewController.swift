@@ -167,22 +167,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             destView.jsonDictHolder = jsonDict as! [String : Any]
            
         }
-        if segue.identifier == "toSave" {
-            print("************************************")
-            print("prepare news type: \(self.newsType)")
-            print("prepare authors: \(self.authors)")
-            print("************************************")
-            let destView = segue.destination as! SaveUpdateTableViewController
-            
-            let jsonDict = [
-                "newsObj" : sender as! News,
-                "newsTypes" : self.newsType,
-                "authors" : self.authors
-                ] as [String : Any]
-            print("jsonDict: \(jsonDict)")
-            destView.jsonDictHolder = jsonDict as! [String : Any]
-            
-        }
+//        if segue.identifier == "toSave" {
+//            print("************************************")
+//            print("prepare news type: \(self.newsType)")
+//            print("prepare authors: \(self.authors)")
+//            print("************************************")
+////            let destView = segue.destination as! SaveUpdateTableViewController
+//            
+//            //1 Error
+////            let jsonDict = [
+////                "newsObj" : sender as! News,
+////                "newsTypes" : self.newsType,
+////                "authors" : self.authors
+////                ] as [String : Any]
+////            print("jsonDict: \(jsonDict)")
+////            destView.jsonDictHolder = jsonDict as! [String : Any]
+//            //2 Error
+//            
+////            let myVC = storyboard?.instantiateViewController(withIdentifier: "toSave") as! SaveUpdateTableViewController
+////            navigationController?.pushViewController(self, animated: true)
+//        }
     }
     
     // Refresh Control event
@@ -281,15 +285,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func toSave(_ sender: Any) {
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+  //      let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 //
-//        let secondViewController = storyBoard.instantiateInitialViewController() as! UINavigationController
-//        self.present(secondViewController, animated:true, completion:nil)
+ //       let secondViewController = storyBoard.instantiateInitialViewController() as! UINavigationController
+//        let secondViewController = storyBoard.instantiateInitialViewController() as! SaveUpdateTableViewController
+ //       self.present(secondViewController, animated:true, completion:nil)
         // Check if value from myTextField is not empty
     
         // Instantiate SecondViewController
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "showEdit") as! SaveUpdateTableViewController
-     
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "toSave") as! SaveUpdateTableViewController
+
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
