@@ -36,9 +36,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Newstoday" id="CWV-ag-1Fy">
                         <leftBarButtonItems>
+                            <barButtonItem title="Item" style="plain" id="miZ-Pl-f9K">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uhc-I3-emz">
+                                    <rect key="frame" x="20" y="10" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="profile"/>
+                                </button>
+                            </barButtonItem>
                             <barButtonItem title="Logout" style="plain" id="gBZ-29-guO">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pyV-Km-3lO">
-                                    <rect key="frame" x="20" y="10" width="24" height="24"/>
+                                    <rect key="frame" x="52" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="exit"/>
                                     <connections>
@@ -46,9 +53,21 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="ohN-YS-6ZS">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S8Y-la-Bx5">
+                                    <rect key="frame" x="370" y="10" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="add_b"/>
+                                    <connections>
+                                        <segue destination="qVC-iq-LnR" kind="show" id="NGD-RU-4v5"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
                             <barButtonItem title="Item" style="plain" id="dxl-Zb-got">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WhO-t2-JbZ">
-                                    <rect key="frame" x="52" y="10" width="24" height="24"/>
+                                    <rect key="frame" x="338" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="refresh"/>
                                     <connections>
@@ -56,17 +75,7 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ohN-YS-6ZS">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S8Y-la-Bx5">
-                                <rect key="frame" x="364" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <segue destination="qVC-iq-LnR" kind="show" id="NGD-RU-4v5"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
@@ -125,6 +134,35 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMI-ZY-o9W">
+                                                <rect key="frame" x="0.0" y="599" width="414" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUL-0h-IcE">
+                                                        <rect key="frame" x="51" y="16" width="72" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author1@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDa-Iu-Jak">
+                                                        <rect key="frame" x="131" y="16" width="166" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fS-K6-eXm">
+                                                        <rect key="frame" x="8" y="19" width="24" height="24"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" image="like"/>
+                                                    </button>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="WtE-4C-nlh">
+                                                        <rect key="frame" x="362" y="8" width="44" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -132,7 +170,6 @@
                                             <constraint firstAttribute="trailing" secondItem="iWO-fv-zAQ" secondAttribute="trailing" constant="8" id="EPS-Cp-40m"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="736" id="KPy-Xf-6z3"/>
                                             <constraint firstItem="iWO-fv-zAQ" firstAttribute="leading" secondItem="KhD-mc-zcQ" secondAttribute="leading" constant="8" id="L3B-aN-Aad"/>
-                                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="iWO-fv-zAQ" secondAttribute="bottom" constant="440" id="NIG-e1-Gog"/>
                                             <constraint firstItem="XI7-ZK-70M" firstAttribute="leading" secondItem="KhD-mc-zcQ" secondAttribute="leading" constant="8" id="YyK-qj-cGL"/>
                                             <constraint firstAttribute="trailing" secondItem="XI7-ZK-70M" secondAttribute="trailing" constant="8" id="bDI-Nn-t3Y"/>
                                             <constraint firstItem="XI7-ZK-70M" firstAttribute="top" secondItem="18J-Du-LTp" secondAttribute="bottom" constant="8" id="biT-xi-w3g"/>
@@ -140,6 +177,7 @@
                                             <constraint firstItem="deT-zS-n9U" firstAttribute="leading" secondItem="KhD-mc-zcQ" secondAttribute="leading" constant="8" id="i9u-T4-9ac"/>
                                             <constraint firstItem="18J-Du-LTp" firstAttribute="leading" secondItem="KhD-mc-zcQ" secondAttribute="leading" id="slU-wi-3KT"/>
                                             <constraint firstItem="18J-Du-LTp" firstAttribute="top" secondItem="KhD-mc-zcQ" secondAttribute="top" id="tk3-YM-Leh"/>
+                                            <constraint firstAttribute="height" constant="736" id="x2W-RZ-j8Q"/>
                                             <constraint firstItem="deT-zS-n9U" firstAttribute="top" secondItem="XI7-ZK-70M" secondAttribute="bottom" constant="8" id="xrY-rw-2DF"/>
                                             <constraint firstItem="iWO-fv-zAQ" firstAttribute="top" secondItem="deT-zS-n9U" secondAttribute="bottom" constant="8" id="y7N-lk-sBt"/>
                                         </constraints>
@@ -403,7 +441,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4">
+                        <barButtonItem key="rightBarButtonItem" image="save_a" style="plain" id="PzQ-GY-WO4">
                             <connections>
                                 <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="KMT-MD-1he"/>
                             </connections>
@@ -429,10 +467,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add_b" width="24" height="24"/>
         <image name="back" width="15" height="25"/>
         <image name="exit" width="24" height="24"/>
+        <image name="like" width="24" height="24"/>
         <image name="no-image-icon" width="200" height="200"/>
+        <image name="profile" width="24" height="24"/>
         <image name="refresh" width="24" height="24"/>
+        <image name="save_a" width="24" height="24"/>
+        <image name="user" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nji-cD-ju8"/>
