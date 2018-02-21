@@ -247,9 +247,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func logout(_ sender: Any) {
-        let storybaord = UIStoryboard(name: "SingInAndSignUp", bundle: nil)
-        let vc = storybaord.instantiateInitialViewController()
-        self.present(vc!, animated: true, completion: nil)
         UserDefaults.standard.removeObject(forKey: "UserID")
         self.dismiss(animated: true, completion: nil)
     }
