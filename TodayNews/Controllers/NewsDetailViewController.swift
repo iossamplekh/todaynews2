@@ -15,6 +15,7 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet var newsTypeLable: UILabel!
     @IBOutlet var newsDescription: UILabel!
     @IBOutlet var imageHeightConstrant: NSLayoutConstraint!
+    @IBOutlet var authorEmailLabel: UILabel!
     
     // data holder
     var mealHolder: [String:String] = [:]
@@ -31,10 +32,11 @@ class NewsDetailViewController: UIViewController {
     func setUpView(){
         print(mealHolder)
         
-        newsNameLable.text = news2!.name
-        newsTypeLable.text = news2!.newsType.desEn
-        newsDescription.text = news2!.desEn
-        self.title = news2!.name
+        newsNameLable.text = news2?.name ?? ""
+        newsTypeLable.text = news2?.newsType.desEn ?? ""
+        newsDescription.text = news2?.desEn ?? ""
+        authorEmailLabel.text = news2?.author.email ?? ""
+        self.title = news2?.name ?? ""
         
         //let url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Angkor_Wat.jpg/1280px-Angkor_Wat.jpg"
         let url = news2?.realImageUrl	

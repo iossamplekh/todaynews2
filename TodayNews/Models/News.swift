@@ -18,7 +18,7 @@ class News{
     var realImageUrl: String
     var newsType: NewsType
     var secUser: SecUser
-    //var author: Author
+    var author: Author
     
     init(_ data: JSON) {
         id = data["id"].int ?? 0
@@ -29,7 +29,7 @@ class News{
         realImageUrl = data["realImageUrl"].string ?? ""
         newsType = NewsType(data["newsType"])
         secUser = SecUser(data["secUser"])
-        //author = Author(data["author"])
+        author = Author(data["author"])
     }
     init(){
         id = 0
@@ -40,6 +40,6 @@ class News{
         realImageUrl = ""
         newsType = NewsType()
         secUser = SecUser()
-        //author = Author()
+        author = Author()
     }
 }
