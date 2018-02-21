@@ -83,7 +83,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
+<<<<<<< HEAD
+                                    <segue destination="qVC-iq-LnR" kind="show" id="owM-4o-s8r"/>
+=======
                                     <action selector="toAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Le-r0-zdP"/>
+>>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -95,15 +99,22 @@
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
                         <segue destination="YF4-b6-twC" kind="show" identifier="NewsDetailViewController" id="A8j-Nd-r3w"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="3ML-5J-DLJ"/>
 =======
                         <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="nji-cD-ju8"/>
 >>>>>>> 0562cc58cf7643a3244a1f3f77ea72e0b87d106c
+=======
+                        <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="wJ2-bt-SgK"/>
+=======
+                        <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="3ML-5J-DLJ"/>
+>>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
+>>>>>>> 2b68be8415190c8d6113501d39c2c87ccd59142e
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971.01449275362324" y="76.630434782608702"/>
+            <point key="canvasLocation" x="1203" y="54"/>
         </scene>
         <!--News Detail View Controller-->
         <scene sceneID="WmJ-oi-Zfh">
@@ -230,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lYO-JD-Xec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1947.826086956522" y="76.630434782608702"/>
+            <point key="canvasLocation" x="1959" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VUf-Ny-nUh">
@@ -462,12 +473,20 @@
 <<<<<<< HEAD
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="PzQ-GY-WO4">
                             <connections>
+<<<<<<< HEAD
                                 <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="7Tf-GY-uNy"/>
 =======
                         <barButtonItem key="rightBarButtonItem" image="save_a" style="plain" id="PzQ-GY-WO4">
                             <connections>
                                 <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="KMT-MD-1he"/>
 >>>>>>> 0562cc58cf7643a3244a1f3f77ea72e0b87d106c
+=======
+<<<<<<< HEAD
+                                <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="7Tf-GY-uNy"/>
+=======
+                                <action selector="SaveNewsData:" destination="qVC-iq-LnR" id="KMT-MD-1he"/>
+>>>>>>> a27549b21fcb750baef1aae109a5b7da58b1ecc9
+>>>>>>> 2b68be8415190c8d6113501d39c2c87ccd59142e
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -487,7 +506,11 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="1203" y="813"/>
+=======
             <point key="canvasLocation" x="971" y="827"/>
+>>>>>>> 233c26f5d76ad4b7b3ffec9dea761318f7f476c4
         </scene>
     </scenes>
     <resources>
@@ -502,6 +525,10 @@
         <image name="user" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="nji-cD-ju8"/>
+=======
+        <segue reference="wJ2-bt-SgK"/>
+>>>>>>> 2b68be8415190c8d6113501d39c2c87ccd59142e
     </inferredMetricsTieBreakers>
 </document>

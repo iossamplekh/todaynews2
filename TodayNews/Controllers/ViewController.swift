@@ -160,13 +160,31 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 <<<<<<< HEAD
                 let jsonDict = [
                     "newsObj" : sender as! News,
+<<<<<<< HEAD
+=======
+=======
+            do {
+            if try (sender as! News) == nil{
+                var newsnil: News?
+                newsnil?.dec = "nil"
+                let jsonDict = [
+                    "newsObj" : newsnil,
+>>>>>>> a27549b21fcb750baef1aae109a5b7da58b1ecc9
+>>>>>>> 2b68be8415190c8d6113501d39c2c87ccd59142e
                     "newsTypes" : self.newsType,
                     "authors" : self.authors
                     ] as [String : Any]
                 print("jsonDict: \(jsonDict)")
                 destView.jsonDictHolder = jsonDict as! [String : Any]
+<<<<<<< HEAD
 =======
         
+=======
+<<<<<<< HEAD
+=======
+                
+            }
+>>>>>>> 2b68be8415190c8d6113501d39c2c87ccd59142e
             let jsonDict = [
                 "newsObj" : sender as! News,
                 "newsTypes" : self.newsType,
@@ -174,6 +192,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 ] as [String : Any]
             print("jsonDict: \(jsonDict)")
             destView.jsonDictHolder = jsonDict as! [String : Any]
+<<<<<<< HEAD
            
         }
         if segue.identifier == "toSave" {
@@ -192,6 +211,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             destView.jsonDictHolder = jsonDict as! [String : Any]
             
 >>>>>>> 0562cc58cf7643a3244a1f3f77ea72e0b87d106c
+=======
+            }catch{
+             
+            }
+>>>>>>> a27549b21fcb750baef1aae109a5b7da58b1ecc9
+>>>>>>> 2b68be8415190c8d6113501d39c2c87ccd59142e
         }
     }
     
