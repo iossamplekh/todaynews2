@@ -19,6 +19,7 @@ struct DataManager{
         static let FILE = "https://newiosapi.herokuapp.com/rest/uploadfile"
         
         static let NEWS_SAVE_DEAUL = "https://newiosapi.herokuapp.com/rest/news/save/Sport/rithronlkh%40gmail.com/author1%40gmail.com"
+        static let NEWS_SAVE_DEFAUL = "https://newiosapi.herokuapp.com/rest/news/save"
         
         //user
         static let USER_LOGIN = "https://newiosapi.herokuapp.com/rest/users/login"

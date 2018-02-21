@@ -17,9 +17,7 @@ class SignInTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         if (UserDefaults.standard.string(forKey: "userID") != nil) {
-            let storybaord = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storybaord.instantiateInitialViewController()
-            self.present(vc!, animated: true, completion: nil)
+            self.showMainScreen(animation: false)
         }
     }
     
@@ -36,20 +34,21 @@ class SignInTableViewController: UITableViewController{
                         print("Login Success")
                         UserDefaults.standard.set("\(id)", forKey: "UserID")
                         SCLAlertView().showInfo("Welcome", subTitle: "Login Success!")
-                        
-                        let storybaord = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = storybaord.instantiateInitialViewController()
-                        self.present(vc!, animated: true, completion: nil)
-                        
                     }else { // error
                         SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
                     }
                 }else {
                     SCLAlertView().showError("Error", subTitle: "Server error"); return
                 }
+                self.showMainScreen(animation: true)
             }
         }
         
+    }
+    func showMainScreen(animation: Bool) {
+        let storybaord = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storybaord.instantiateInitialViewController()
+        self.present(vc!, animated: animation, completion: nil)
     }
 
 }
