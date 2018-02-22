@@ -52,17 +52,20 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             if(key == "newsObj"){
                 var nob: News?
                 nob = value as! News
-
-                newsTitleTextField.text = nob?.name ?? ""
-                newsShortDescription.text = nob?.dec ?? ""
-                newsDescriptionTextView.text = nob?.desEn ?? ""
-                let url = nob?.realImageUrl ?? ""
-                newsImageView.downloadImageWith(urlString: url, completion: {
+                if nob?.dec != "default" {
+                    newsTitleTextField.text = nob?.name ?? ""
+                    newsShortDescription.text = nob?.dec ?? ""
+                    newsDescriptionTextView.text = nob?.desEn ?? ""
+                    let url = nob?.realImageUrl ?? ""
+                    newsImageView.downloadImageWith(urlString: url, completion: {
                         self.newsImageView.image
-                })
-                newsImageView.clipsToBounds = true
-                
-                self.title = "EDIT: \(nob?.name ?? "")"
+                    })
+                    newsImageView.clipsToBounds = true
+                    
+                    self.title = "EDIT: \(nob?.name ?? "")"
+                }else {
+                    self.title = "ADD NEWS"
+                }
             }else if(key == "newsTypes"){
                 self.newsType = value as! [NewsType]
                 print("self.newsType: \(self.newsType)")
@@ -84,9 +87,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
             arra
         ]
         
-       }
-       else {
-        self.title = "ADD NEWS"
        }
         setUpView()
     }
@@ -217,17 +217,19 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                     if(key == "newsObj"){
                         var nob: News?
                         nob = value as! News
-                        let nob_id = nob?.id as! Int
-                        self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                        if nob?.dec != "default" {
+                            let nob_id = nob?.id as! Int
+                            self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                        }else {
+                            print("news: save")
+                            self.newsService.saveNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue, paramaters: paramaters)
+                        }
                     }else if(key == "newsTypes"){
                         self.newsType = value as! [NewsType]
                     } else if(key == "authors"){
                         self.authors = value as! [Author]
                     }
                 }
-            }else {
-                print("news: save")
-                self.newsService.saveNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue, paramaters: paramaters)
             }
         }
        print("End Function Save \(#function)")
