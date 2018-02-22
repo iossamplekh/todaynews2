@@ -167,21 +167,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             destView.jsonDictHolder = jsonDict as! [String : Any]
            
         }
-        if segue.identifier == "toSave" {
+        if segue.identifier == "toSaveNews" {
             print("************************************")
             print("prepare news type: \(self.newsType)")
             print("prepare authors: \(self.authors)")
             print("************************************")
             let destView = segue.destination as! SaveUpdateTableViewController
             
+            var newsdefault = News()
+            newsdefault.dec = "default"
+            newsdefault.realImageUrl = "https://www.visit-angkor.org/wp-content/uploads/2013/01/Khmer-Portrait.jpg"
+            
             let jsonDict = [
-                "newsObj" : sender as! News,
+                "newsObj" : newsdefault as! News,
                 "newsTypes" : self.newsType,
                 "authors" : self.authors
                 ] as [String : Any]
             print("jsonDict: \(jsonDict)")
             destView.jsonDictHolder = jsonDict as! [String : Any]
-            
         }
     }
     
@@ -237,9 +240,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func logout(_ sender: Any) {
-        let storybaord = UIStoryboard(name: "SingInAndSignUp", bundle: nil)
-        let vc = storybaord.instantiateInitialViewController()
-        self.present(vc!, animated: true, completion: nil)
         UserDefaults.standard.removeObject(forKey: "UserID")
         self.dismiss(animated: true, completion: nil)
     }
@@ -284,16 +284,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func toSave(_ sender: Any) {
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//
-//        let secondViewController = storyBoard.instantiateInitialViewController() as! UINavigationController
-//        self.present(secondViewController, animated:true, completion:nil)
-        // Check if value from myTextField is not empty
-    
-        // Instantiate SecondViewController
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "showEdit") as! SaveUpdateTableViewController
-     
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+         self.performSegue(withIdentifier: "toSaveNews", sender: news)
     }
     
 }
