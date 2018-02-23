@@ -13,13 +13,20 @@ import NVActivityIndicatorView
 import SwiftyJSON
 
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsServiceDelegate,NVActivityIndicatorViewable {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsServiceDelegate,NVActivityIndicatorViewable,UISearchResultsUpdating {
+    
     @IBOutlet var footerView: UIView!
     @IBOutlet var footerNavigationBar: UIActivityIndicatorView!
     
     @IBOutlet var todayNewsTableView: UITableView!
+    // Outlet
+    var resultSearchController = UISearchController(searchResultsController: nil)
+    
     
     var news: [News] = []
+    var filteredData: [News] = []
+    var newsData: [News] = []
+    
     var newsService = NewsService()
     
     var newsType: [NewsType] = []
@@ -29,6 +36,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupSearchController()
         
         getAllDataCrossSreen()
         
@@ -130,9 +139,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //    override func viewDidAppear(_ animated: Bool) {
 //        getData(pageNumber: 1)
 //    }
-    override func viewWillAppear(_ animated: Bool) {
-        //self.todayNewsTableView.reloadData()
-    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayNewsTableViewCell") as! TodayNewsTableViewCell
         cell.configureCell(news: self.news[indexPath.row])
@@ -286,5 +293,49 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBAction func toSave(_ sender: Any) {
          self.performSegue(withIdentifier: "toSaveNews", sender: news)
     }
-    
+    func updateSearchResults(for searchController: UISearchController) {
+        if (searchController.searchBar.text?.count)! > 0 {
+            // 1 remove all data from filter
+            filteredData.removeAll(keepingCapacity: false)
+            
+            // 2 Create Predication
+            let searchPredicate = NSPredicate(format: "SELF.title CONTAINS[c] %@", searchController.searchBar.text!)
+            
+            // 3 filter data by predication
+            //filteredData = mealService.get(withPredicate: searchPredicate)
+            
+            // 4 display data
+            news = filteredData
+        }else {
+            //news = data
+        }
+    }
+    func setupSearchController() {
+        resultSearchController.searchBar.placeholder = "Search Here"
+        navigationItem.hidesSearchBarWhenScrolling = true
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        resultSearchController.searchBar.searchBarStyle = .default
+        resultSearchController.searchBar.tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue : UIColor.white]
+        resultSearchController.searchBar.sizeToFit()
+        resultSearchController.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = resultSearchController
+        }else {
+            todayNewsTableView.tableHeaderView = resultSearchController.searchBar
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.5676869154, green: 0.7538596988, blue: 0.1165765896, alpha: 1)
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        // Get data
+        if (resultSearchController.searchBar.text?.count)! == 0 {
+//            newsData = mealService.getAll()
+//            displayedData = data
+            newsData = news
+            todayNewsTableView.reloadData()
+        }
+    }
 }
