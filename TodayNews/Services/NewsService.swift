@@ -6,7 +6,7 @@
 //  Copyright © 2018 Ron Rith. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Alamofire
 import SwiftyJSON
 import SCLAlertView
@@ -23,6 +23,11 @@ extension NewsServiceDelegate{
     
     func SaveNews(error: Error?){}
     func didUpdateNews(error: Error?){}
+}
+
+extension News {
+    // Entity name
+    static let entityName = "News"
 }
 
 class NewsService{

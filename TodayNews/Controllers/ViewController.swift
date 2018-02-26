@@ -24,8 +24,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     var news: [News] = []
+    var newsData: [News] = [] //display data
     var filteredData: [News] = []
-    var newsData: [News] = []
     
     var newsService = NewsService()
     
