@@ -295,19 +295,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func updateSearchResults(for searchController: UISearchController) {
         if (searchController.searchBar.text?.count)! > 0 {
-            // 1 remove all data from filter
+          
             filteredData.removeAll(keepingCapacity: false)
-            
-            // 2 Create Predication
-            let searchPredicate = NSPredicate(format: "SELF.title CONTAINS[c] %@", searchController.searchBar.text!)
-            
-            // 3 filter data by predication
-            //filteredData = mealService.get(withPredicate: searchPredicate)
-            
-            // 4 display data
-            news = filteredData
+            getSearchData(newsTitle: "\(searchController.searchBar.text!)")
+          
+            self.news = filteredData
         }else {
-            //news = data
+            getData(pageNumber: 1)
+        }
+    }
+    func getSearchData(newsTitle: String){
+        if newsTitle != nil {
+            newsService.getDataNewsSearch(newsTitle: "\(newsTitle)")
         }
     }
     func setupSearchController() {
@@ -327,15 +326,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.5676869154, green: 0.7538596988, blue: 0.1165765896, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         UIApplication.shared.statusBarStyle = .lightContent
-        
-        // Get data
-        if (resultSearchController.searchBar.text?.count)! == 0 {
-//            newsData = mealService.getAll()
-//            displayedData = data
-            newsData = news
-            todayNewsTableView.reloadData()
+//
+//        if (resultSearchController.searchBar.text?.count)! == 0 {
+//             getSearchData(newsTitle: "\(resultSearchController.searchBar.text!)")
+//        }
+    }
+    func didSearchNewsTitle(with news: [News]?, error: Error?) {
+        self.stopAnimating()
+        self.todayNewsTableView.refreshControl?.endRefreshing()
+        // Check error
+        if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+        if news! == nil {
+           self.news.append(contentsOf: news!)
+        } else {
+            self.news.removeAll()
+            self.news = news!
         }
+        self.todayNewsTableView.reloadData()
     }
 }

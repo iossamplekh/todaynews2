@@ -21,6 +21,8 @@ struct DataManager{
         static let NEWS_SAVE_DEAUL = "https://newiosapi.herokuapp.com/rest/news/save/Sport/rithronlkh%40gmail.com/author1%40gmail.com"
         static let NEWS_SAVE_DEFAUL = "https://newiosapi.herokuapp.com/rest/news/save"
         
+        static let NEWS_SEARCH = "https://newiosapi.herokuapp.com/rest/news/find/"
+        
         //user
         static let USER_LOGIN = "https://newiosapi.herokuapp.com/rest/users/login"
         static let USER_SIGNUP = "https://newiosapi.herokuapp.com/rest/users"

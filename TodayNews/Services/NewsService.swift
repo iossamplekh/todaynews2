@@ -15,19 +15,20 @@ protocol NewsServiceDelegate {
     func didResivedNews(with news: [News]?,pagination: Pagination?,error: Error?)
     
     func SaveNews(error: Error?)
+    
     func didUpdateNews(error: Error?)
+    
+    func didSearchNewsTitle(with news: [News]?,error: Error?)
 }
 
 extension NewsServiceDelegate{
     func didResivedNews(with news: [News]?,pagination: Pagination?,error: Error?){}
     
     func SaveNews(error: Error?){}
+    
     func didUpdateNews(error: Error?){}
-}
-
-extension News {
-    // Entity name
-    static let entityName = "News"
+    
+    func didSearchNewsTitle(with news: [News]?,error: Error?){}
 }
 
 class NewsService{
@@ -198,6 +199,32 @@ class NewsService{
                     
                 case .failure(let error):
                     completion(error)
+                }
+        }
+    }
+    
+    func getDataNewsSearch(newsTitle: String){
+        Alamofire.request("\(DataManager.URL.NEWS_SEARCH)/\(newsTitle)",
+                          method: .get,
+                          encoding: URLEncoding.default,
+                          headers: DataManager.HEADER)
+            .responseJSON { (response) in
+                switch response.result{
+                case .success(let value):
+                    let json = JSON(value)
+                    guard let code = json["code"].int , code == 2222 else {
+                        // Report any error
+                        let dictionary = [NSLocalizedDescriptionKey: json["objects"].string ?? "unknown"]
+                        let host = response.request?.url?.host ?? "unknown"
+                        let error = NSError(domain: host, code: 400, userInfo: dictionary)
+                        self.delegate?.didSearchNewsTitle(with: nil, error: error)
+                        return
+                    }
+                    
+                    let news =  json["objects"].arrayValue.map{ News($0) }
+                    self.delegate?.didSearchNewsTitle(with: news, error: nil)
+                case .failure(let error):
+                    self.delegate?.didSearchNewsTitle(with: nil, error: error)
                 }
         }
     }
