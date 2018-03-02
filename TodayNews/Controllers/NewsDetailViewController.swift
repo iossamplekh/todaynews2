@@ -16,6 +16,7 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet var newsDescription: UILabel!
     @IBOutlet var imageHeightConstrant: NSLayoutConstraint!
     @IBOutlet var authorEmailLabel: UILabel!
+    @IBOutlet var authorImageView: UIImageView!
     
     // data holder
     var mealHolder: [String:String] = [:]
@@ -48,7 +49,17 @@ class NewsDetailViewController: UIViewController {
                     self.imageHeightConstrant.constant = self.view.frame.size.width * aspect
                 }
             })
-             newsImageView.clipsToBounds = true
+        newsImageView.clipsToBounds = true
+        
+        authorImageView.downloadImageWith(urlString: url!) {
+            if let image = self.newsImageView.image {
+                // Calculate aspect
+                let aspect = image.size.height / image.size.width
+                
+                self.imageHeightConstrant.constant = self.view.frame.size.width * aspect
+            }
+        }
+        authorImageView.clipsToBounds = true
         // Display LargeTitles
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true

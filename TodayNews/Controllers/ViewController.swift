@@ -34,6 +34,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var pagination: Pagination = Pagination()
     
+    @IBOutlet var loginUserImageView: UIButton!
+    var uiLogoImageView: UIImage!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +74,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         todayNewsTableView.estimatedRowHeight = 120
         todayNewsTableView.rowHeight = UITableViewAutomaticDimension
         
-        
+        let url = "https://www.visit-angkor.org/wp-content/uploads/2013/01/Khmer-Portrait.jpg"
+        loadImageUsingUrlString(urlString: url)
+        loginUserImageView.clipsToBounds = true
         
         //setUpRefresh()
         setUpNavigationBar()
@@ -136,10 +141,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             }
         }
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        getData(pageNumber: 1)
-//    }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodayNewsTableViewCell") as! TodayNewsTableViewCell
         cell.configureCell(news: self.news[indexPath.row])
@@ -288,6 +290,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         print("viewdidappear*****")
         print("viewdidappear news type: \(self.newsType)")
         print("viewdidappear authors: \(self.authors)")
+//
+//        let url = "https://www.visit-angkor.org/wp-content/uploads/2013/01/Khmer-Portrait.jpg"
+//        loadImageUsingUrlString(urlString: url)
+//        loginUserImageView.clipsToBounds = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let url = "https://www.visit-angkor.org/wp-content/uploads/2013/01/Khmer-Portrait.jpg"
+        loadImageUsingUrlString(urlString: url)
+        loginUserImageView.clipsToBounds = true
     }
     
     @IBAction func toSave(_ sender: Any) {
@@ -345,5 +357,32 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.news = news!
         }
         self.todayNewsTableView.reloadData()
+    }
+    
+    func loadImageUsingUrlString(urlString: String) {
+        
+        uiLogoImageView = UIImage(named: "save")!
+        
+        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            self.uiLogoImageView = imageFromCache
+            return
+        }
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, respones, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            DispatchQueue.main.sync {
+                let imageToCache = UIImage(data: data!)
+                self.uiLogoImageView = imageToCache!
+                imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+              
+                self.loginUserImageView.setImage(self.uiLogoImageView, for: .normal)
+            }
+            
+        }).resume()
     }
 }

@@ -78,6 +78,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="loginUserImageView" destination="Uhc-I3-emz" id="v58-K3-r1Q"/>
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
                         <segue destination="YF4-b6-twC" kind="show" identifier="NewsDetailViewController" id="A8j-Nd-r3w"/>
                         <segue destination="qVC-iq-LnR" kind="show" identifier="showEdit" id="nji-cD-ju8"/>
@@ -222,6 +223,7 @@
                     </view>
                     <connections>
                         <outlet property="authorEmailLabel" destination="pDa-Iu-Jak" id="pnU-cr-k0B"/>
+                        <outlet property="authorImageView" destination="WtE-4C-nlh" id="e70-EJ-955"/>
                         <outlet property="imageHeightConstrant" destination="lRg-Po-aiN" id="fBW-q2-Ccp"/>
                         <outlet property="newsDescription" destination="iWO-fv-zAQ" id="1d2-fE-g7W"/>
                         <outlet property="newsImageView" destination="18J-Du-LTp" id="Nn5-XT-amO"/>
