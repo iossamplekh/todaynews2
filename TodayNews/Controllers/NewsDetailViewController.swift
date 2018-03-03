@@ -51,11 +51,10 @@ class NewsDetailViewController: UIViewController {
             })
         newsImageView.clipsToBounds = true
         
-        authorImageView.downloadImageWith(urlString: url!) {
+        let urlAuthor = news2?.author.image_url
+        authorImageView.downloadImageWith(urlString: urlAuthor!) {
             if let image = self.newsImageView.image {
-                // Calculate aspect
                 let aspect = image.size.height / image.size.width
-                
                 self.imageHeightConstrant.constant = self.view.frame.size.width * aspect
             }
         }

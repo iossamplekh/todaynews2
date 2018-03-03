@@ -20,7 +20,7 @@ class Author{
         id = data["id"].int ?? 0
         name = data["name"].string ?? ""
         email = data["email"].string ?? ""
-        image_url = data["image_url"].string ?? ""
+        image_url = data["realImageUrl"].string ?? ""
         secUser = SecUser(data["secUser"])
     }
     
