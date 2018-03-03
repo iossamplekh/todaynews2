@@ -52,7 +52,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         setUpView()
         getData(pageNumber: 1)
 
-        //print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
+        print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
     }
     func getData(pageNumber: Int){
         if pageNumber == 1 {
@@ -249,6 +249,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func logout(_ sender: Any) {
+        print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
         UserDefaults.standard.removeObject(forKey: "UserID")
         self.dismiss(animated: true, completion: nil)
     }

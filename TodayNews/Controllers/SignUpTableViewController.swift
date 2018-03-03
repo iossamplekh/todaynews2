@@ -27,6 +27,7 @@ class SignUpTableViewController: UITableViewController,UIImagePickerControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
         imagePicker.delegate = self
     }
     @IBAction func signUp(_ sender: Any) {
