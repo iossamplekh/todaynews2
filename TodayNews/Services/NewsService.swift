@@ -212,14 +212,16 @@ class NewsService{
                 switch response.result{
                 case .success(let value):
                     let json = JSON(value)
-                    guard let code = json["code"].int , code == 2222 else {
-                        // Report any error
-                        let dictionary = [NSLocalizedDescriptionKey: json["objects"].string ?? "unknown"]
-                        let host = response.request?.url?.host ?? "unknown"
-                        let error = NSError(domain: host, code: 400, userInfo: dictionary)
-                        self.delegate?.didSearchNewsTitle(with: nil, error: error)
-                        return
-                    }
+//                    guard let code = json["code"].int , code == 2222 else {
+//                        // Report any error
+//                        let errorMessage = "\(json["message"].string!)"
+//                        let errorCode = "\(json["code"].int!)"
+//                        let dictionary = [NSLocalizedDescriptionKey: json["message"].string ?? "\(errorMessage)"]
+//                        let host = response.request?.url?.host ?? "unknown host"
+//                        let error = NSError(domain: host, code: 400, userInfo: dictionary)
+//                        self.delegate?.didSearchNewsTitle(with: nil, error: error)
+//                        return
+//                    }
                     
                     let news =  json["objects"].arrayValue.map{ News($0) }
                     self.delegate?.didSearchNewsTitle(with: news, error: nil)

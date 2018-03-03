@@ -349,7 +349,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.stopAnimating()
         self.todayNewsTableView.refreshControl?.endRefreshing()
         // Check error
-        if let err = error { SCLAlertView().showError("Error", subTitle: err.localizedDescription); return }
+        if let err = error {
+            self.news.removeAll()
+            SCLAlertView().showError("Error", subTitle: err.localizedDescription);
+            return
+        }
         if news! == nil {
            self.news.append(contentsOf: news!)
         } else {
