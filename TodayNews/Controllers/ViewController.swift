@@ -336,7 +336,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         UIApplication.shared.statusBarStyle = .lightContent
         if(resultSearchController.searchBar.text?.count)! == 0{
-            self.todayNewsTableView.reloadData()
+            //self.todayNewsTableView.reloadData()
         }
     }
     func updateSearchResults(for searchController: UISearchController) {
@@ -398,4 +398,5 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
         }).resume()
     }
+    
 }

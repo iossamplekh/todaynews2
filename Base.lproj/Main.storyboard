@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J6S-zY-0kh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J6S-zY-0kh">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -171,6 +171,16 @@
                                                     <constraint firstAttribute="height" constant="44" id="zfG-fp-esx"/>
                                                 </constraints>
                                             </imageView>
+                                            <button clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAF-GW-CTJ">
+                                                <rect key="frame" x="8" y="363" width="60" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="backButtonToHome:" destination="YF4-b6-twC" eventType="touchUpInside" id="bQn-oJ-opt"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -224,6 +234,7 @@
                     <connections>
                         <outlet property="authorEmailLabel" destination="pDa-Iu-Jak" id="pnU-cr-k0B"/>
                         <outlet property="authorImageView" destination="WtE-4C-nlh" id="e70-EJ-955"/>
+                        <outlet property="backButton" destination="XAF-GW-CTJ" id="Gxo-8U-La8"/>
                         <outlet property="imageHeightConstrant" destination="lRg-Po-aiN" id="fBW-q2-Ccp"/>
                         <outlet property="newsDescription" destination="iWO-fv-zAQ" id="1d2-fE-g7W"/>
                         <outlet property="newsImageView" destination="18J-Du-LTp" id="Nn5-XT-amO"/>

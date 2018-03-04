@@ -18,6 +18,7 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet var authorEmailLabel: UILabel!
     @IBOutlet var authorImageView: UIImageView!
     
+    @IBOutlet var backButton: UIButton!
     // data holder
     var mealHolder: [String:String] = [:]
     var news: [News] = []
@@ -27,8 +28,17 @@ class NewsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        
+        setUpBackButton()
     }
     
+    func setUpBackButton(){
+        backButton.backgroundColor = .clear
+        backButton.layer.cornerRadius = 5
+        backButton.layer.borderWidth = 1
+        backButton.layer.borderColor = UIColor.black.cgColor
+        backButton.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+    }
     
     func setUpView(){
         print(mealHolder)
@@ -66,6 +76,12 @@ class NewsDetailViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.largeTitleDisplayMode = .never
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,6 +92,11 @@ class NewsDetailViewController: UIViewController {
         
         imageHeightConstrant.constant = view.frame.size.width * aspect
     }
-
+    @IBAction func backButtonToHome(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        //dismiss(animated: true, completion: nil)
+        backButton.isHidden = true
+    }
+    
 
 }
