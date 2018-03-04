@@ -40,8 +40,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupSearchController()
-        
         getAllDataCrossSreen()
         
         self.newsService.delegate = self
@@ -51,6 +49,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         setUpRefresh()
         setUpView()
         getData(pageNumber: 1)
+        
+        setupSearchController()
 
         print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
     }
@@ -306,45 +306,53 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBAction func toSave(_ sender: Any) {
          self.performSegue(withIdentifier: "toSaveNews", sender: news)
     }
+    
+    func setupSearchController() {
+        //Set Search
+        resultSearchController.searchBar.placeholder = "Search here"
+        
+        resultSearchController.hidesNavigationBarDuringPresentation = true
+        //dim
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        //barstyle
+        resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.default
+        //color font
+        resultSearchController.searchBar.tintColor = .white
+        //color insize of font when typing
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        //Set Size to label of search bar
+        resultSearchController.searchBar.sizeToFit()
+        //Confirm Protocal of search
+        resultSearchController.searchResultsUpdater = self
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = resultSearchController
+        } else {
+            todayNewsTableView.tableHeaderView = resultSearchController.searchBar
+        }
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        UIApplication.shared.statusBarStyle = .lightContent
+        if(resultSearchController.searchBar.text?.count)! == 0{
+            self.todayNewsTableView.reloadData()
+        }
+    }
     func updateSearchResults(for searchController: UISearchController) {
         if (searchController.searchBar.text?.count)! > 0 {
-          
+            
             filteredData.removeAll(keepingCapacity: false)
             getSearchData(newsTitle: "\(searchController.searchBar.text!)")
-          
-            self.news = filteredData
         }else {
             getData(pageNumber: 1)
         }
+        setUpNavigationBar()
     }
     func getSearchData(newsTitle: String){
         if newsTitle != nil {
             newsService.getDataNewsSearch(newsTitle: "\(newsTitle)")
         }
-    }
-    func setupSearchController() {
-        resultSearchController.searchBar.placeholder = "Search Here"
-        navigationItem.hidesSearchBarWhenScrolling = true
-        resultSearchController.dimsBackgroundDuringPresentation = false
-        resultSearchController.searchBar.searchBarStyle = .default
-        resultSearchController.searchBar.tintColor = .white
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue : UIColor.white]
-        resultSearchController.searchBar.sizeToFit()
-        resultSearchController.searchResultsUpdater = self
-        
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = resultSearchController
-        }else {
-            todayNewsTableView.tableHeaderView = resultSearchController.searchBar
-        }
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        UIApplication.shared.statusBarStyle = .lightContent
-//
-//        if (resultSearchController.searchBar.text?.count)! == 0 {
-//             getSearchData(newsTitle: "\(resultSearchController.searchBar.text!)")
-//        }
     }
     func didSearchNewsTitle(with news: [News]?, error: Error?) {
         self.stopAnimating()
