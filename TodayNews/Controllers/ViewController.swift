@@ -360,7 +360,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         // Check error
         if let err = error {
             self.news.removeAll()
-            SCLAlertView().showError("Error", subTitle: err.localizedDescription);
+            //SCLAlertView().showError("Error", subTitle: err.localizedDescription);
             return
         }
         if news! == nil {
