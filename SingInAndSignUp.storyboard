@@ -141,7 +141,6 @@
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="toLogin:" destination="d6m-S8-vuu" eventType="touchUpInside" id="ggp-Zl-0uN"/>
                                                         <segue destination="tH9-OY-ew8" kind="show" id="Xnm-ik-8CM"/>
                                                     </connections>
                                                 </button>
