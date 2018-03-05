@@ -202,9 +202,9 @@ class NewsService{
                 }
         }
     }
-    
+    let newsTitles = "%7Btitle%7D?title="
     func getDataNewsSearch(newsTitle: String){
-        Alamofire.request("\(DataManager.URL.NEWS_SEARCH)/\(newsTitle)",
+        Alamofire.request("\(DataManager.URL.NEWS_SEARCH)/\(newsTitles)/\(newsTitle)",
                           method: .get,
                           encoding: URLEncoding.default,
                           headers: DataManager.HEADER)

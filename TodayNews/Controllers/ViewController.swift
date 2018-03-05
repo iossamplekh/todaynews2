@@ -324,6 +324,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         resultSearchController.searchBar.sizeToFit()
         //Confirm Protocal of search
         resultSearchController.searchResultsUpdater = self
+        resultSearchController.searchBar.enablesReturnKeyAutomatically = true
+        resultSearchController.searchBar.returnKeyType = .continue
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = resultSearchController
@@ -360,7 +362,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         // Check error
         if let err = error {
             self.news.removeAll()
-            //SCLAlertView().showError("Error", subTitle: err.localizedDescription);
+            SCLAlertView().showError("Error", subTitle: err.localizedDescription);
             return
         }
         if news! == nil {
