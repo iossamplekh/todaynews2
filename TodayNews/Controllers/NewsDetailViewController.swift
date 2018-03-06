@@ -69,6 +69,8 @@ class NewsDetailViewController: UIViewController {
             }
         }
         authorImageView.clipsToBounds = true
+        authorImageView.layer.cornerRadius = 25
+        authorImageView.layer.borderWidth = 1
         // Display LargeTitles
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
