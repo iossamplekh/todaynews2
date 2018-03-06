@@ -13,12 +13,16 @@ import SCLAlertView
 class SignInTableViewController: UITableViewController{
     @IBOutlet var userEmailTextField: UITextField!
     @IBOutlet var userPasswordTextField: UITextField!
+    @IBOutlet var signinButton: UIButton!
+    @IBOutlet var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if (UserDefaults.standard.string(forKey: "userID") != nil) {
             self.showMainScreen(animation: false)
         }
+        signinButton.layer.cornerRadius = 25
+        signUpButton.layer.cornerRadius = 25
     }
     
     @IBAction func toLogin(_ sender: Any) {

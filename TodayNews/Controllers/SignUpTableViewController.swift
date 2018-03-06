@@ -18,6 +18,7 @@ class SignUpTableViewController: UITableViewController,UIImagePickerControllerDe
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet var saveUserButton: UIButton!
     
     let imagePicker = UIImagePickerController()
     
@@ -28,6 +29,7 @@ class SignUpTableViewController: UITableViewController,UIImagePickerControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        saveUserButton.layer.cornerRadius = 25
     }
     @IBAction func signUp(_ sender: Any) {
         if let imageData = UIImageJPEGRepresentation(self.userImageView.image!, 1){
