@@ -18,7 +18,6 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet var authorEmailLabel: UILabel!
     @IBOutlet var authorImageView: UIImageView!
     
-    @IBOutlet var backButton: UIButton!
     // data holder
     var mealHolder: [String:String] = [:]
     var news: [News] = []
@@ -29,15 +28,6 @@ class NewsDetailViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         
-        setUpBackButton()
-    }
-    
-    func setUpBackButton(){
-        backButton.backgroundColor = .clear
-        backButton.layer.cornerRadius = 5
-        backButton.layer.borderWidth = 1
-        backButton.layer.borderColor = UIColor.black.cgColor
-        backButton.backgroundColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
     }
     
     func setUpView(){
@@ -92,12 +82,6 @@ class NewsDetailViewController: UIViewController {
         let aspect = (newsImageView.image?.size.height ?? 0.0) / (newsImageView.image?.size.width ?? 0.0)
         
         imageHeightConstrant.constant = view.frame.size.width * aspect
-    }
-    @IBAction func backButtonToHome(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        //dismiss(animated: true, completion: nil)
-        backButton.isHidden = true
-    }
-    
+    }    
 
 }
