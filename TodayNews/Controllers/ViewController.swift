@@ -18,6 +18,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet var footerView: UIView!
     @IBOutlet var footerNavigationBar: UIActivityIndicatorView!
     
+    @IBOutlet weak var button: UIButton!
     @IBOutlet var todayNewsTableView: UITableView!
     // Outlet
     var resultSearchController = UISearchController(searchResultsController: nil)
@@ -39,6 +40,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Left Bar Button Image Constraint
+        button.widthAnchor.constraint(equalToConstant: 24.0).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
         
         getAllDataCrossSreen()
         
@@ -249,6 +254,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func logout(_ sender: Any) {
+
         print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
         UserDefaults.standard.removeObject(forKey: "UserID")
         self.dismiss(animated: true, completion: nil)
@@ -311,7 +317,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //Set Search
         resultSearchController.searchBar.placeholder = "Search here"
         
-        resultSearchController.hidesNavigationBarDuringPresentation = true
+        resultSearchController.hidesNavigationBarDuringPresentation = false
         //dim
         resultSearchController.dimsBackgroundDuringPresentation = false
         //barstyle

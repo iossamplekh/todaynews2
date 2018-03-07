@@ -21,8 +21,10 @@ class SignInTableViewController: UITableViewController{
         if (UserDefaults.standard.string(forKey: "userID") != nil) {
             self.showMainScreen(animation: false)
         }
+
         signinButton.layer.cornerRadius = 25
         signUpButton.layer.cornerRadius = 25
+
     }
     
     @IBAction func toLogin(_ sender: Any) {
@@ -38,14 +40,18 @@ class SignInTableViewController: UITableViewController{
                         print("Login Success")
                         UserDefaults.standard.set("\(id)", forKey: "UserID")
                         SCLAlertView().showInfo("Welcome", subTitle: "Login Success!")
+
                         self.showMainScreen(animation: true)
+
                     }else { // error
                         SCLAlertView().showError("Error \(String(describing: json["code"].int!))", subTitle: json["message"].stringValue); return
                     }
                 }else {
                     SCLAlertView().showError("Error", subTitle: "Server error"); return
                 }
-                
+
+                self.showMainScreen(animation: true)
+
             }
         }
         
@@ -55,5 +61,5 @@ class SignInTableViewController: UITableViewController{
         let vc = storybaord.instantiateInitialViewController()
         self.present(vc!, animated: animation, completion: nil)
     }
-    
+
 }
