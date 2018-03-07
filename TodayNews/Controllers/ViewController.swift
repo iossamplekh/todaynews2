@@ -254,10 +254,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func logout(_ sender: Any) {
-<<<<<<< HEAD
+
         print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
-=======
->>>>>>> a9562d8c80e10968ed3c4c3d7648f39fa1f9b47a
         UserDefaults.standard.removeObject(forKey: "UserID")
         self.dismiss(animated: true, completion: nil)
     }
