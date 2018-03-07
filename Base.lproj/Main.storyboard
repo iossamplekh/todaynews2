@@ -78,6 +78,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="button" destination="Uhc-I3-emz" id="doB-oW-Xv0"/>
                         <outlet property="loginUserImageView" destination="Uhc-I3-emz" id="v58-K3-r1Q"/>
                         <outlet property="todayNewsTableView" destination="fee-Py-8C6" id="5wJ-LJ-ikX"/>
                         <segue destination="YF4-b6-twC" kind="show" identifier="NewsDetailViewController" id="A8j-Nd-r3w"/>
