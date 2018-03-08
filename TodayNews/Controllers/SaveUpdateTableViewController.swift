@@ -24,6 +24,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     @IBOutlet var saveUpdateNewNavigationBar: UINavigationItem!
     
     @IBOutlet var newsTypeAuthorPickerView: UIPickerView!
+    @IBOutlet var rotateImage90Button: UIButton!
+    @IBOutlet var rotateImage180Button: UIButton!
     
     var newsService = NewsService()
     var newsTypeValue: String = "Sport"
@@ -65,6 +67,8 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                     self.title = "EDIT: \(nob?.name ?? "")"
                 }else {
                     self.title = "ADD NEWS"
+                    rotateImage90Button.isHidden = true
+                    rotateImage180Button.isHidden = true
                 }
             }else if(key == "newsTypes"){
                 self.newsType = value as! [NewsType]
@@ -251,5 +255,124 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         print("viewdidappear*****")
         print("viewdidappear news type: \(self.newsType)")
         print("viewdidappear authors: \(self.authors)")
+    }
+    @IBAction func changeImageRotate90(_ sender: Any) {
+        print("Start Function Save \(#function)")
+        // Read Image
+        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
+        print("imageData: \(imageData!)")
+        
+            if let news = self.jsonDictHolder {
+                for (key,value) in news{
+                    print("KEY: \(key); VALUE: \(value)")
+                    if(key == "newsObj"){
+                        var nob: News?
+                        nob = value as! News
+                        if nob?.dec != "default" {
+                            
+                            let nob_id = nob?.id as! Int
+                            
+                            let imageURL = nob?.realImageUrl ?? ""
+                            let str = imageURL
+                            print("#################")
+                            let fromSt = str.substring(from: 51)
+                            let toSt = str.substring(to: 51)
+                            print("fromSt: \(fromSt)")
+                            print("toSt: \(toSt)")
+                            print("#################")
+                            let updateImageRotate90 = toSt + "rotate90" + fromSt
+                            
+                            let paramaters = [
+                                "name": self.newsTitleTextField.text!,
+                                "dec": self.newsShortDescription.text!,
+                                "desEn": self.newsDescriptionTextView.text!,
+                                "objectStatus": true,
+                                "realImageUrl": updateImageRotate90 ?? "",
+                                ] as [String : Any]
+                            
+                            print("Show: \(str)")
+                            
+                            self.newsService.updateNews(with: self.newsTypeValue, with: "\(nob?.secUser.email)", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                        }
+                    }else if(key == "newsTypes"){
+                        self.newsType = value as! [NewsType]
+                    } else if(key == "authors"){
+                        self.authors = value as! [Author]
+                    }
+            
+        }
+        print("End Function Save \(#function)")
+        }
+    }
+
+    @IBAction func changeImageRotate180(_ sender: Any) {
+        print("Start Function Save \(#function)")
+        // Read Image
+        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
+        print("imageData: \(imageData!)")
+        
+        if let news = self.jsonDictHolder {
+            for (key,value) in news{
+                print("KEY: \(key); VALUE: \(value)")
+                if(key == "newsObj"){
+                    var nob: News?
+                    nob = value as! News
+                    if nob?.dec != "default" {
+                        
+                        let nob_id = nob?.id as! Int
+                        
+                        let imageURL = nob?.realImageUrl ?? ""
+                        let str = imageURL
+                        print("#################")
+                        let fromSt = str.substring(from: 51)       //7 playground
+                        let toSt = str.substring(to: 51)
+                        print("fromSt: \(fromSt)")
+                        print("toSt: \(toSt)")
+                        print("#################")
+                        let updateImageRotate180 = toSt + "rotate180" + fromSt
+                        
+                        let paramaters = [
+                            "name": self.newsTitleTextField.text!,
+                            "dec": self.newsShortDescription.text!,
+                            "desEn": self.newsDescriptionTextView.text!,
+                            "objectStatus": true,
+                            "realImageUrl": updateImageRotate180 ?? "",
+                            ] as [String : Any]
+                        
+                        print("Show: \(str)")
+                        
+                        self.newsService.updateNews(with: self.newsTypeValue, with: "\(nob?.secUser.email)", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                    }
+                }else if(key == "newsTypes"){
+                    self.newsType = value as! [NewsType]
+                } else if(key == "authors"){
+                    self.authors = value as! [Author]
+                }
+                
+            }
+            print("End Function Save \(#function)")
+        }
+    }
+}
+
+extension String {
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+    
+    func substring(from: Int) -> String {
+        let fromIndex = index(from: from)
+        return substring(from: fromIndex)
+    }
+    
+    func substring(to: Int) -> String {
+        let toIndex = index(from: to)
+        return substring(to: toIndex)
+    }
+    
+    func substring(with r: Range<Int>) -> String {
+        let startIndex = index(from: r.lowerBound)
+        let endIndex = index(from: r.upperBound)
+        return substring(with: startIndex..<endIndex)
     }
 }

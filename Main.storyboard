@@ -431,17 +431,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLG-er-7PV">
-                                                    <rect key="frame" x="7" y="0.0" width="133" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Rotate Image 90"/>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTN-IP-DUA">
-                                                    <rect key="frame" x="155" y="0.0" width="127" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTN-IP-DUA">
+                                                    <rect key="frame" x="216" y="0.0" width="120" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="lP4-lS-6MV"/>
+                                                        <constraint firstAttribute="width" constant="120" id="wEQ-iM-SRG"/>
+                                                    </constraints>
                                                     <state key="normal" title="Rotate Image 180"/>
+                                                    <connections>
+                                                        <action selector="changeImageRotate180:" destination="qVC-iq-LnR" eventType="touchUpInside" id="4bq-eA-hT6"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLG-er-7PV">
+                                                    <rect key="frame" x="78" y="0.0" width="114" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="114" id="6iI-3Y-lJS"/>
+                                                        <constraint firstAttribute="height" constant="30" id="D0y-ft-zxC"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Rotate Image 90"/>
+                                                    <connections>
+                                                        <action selector="changeImageRotate90:" destination="qVC-iq-LnR" eventType="touchUpInside" id="ivX-bm-Rae"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RTN-IP-DUA" firstAttribute="leading" secondItem="wLG-er-7PV" secondAttribute="trailing" constant="24" id="DCP-l1-1n8"/>
+                                                <constraint firstItem="wLG-er-7PV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Hz-KX-eVD" secondAttribute="leading" constant="78" id="KFT-PI-X8Z"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RTN-IP-DUA" secondAttribute="trailing" constant="78" id="Txj-DR-W9E"/>
+                                                <constraint firstItem="RTN-IP-DUA" firstAttribute="baseline" secondItem="wLG-er-7PV" secondAttribute="baseline" id="muR-MY-x1G"/>
+                                                <constraint firstItem="RTN-IP-DUA" firstAttribute="top" secondItem="7Hz-KX-eVD" secondAttribute="top" id="ojH-CZ-vDc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -471,6 +490,8 @@
                         <outlet property="newsShortDescription" destination="ZjT-HW-0o8" id="qPy-lx-t5O"/>
                         <outlet property="newsTitleTextField" destination="mJI-yx-k1s" id="Mxy-h6-beH"/>
                         <outlet property="newsTypeAuthorPickerView" destination="tPb-NC-icq" id="q72-un-DZ9"/>
+                        <outlet property="rotateImage180Button" destination="RTN-IP-DUA" id="hjK-vO-5u3"/>
+                        <outlet property="rotateImage90Button" destination="wLG-er-7PV" id="Use-jZ-C1y"/>
                         <outlet property="saveUpdateNewNavigationBar" destination="sFn-9C-Xxp" id="WoG-vj-qVR"/>
                     </connections>
                 </tableViewController>
