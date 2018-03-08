@@ -14,6 +14,7 @@ class TodayNewsTableViewCell: UITableViewCell {
     @IBOutlet var newsNameLabel: UILabel!
     @IBOutlet var newsTypeLable: UILabel!
     @IBOutlet var newsImageView: UIImageView!
+    @IBOutlet var newsDateCreateLabel: UILabel!
     
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var newsIndicatorPlay: UIActivityIndicatorView!
@@ -28,6 +29,7 @@ class TodayNewsTableViewCell: UITableViewCell {
         newsNameLabel.text = news.name ?? "Unknown"
         newsTypeLable.text = "Category: \(news.newsType.desEn)" ?? "unknown"
         newsImageView.loadImageUsingUrlString(urlString: news.realImageUrl)
+        newsDateCreateLabel.text = news.realCreateDate ?? "Unknow"
         print("Here is image url \(news.image)")
            //newsImageView.kf.setImage(with: URL(string: news.realImageUrl))
     }

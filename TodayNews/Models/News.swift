@@ -16,6 +16,7 @@ class News{
     var image: String
     var dec: String
     var realImageUrl: String
+    var realCreateDate: String
     var newsType: NewsType
     var secUser: SecUser
     var author: Author
@@ -27,6 +28,7 @@ class News{
         desEn = data["desEn"].string ?? ""
         dec = data["dec"].string ?? ""
         realImageUrl = data["realImageUrl"].string ?? ""
+        realCreateDate = data["realCreateDate"].string ?? ""
         newsType = NewsType(data["newsType"])
         secUser = SecUser(data["secUser"])
         author = Author(data["author"])
@@ -38,6 +40,7 @@ class News{
         image = ""
         dec = ""
         realImageUrl = ""
+        realCreateDate = ""
         newsType = NewsType()
         secUser = SecUser()
         author = Author()
