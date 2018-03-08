@@ -18,7 +18,7 @@ class SignInTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (UserDefaults.standard.string(forKey: "userID") != nil) {
+        if (UserDefaults.standard.string(forKey: "userIDS") != nil) {
             self.showMainScreen(animation: false)
         }
 
@@ -37,8 +37,12 @@ class SignInTableViewController: UITableViewController{
                     let json = JSON(value)
                   
                     if let code = json["code"].int, code == 2222 ,let id = json["object"]["id"].int {
+                        let secEmail = json["email"].string ?? ""
+                        let secRealImageUrl = json["realImageUrl"].string ?? ""
                         print("Login Success")
-                        UserDefaults.standard.set("\(id)", forKey: "UserID")
+                        UserDefaults.standard.set("\(id)", forKey: "userIDS")
+                        UserDefaults.standard.set("\(secEmail)", forKey: "userEmail")
+                        UserDefaults.standard.set("\(secRealImageUrl)", forKey: "userRealImageUrl")
                         SCLAlertView().showInfo("Welcome", subTitle: "Login Success!")
 
                         self.showMainScreen(animation: true)

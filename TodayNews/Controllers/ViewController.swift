@@ -57,7 +57,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         setupSearchController()
 
-        print("USER ID: \(UserDefaults.standard.string(forKey: "userID"))")
+        print("USER ID: \(UserDefaults.standard.string(forKey: "userIDS"))!")
+        print("USER Image Url: \(UserDefaults.standard.string(forKey: "userRealImageUrl"))!")
     }
     func getData(pageNumber: Int){
         if pageNumber == 1 {

@@ -292,7 +292,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                             
                             print("Show: \(str)")
                             
-                            self.newsService.updateNews(with: self.newsTypeValue, with: "\(nob?.secUser.email)", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                            self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
                         }
                     }else if(key == "newsTypes"){
                         self.newsType = value as! [NewsType]
@@ -341,7 +341,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                         
                         print("Show: \(str)")
                         
-                        self.newsService.updateNews(with: self.newsTypeValue, with: "\(nob?.secUser.email)", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                        self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
                     }
                 }else if(key == "newsTypes"){
                     self.newsType = value as! [NewsType]
