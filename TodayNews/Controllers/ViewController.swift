@@ -25,22 +25,25 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     var news: [News] = []
-    var newsData: [News] = [] //display data
+    var newsData: [News] = []
     var filteredData: [News] = []
-    
     var newsService = NewsService()
     
     var newsType: [NewsType] = []
     var authors: [Author] = []
-    
     var pagination: Pagination = Pagination()
+    
     
     @IBOutlet var loginUserImageView: UIButton!
     var uiLogoImageView: UIImage!
     
+    var userLoginEmail: String!
+    var userLoginRealImageUrl: String!
+    var userLoginId: Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getUserLoginInfo()
         // Left Bar Button Image Constraint
         button.widthAnchor.constraint(equalToConstant: 24.0).isActive = true
         button.heightAnchor.constraint(equalToConstant: 24.0).isActive = true
@@ -56,9 +59,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         getData(pageNumber: 1)
         
         setupSearchController()
-
-        print("USER ID: \(UserDefaults.standard.string(forKey: "userIDS"))!")
-        print("USER Image Url: \(UserDefaults.standard.string(forKey: "userRealImageUrl"))!")
+    }
+    func getUserLoginInfo(){
+        userLoginId = UserDefaults.standard.integer(forKey:"userIDS")
+        userLoginEmail = UserDefaults.standard.string(forKey: "userEmail")
+        userLoginRealImageUrl = UserDefaults.standard.string(forKey: "userRealImageUrl")
+        
+        print("USER ID: \(userLoginId!)")
+        print("USER userEmail \(userLoginEmail!)")
+        print("USER image url \(userLoginRealImageUrl!)")
     }
     func getData(pageNumber: Int){
         if pageNumber == 1 {
@@ -80,9 +89,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         todayNewsTableView.estimatedRowHeight = 120
         todayNewsTableView.rowHeight = UITableViewAutomaticDimension
         
-        let url = "https://www.visit-angkor.org/wp-content/uploads/2013/01/Khmer-Portrait.jpg"
-        loadImageUsingUrlString(urlString: url)
-        loginUserImageView.clipsToBounds = true
+        let url = userLoginRealImageUrl
+            loadImageUsingUrlString(urlString: url!)
+            loginUserImageView.clipsToBounds = true
+            loginUserImageView.layer.cornerRadius = 5
+        
         
         //setUpRefresh()
         setUpNavigationBar()
@@ -382,9 +393,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func loadImageUsingUrlString(urlString: String) {
-        
-        uiLogoImageView = UIImage(named: "save")!
-        
         if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
             self.uiLogoImageView = imageFromCache
             return

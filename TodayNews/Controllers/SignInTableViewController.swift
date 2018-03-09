@@ -37,12 +37,17 @@ class SignInTableViewController: UITableViewController{
                     let json = JSON(value)
                   
                     if let code = json["code"].int, code == 2222 ,let id = json["object"]["id"].int {
-                        let secEmail = json["email"].string ?? ""
-                        let secRealImageUrl = json["realImageUrl"].string ?? ""
-                        print("Login Success")
+                        let secEmail = json["object"]["email"].string ?? ""
+                        let secRealImageUrl = json["object"]["realImageUrl"].string ?? ""
+                        print("-----------Login Success-----------")
                         UserDefaults.standard.set("\(id)", forKey: "userIDS")
                         UserDefaults.standard.set("\(secEmail)", forKey: "userEmail")
                         UserDefaults.standard.set("\(secRealImageUrl)", forKey: "userRealImageUrl")
+                        
+                        print("USER ID: \(UserDefaults.standard.string(forKey: "userIDS")!)")
+                        print("USER userEmail \(UserDefaults.standard.string(forKey: "userEmail")!)")
+                        print("USER image url \(UserDefaults.standard.string(forKey: "userRealImageUrl")!)")
+                        print("-----------Login Success-----------")
                         SCLAlertView().showInfo("Welcome", subTitle: "Login Success!")
 
                         self.showMainScreen(animation: true)

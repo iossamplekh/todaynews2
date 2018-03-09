@@ -38,9 +38,14 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
     var data: [[String]] = [[String]]()
     var arrn: [String] = [String]()
     var arra: [String] = [String]()
+    
+    var userLoginEmail: String!
+    var userLoginRealImageUrl: String!
+    var userLoginId: Int!
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserLoginInfo()
         newsService.delegate = self
         newsTypeAuthorPickerView.delegate = self
         newsTypeAuthorPickerView.dataSource = self
@@ -94,6 +99,17 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
        }
         setUpView()
     }
+    
+    func getUserLoginInfo(){
+        userLoginId = UserDefaults.standard.integer(forKey:"userIDS")
+        userLoginEmail = UserDefaults.standard.string(forKey: "userEmail")
+        userLoginRealImageUrl = UserDefaults.standard.string(forKey: "userRealImageUrl")
+        
+        print("USER ID: \(userLoginId!)")
+        print("USER userEmail \(userLoginEmail!)")
+        print("USER image url \(userLoginRealImageUrl!)")
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         print("(numberOfComponents) self.data.count.count = \(self.data.count)")
         return self.data.count
@@ -223,7 +239,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                         nob = value as! News
                         if nob?.dec != "default" {
                             let nob_id = nob?.id as! Int
-                            self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                            self.newsService.updateNews(with: self.newsTypeValue, with: self.userLoginEmail!, with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
                         }else {
                             print("news: save")
                             self.newsService.saveNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue, paramaters: paramaters)
@@ -257,12 +273,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
         print("viewdidappear authors: \(self.authors)")
     }
     @IBAction func changeImageRotate90(_ sender: Any) {
-        print("Start Function Save \(#function)")
-        // Read Image
-        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
-        print("imageData: \(imageData!)")
-        
-            if let news = self.jsonDictHolder {
+             if let news = self.jsonDictHolder {
                 for (key,value) in news{
                     print("KEY: \(key); VALUE: \(value)")
                     if(key == "newsObj"){
@@ -292,25 +303,18 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                             
                             print("Show: \(str)")
                             
-                            self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                            self.newsService.updateNews(with: self.newsTypeValue, with: self.userLoginEmail!, with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
                         }
                     }else if(key == "newsTypes"){
                         self.newsType = value as! [NewsType]
                     } else if(key == "authors"){
                         self.authors = value as! [Author]
                     }
-            
         }
-        print("End Function Save \(#function)")
         }
     }
 
     @IBAction func changeImageRotate180(_ sender: Any) {
-        print("Start Function Save \(#function)")
-        // Read Image
-        let imageData = UIImageJPEGRepresentation(self.newsImageView.image!, 1)
-        print("imageData: \(imageData!)")
-        
         if let news = self.jsonDictHolder {
             for (key,value) in news{
                 print("KEY: \(key); VALUE: \(value)")
@@ -341,7 +345,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                         
                         print("Show: \(str)")
                         
-                        self.newsService.updateNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
+                        self.newsService.updateNews(with: self.newsTypeValue, with: self.userLoginEmail!, with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
                     }
                 }else if(key == "newsTypes"){
                     self.newsType = value as! [NewsType]
@@ -350,7 +354,6 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                 }
                 
             }
-            print("End Function Save \(#function)")
         }
     }
 }
