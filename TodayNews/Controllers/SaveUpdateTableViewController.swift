@@ -242,7 +242,7 @@ class SaveUpdateTableViewController: UITableViewController,UIImagePickerControll
                             self.newsService.updateNews(with: self.newsTypeValue, with: self.userLoginEmail!, with: self.authorEmailValue,with: "\(nob_id)", parameters: paramaters)
                         }else {
                             print("news: save")
-                            self.newsService.saveNews(with: self.newsTypeValue, with: "rithronlkh@gmail.com", with: self.authorEmailValue, paramaters: paramaters)
+                            self.newsService.saveNews(with: self.newsTypeValue, with:self.userLoginEmail!, with: self.authorEmailValue, paramaters: paramaters)
                         }
                     }else if(key == "newsTypes"){
                         self.newsType = value as! [NewsType]
