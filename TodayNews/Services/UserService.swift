@@ -29,17 +29,19 @@ class UserService{
                     let json = JSON(value)
                     print("Value of json: \(json)")
                     print("Code: \(json["code"])")
-                    guard let code = json["code"].int, code == 2222 else {
+                    let message = json["message"].string ?? "Unkown"
+                    let code = json["code"].int ?? 9999
+                    guard code == 2222 else {
                         // Report any error we got.
                         let dict =  [NSLocalizedDescriptionKey : json["message"].string ?? "unknown"]
                         let error = NSError(domain: response.request?.url?.host ?? "unknown", code: 9999, userInfo: dict)
                         // Error
-                        SCLAlertView().showInfo("No data", subTitle: "No value")
+                        SCLAlertView().showError("\(code)", subTitle: "\(message)")
                         return
                     }
                     // Success
                     completion(response, nil)
-                    SCLAlertView().showInfo("Have", subTitle: "OK")
+                    SCLAlertView().showInfo("\(code)", subTitle: "\(message)")
                 case .failure(let error):
                      completion(nil, error)
                 }

@@ -50,7 +50,7 @@ class SignUpTableViewController: UITableViewController,UIImagePickerControllerDe
                 ]
                 
                 UserService.shared.singup(paramaters: parameters) { (response, error) in
-                    
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }

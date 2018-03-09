@@ -264,7 +264,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="205" id="a2O-hi-pRR"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NV7-sv-wHj">
                                                     <rect key="frame" x="8" y="42" width="359" height="1"/>
