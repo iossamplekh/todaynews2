@@ -10,28 +10,30 @@ import Foundation
 
 struct DataManager{
     struct URL{
+        static let LOCALHOST = "http://localhost:8080/rest"
+        
         static let BASE = "https://newiosapi.herokuapp.com/rest"
         
         static let NEWS = BASE + "/news/"
         
-        static let NEWS_SAVE = NEWS + "save/{newsTypeDesEn}/{email}/{authorEmail}"
+        static let NEWS_SAVE = BASE + "save/{newsTypeDesEn}/{email}/{authorEmail}"
         
-        static let FILE = "https://newiosapi.herokuapp.com/rest/uploadfile"
+        static let FILE = "\(BASE)/uploadfile"
         
-        static let NEWS_SAVE_DEAUL = "https://newiosapi.herokuapp.com/rest/news/save/Sport/rithronlkh%40gmail.com/author1%40gmail.com"
-        static let NEWS_SAVE_DEFAUL = "https://newiosapi.herokuapp.com/rest/news/save"
+        static let NEWS_SAVE_DEAUL = "\(BASE)/news/save/Sport/rithronlkh%40gmail.com/author1%40gmail.com"
+        static let NEWS_SAVE_DEFAUL = "\(BASE)/news/save"
         
-        static let NEWS_SEARCH = "https://newiosapi.herokuapp.com/rest/news/find/"
+        static let NEWS_SEARCH = "\(BASE)/news/find/"
         
         //user
-        static let USER_LOGIN = "https://newiosapi.herokuapp.com/rest/users/login"
-        static let USER_SIGNUP = "https://newiosapi.herokuapp.com/rest/users"
+        static let USER_LOGIN = "\(BASE)/users/login"
+        static let USER_SIGNUP = "\(BASE)/users"
         //newstype
-        static let NEWSTYPE = "https://newiosapi.herokuapp.com/rest/newstype"
+        static let NEWSTYPE = "\(BASE)/newstype"
         //author
-        static let AUTHOR = "https://newiosapi.herokuapp.com/rest/authors"
+        static let AUTHOR = "\(BASE)/authors"
         //newstype and author
-        static let NEWSTYPE_AUTHOR = "https://newiosapi.herokuapp.com/rest/newstypeandauthors"
+        static let NEWSTYPE_AUTHOR = "\(BASE)/newstypeandauthors"
         
     }
     static let HEADER = ["Authorization":"Basic cml0aHJvbmxraEBnbWFpbC5jb206MTIzNDU2"]
