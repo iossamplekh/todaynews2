@@ -17,6 +17,7 @@ class NewsDetailViewController: UIViewController {
     @IBOutlet var imageHeightConstrant: NSLayoutConstraint!
     @IBOutlet var authorEmailLabel: UILabel!
     @IBOutlet var authorImageView: UIImageView!
+    @IBOutlet var newsDetailUIView: UIView!
     
     // data holder
     var mealHolder: [String:String] = [:]

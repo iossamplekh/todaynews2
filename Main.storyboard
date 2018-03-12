@@ -180,11 +180,11 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pDa-Iu-Jak" secondAttribute="trailing" constant="128" id="8mR-Zd-brn"/>
                                             <constraint firstAttribute="trailing" secondItem="deT-zS-n9U" secondAttribute="trailing" constant="8" id="AgI-ZY-Wqi"/>
                                             <constraint firstAttribute="trailing" secondItem="iWO-fv-zAQ" secondAttribute="trailing" constant="8" id="EPS-Cp-40m"/>
-                                            <constraint firstAttribute="height" constant="736" id="KPy-Xf-6z3"/>
                                             <constraint firstItem="iWO-fv-zAQ" firstAttribute="leading" secondItem="KhD-mc-zcQ" secondAttribute="leading" constant="8" id="L3B-aN-Aad"/>
                                             <constraint firstItem="pDa-Iu-Jak" firstAttribute="leading" secondItem="KhD-mc-zcQ" secondAttribute="leading" constant="120" id="L7y-mP-PFf"/>
                                             <constraint firstItem="WtE-4C-nlh" firstAttribute="leading" secondItem="pDa-Iu-Jak" secondAttribute="trailing" constant="8" id="S9L-t0-0oK"/>
                                             <constraint firstItem="XI7-ZK-70M" firstAttribute="leading" secondItem="KhD-mc-zcQ" secondAttribute="leading" constant="8" id="YyK-qj-cGL"/>
+                                            <constraint firstAttribute="height" constant="736" id="aDg-S6-MCP"/>
                                             <constraint firstAttribute="trailing" secondItem="XI7-ZK-70M" secondAttribute="trailing" constant="8" id="bDI-Nn-t3Y"/>
                                             <constraint firstItem="XI7-ZK-70M" firstAttribute="top" secondItem="18J-Du-LTp" secondAttribute="bottom" constant="8" id="biT-xi-w3g"/>
                                             <constraint firstAttribute="trailing" secondItem="18J-Du-LTp" secondAttribute="trailing" id="ebi-2T-Eg0"/>
@@ -206,9 +206,9 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="KhD-mc-zcQ" secondAttribute="bottom" id="0hw-lR-iLI"/>
                                     <constraint firstItem="KhD-mc-zcQ" firstAttribute="leading" secondItem="DWK-d2-kre" secondAttribute="leading" id="Ftg-Ok-L5a"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="L4u-rP-5ye"/>
                                     <constraint firstAttribute="trailing" secondItem="KhD-mc-zcQ" secondAttribute="trailing" id="kCq-gg-w3H"/>
                                     <constraint firstItem="KhD-mc-zcQ" firstAttribute="top" secondItem="DWK-d2-kre" secondAttribute="top" id="wlG-YD-0WN"/>
+                                    <constraint firstItem="KhD-mc-zcQ" firstAttribute="width" secondItem="DWK-d2-kre" secondAttribute="width" id="z2J-D8-1zn"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -216,7 +216,6 @@
                         <constraints>
                             <constraint firstItem="Dhl-wC-sVG" firstAttribute="bottom" secondItem="DWK-d2-kre" secondAttribute="bottom" id="3fK-Oe-Dhs"/>
                             <constraint firstItem="DWK-d2-kre" firstAttribute="leading" secondItem="Dhl-wC-sVG" secondAttribute="leading" id="V4y-XF-NOb"/>
-                            <constraint firstItem="KhD-mc-zcQ" firstAttribute="width" secondItem="uxJ-eq-1j1" secondAttribute="width" id="oxD-Mh-pjK"/>
                             <constraint firstItem="DWK-d2-kre" firstAttribute="top" secondItem="Dhl-wC-sVG" secondAttribute="top" id="yx1-aC-sPL"/>
                             <constraint firstItem="Dhl-wC-sVG" firstAttribute="trailing" secondItem="DWK-d2-kre" secondAttribute="trailing" id="zWI-rQ-mL0"/>
                         </constraints>
@@ -227,6 +226,7 @@
                         <outlet property="authorImageView" destination="WtE-4C-nlh" id="e70-EJ-955"/>
                         <outlet property="imageHeightConstrant" destination="lRg-Po-aiN" id="fBW-q2-Ccp"/>
                         <outlet property="newsDescription" destination="iWO-fv-zAQ" id="1d2-fE-g7W"/>
+                        <outlet property="newsDetailUIView" destination="KhD-mc-zcQ" id="O4k-NP-6Yh"/>
                         <outlet property="newsImageView" destination="18J-Du-LTp" id="Nn5-XT-amO"/>
                         <outlet property="newsNameLable" destination="XI7-ZK-70M" id="nRA-rp-XBh"/>
                         <outlet property="newsTypeLable" destination="deT-zS-n9U" id="bQX-l9-D4d"/>
