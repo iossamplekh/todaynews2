@@ -361,9 +361,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func updateSearchResults(for searchController: UISearchController) {
         if (searchController.searchBar.text?.count)! > 0 {
-            
             filteredData.removeAll(keepingCapacity: false)
-            getSearchData(newsTitle: "\(searchController.searchBar.text!)")
+            var newsTitleInput = "\(searchController.searchBar.text!)"
+            let newsStr = String(utf8String: newsTitleInput.cString(using: .utf8)!)
+            getSearchData(newsTitle: "\(newsTitleInput)")
         }else {
             getData(pageNumber: 1)
         }
